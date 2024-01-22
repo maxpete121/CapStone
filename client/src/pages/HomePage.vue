@@ -1,20 +1,21 @@
 <template>
-  <div class="home flex-grow-1 d-flex flex-column align-items-center justify-content-center">
-    <div class="home-card p-5 card align-items-center shadow rounded elevation-3">
-      <img src="https://bcw.blob.core.windows.net/public/img/8600856373152463" alt="CodeWorks Logo"
-        class="rounded-circle">
-      <h1 class="my-5 bg-dark text-white p-3 rounded text-center">
-        Vue 3 Starter
-      </h1>
-    </div>
-  </div>
+  <COffcanvas :backdrop="false" placement="start" :visible="true">
+    <COffcanvasHeader>
+      <COffcanvasTitle>Offcanvas</COffcanvasTitle>
+      <CCloseButton class="text-reset" />
+    </COffcanvasHeader>
+    <COffcanvasBody>
+      Content for the offcanvas goes here. You can place just about any Bootstrap component or
+      custom elements here.
+    </COffcanvasBody>
+  </COffcanvas>
 </template>
 
 <script>
 export default {
   setup() {
     return {
-      
+
     }
   }
 }
