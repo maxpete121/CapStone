@@ -9,14 +9,23 @@ export class StockController extends BaseController{
         this.router
         .use(Auth0Provider.getAuthorizedUserInfo)
         .post('', this.postStock)
+        .get('/:type', this.getStockByType)
     }
 
     async postStock(request, response, next){
         try {
             let stockData = request.body
-            let userId = request.userInfo.id
-            let newPart = await stockService.postStock(stockData, userId)
+            let newPart = await stockService.postStock(stockData)
             response.send(newPart)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async getStockByType(request, response, next){
+        try {
+            let type = request.params.type
+            let found = await stockService.getStockByType(type)
         } catch (error) {
             next(error)
         }
