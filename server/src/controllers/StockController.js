@@ -26,6 +26,7 @@ export class StockController extends BaseController{
         try {
             let type = request.params.type
             let found = await stockService.getStockByType(type)
+            response.send(found)
         } catch (error) {
             next(error)
         }
