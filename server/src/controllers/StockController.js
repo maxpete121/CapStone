@@ -16,6 +16,7 @@ export class StockController extends BaseController{
             let stockData = request.body
             let userId = request.userInfo.id
             let newPart = await stockService.postStock(stockData, userId)
+            response.send(newPart)
         } catch (error) {
             next(error)
         }
