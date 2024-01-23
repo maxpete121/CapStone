@@ -9,7 +9,10 @@ class StockService{
         return newStock
     }
 
-    async getStockByType(type){}
+    async getStockByType(type){
+        let foundParts = await dbContext.StockParts.find({type: type})
+        return foundParts
+    }
 }
 
 export const stockService = new StockService()
