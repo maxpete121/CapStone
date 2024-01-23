@@ -7,9 +7,10 @@ export class StockController extends BaseController{
     constructor(){
         super('api/stock')
         this.router
+        .get('/:type', this.getStockByType)
+        .get('/:type/:socket', this.getBySocket)
         .use(Auth0Provider.getAuthorizedUserInfo)
         .post('', this.postStock)
-        .get('/:type', this.getStockByType)
     }
 
     async postStock(request, response, next){
@@ -26,6 +27,17 @@ export class StockController extends BaseController{
         try {
             let type = request.params.type
             let found = await stockService.getStockByType(type)
+            response.send(found)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async getBySocket(request, response, next){
+        try {
+            let type = request.params.type
+            let socket = request.params.socket
+            let found = await stockService.getBySocket(type, socket)
             response.send(found)
         } catch (error) {
             next(error)

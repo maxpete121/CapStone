@@ -13,6 +13,12 @@ class StockService{
         let foundParts = await dbContext.StockParts.find({type: type})
         return foundParts
     }
+
+
+    async getBySocket(type, socket){
+        let foundParts = await dbContext.StockParts.find({type: type, chipSet: socket})
+        return foundParts
+    }
 }
 
 export const stockService = new StockService()
