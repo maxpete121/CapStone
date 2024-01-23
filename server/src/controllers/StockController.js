@@ -11,6 +11,7 @@ export class StockController extends BaseController{
         .get('/:type/:socket', this.getBySocket)
         .use(Auth0Provider.getAuthorizedUserInfo)
         .post('', this.postStock)
+        .put('/:partId', this.editPart)
     }
 
     async postStock(request, response, next){
@@ -39,6 +40,16 @@ export class StockController extends BaseController{
             let socket = request.params.socket
             let found = await stockService.getBySocket(type, socket)
             response.send(found)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async editPart(request, response, next){
+        try {
+            let partId = request.params.partId
+            let editMade = await stockService.editPart(partId)
+            response.send(editMade)
         } catch (error) {
             next(error)
         }
