@@ -1,6 +1,6 @@
 <template>
     <div class="d-flex flex-column align-items-center">
-        <h5>{{ list.name }}</h5>
+        <h3>{{ list.name }}</h3>
         <div class="d-flex mt-2 mb-2">
             <div class="d-flex price-card me-2 align-items-baseline">
                 <h4>Price: </h4>
