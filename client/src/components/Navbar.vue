@@ -68,6 +68,7 @@ export default {
 .nav-edit {
   border-bottom: solid 2px purple;
   background-color: rgb(255, 255, 255);
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.453);
 }
 a:hover {
   text-decoration: none;
