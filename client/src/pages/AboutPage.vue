@@ -6,7 +6,8 @@
     <section class="two ms-3 sticky-top">
       <VueTour />
       <section class="row p-2 m-2">
-        <button class="col btn btn-outline-light" id="v-step-1" @click="getParts('cpu')">Cpu's</button>
+        <button v-if="currentStep == 1" class="col btn btn-outline-light" id="v-step-1"
+          @click="getParts('cpu')">Cpu's</button>
         <button class="col btn btn-outline-light" id="v-step-2" @click="getParts('gpu')">Gpu's</button>
         <button class="col btn btn-outline-light" id="v-step-3" @click="getParts('motherboard')">Motherboards</button>
         <button class="col btn btn-outline-light" id="v-step-4" @click="getParts('ram')">Ram</button>

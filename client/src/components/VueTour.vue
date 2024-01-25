@@ -1,6 +1,6 @@
 <template>
     <div class="v-tip text-dark">
-        <v-tour name="myTour" :steps="steps" :options="myOptions"></v-tour>
+        <v-tour name="myTour" :steps="steps" :options="myOptions" :callbacks="myCallbacks"></v-tour>
     </div>
 </template>
   
@@ -11,12 +11,22 @@ export default {
     name: 'my-tour',
     data() {
         return {
+            myCallbacks: {
+                onNextStep: () => {
+                    console.log('Going forward a step, also Jerms is the goat');
+                    AppState.currentStep++
+                },
+                onPreviousStep: () => {
+                    console.log('going back a step');
+                    AppState.currentStep--
+                }
+            },
             myOptions: {
                 useKeyBoardNavigation: false,
                 labels: {
                     buttonSkip: 'Returning User?',
                     buttonPrevious: 'Woops, forgot something',
-                    buttonNext: 'Show me more!'
+                    buttonNext: 'next!'
                 }
             },
             steps: [
