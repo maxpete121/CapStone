@@ -12,6 +12,8 @@ class PartsService {
         const parts = response.data.map(part => new StockPart(part))
         AppState.currentStock = parts
     }
+
+
 }
 
 export const partsService = new PartsService()

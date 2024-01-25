@@ -1,3 +1,4 @@
+
 export class StockPart {
     constructor(data) {
         this.productImage = data.productImage

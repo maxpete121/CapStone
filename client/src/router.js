@@ -12,6 +12,12 @@ const routes = [
     component: loadPage('HomePage')
   },
   {
+    path: '/lists',
+    name: 'Lists',
+    component: loadPage('ListPage'),
+    beforeEnter: authGuard
+  },
+  {
     path: '/about',
     name: 'About',
     component: loadPage('AboutPage')
