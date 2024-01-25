@@ -3,7 +3,7 @@
     <section class="one sticky-top me-3">
 
     </section>
-    <section class="two ms-3 sticky-top" id="v-step-0">
+    <section class="two ms-3 sticky-top">
       <VueTour />
       <section class="row p-2 m-2">
         <button class="col btn btn-outline-light" id="v-step-1" @click="getParts('cpu')">Cpu's</button>
@@ -41,6 +41,7 @@ export default {
     return {
       account: computed(() => AppState.account),
       parts: computed(() => AppState.currentStock),
+      currentStep: computed(() => AppState.currentStep),
       async getParts(type) {
         try {
           await partsService.getParts(type);
