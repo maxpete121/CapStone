@@ -1,19 +1,22 @@
 <template>
   <div class="wrapper">
-    <section class="one sticky-top">
+    <section class="one sticky-top me-3">
 
     </section>
-    <section class="two">
-      <section class="row p-2 my-2">
-        <button class="col btn btn-outline-light" @click="getParts('cpu')">Cpu's</button>
-        <button class="col btn btn-outline-light" @click="getParts('gpu')">Gpu's</button>
-        <button class="col btn btn-outline-light" @click="getParts('motherboard')">Motherboards</button>
-        <button class="col btn btn-outline-light" @click="getParts('ram')">Ram</button>
-        <button class="col btn btn-outline-light" @click="getParts('storage')">Storage</button>
-        <button class="col btn btn-outline-light" @click="getParts('cpuCooler')">Cpu Coolers</button>
-        <button class="col btn btn-outline-light" @click="getParts('powerSupply')">Power Supplies</button>
-        <button class="col btn btn-outline-light" @click="getParts('case')">Case's</button>
-        <button class="col btn btn-outline-light" @click="getParts('caseFan')">Case Fan's</button>
+    <section class="two ms-3 sticky-top" id="v-step-0">
+      <VueTour />
+      <section class="row p-2 m-2">
+        <button class="col btn btn-outline-light" id="v-step-1" @click="getParts('cpu')">Cpu's</button>
+        <button class="col btn btn-outline-light" id="v-step-2" @click="getParts('gpu')">Gpu's</button>
+        <button class="col btn btn-outline-light" id="v-step-3" @click="getParts('motherboard')">Motherboards</button>
+        <button class="col btn btn-outline-light" id="v-step-4" @click="getParts('ram')">Ram</button>
+        <button class="col btn btn-outline-light" id="v-step-5" @click="getParts('storage')">Storage</button>
+      </section>
+      <section class="row p-2 m-2 ">
+        <button class="col btn btn-outline-light" id="v-step-6" @click="getParts('cpuCooler')">Cpu Coolers</button>
+        <button class="col btn btn-outline-light" id="v-step-7" @click="getParts('powerSupply')">Power Supplies</button>
+        <button class="col btn btn-outline-light" id="v-step-8" @click="getParts('case')">Case's</button>
+        <button class="col btn btn-outline-light" id="v-step-9" @click="getParts('caseFan')">Case Fan's</button>
       </section>
       <section class="row">
         <div class="col-3" v-for="part in parts">
@@ -30,6 +33,7 @@ import Pop from '../utils/Pop';
 import { partsService } from '../services/PartsService.js'
 import { computed, onMounted, ref } from 'vue';
 import { AppState } from '../AppState';
+import VueTour from '../components/VueTour.vue';
 import PartCard from '../components/PartCard.vue';
 
 export default {
@@ -47,7 +51,7 @@ export default {
       }
     };
   },
-  components: { PartCard }
+  components: { PartCard, VueTour }
 }
 </script>
 
@@ -61,15 +65,14 @@ export default {
   >.one {
     grid-column: 1/4;
     grid-row: 1/8;
-    background-color: blue;
+    background-color: grey;
   }
 
   >.two {
     grid-column: 4/12;
     grid-row: 1/8;
-    align-items: center;
-    justify-content: center;
-    background-color: green;
+    background-color: gray;
+
   }
 }
 </style>
