@@ -11,8 +11,6 @@ export const AppState = reactive({
   /**@type {PcList[]} */
   userBuilds: [],
   /**@type {PcList} */
-  activeBuild: {}
-
   activeBuild: {},
 
   currentStep: 0,
