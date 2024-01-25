@@ -13,7 +13,14 @@ class PartsService {
         AppState.currentStock = parts
     }
 
-
+    async addPartToBuild(partID, buildId){
+        console.log(partID)
+        let buildData = {
+            "partId": partID,
+            "pcId": buildId
+        }
+        let response = await api.post('api/newPart', buildData)
+    }
 }
 
 export const partsService = new PartsService()

@@ -1,5 +1,6 @@
 import { reactive, ref } from 'vue'
 import { PcList } from './models/PcList.js'
+import { NewPart } from './models/NewPart.js'
 
 // NOTE AppState is a reactive object to contain app level data
 export const AppState = reactive({
@@ -14,5 +15,7 @@ export const AppState = reactive({
   activeBuild: {},
 
   currentStep: 0,
-
+,
+  /**@type {NewPart[]} */
+  activeParts: []
 })

@@ -1,5 +1,5 @@
 <template>
-    <div :title="`Add ${part.name} to build`" class="list-card border shadow m-2 text-center">
+    <div type="button" @click="addPartToBuild(part.id)" :title="`Add ${part.name} to build`" class="list-card border shadow m-2 text-center">
         <div>
             <img class="img-fluid" :src="part.productImage" :alt="part.name">
         </div>
@@ -17,10 +17,17 @@
 import { AppState } from '../AppState';
 import { computed, ref, onMounted } from 'vue';
 import { StockPart } from '../models/StockPart.js';
+import { partsService } from '../services/PartsService';
 export default {
     props: { part: { type: StockPart, required: true } },
-    setup() {
-        return {}
+    setup(props) {
+        let active = computed(()=> AppState.activeBuild)
+        async function addPartToBuild(partId){
+            await partsService.addPartToBuild(partId, active.value.id)
+        }
+        return {
+            addPartToBuild
+        }
     }
 };
 </script>
