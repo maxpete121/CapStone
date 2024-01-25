@@ -14,7 +14,9 @@
                     <form @submit.prevent="createNewList()" action="" class="d-flex flex-column">
                         <label for="">New Build Name</label>
                         <input class="form-control" v-model="listData.name" type="text" required>
-                        <button class="btn btn-outline-dark mt-2">Create New Build</button>
+                        <span>
+                            <button class="btn btn-outline-dark mt-2">Create New Build</button>
+                        </span>
                     </form>
                 </span>
             </div>
@@ -46,7 +48,11 @@
         }
 
         async function getLists(){
-            await pcService.getLists(accountId.value.id)
+            try {
+                await pcService.getLists(accountId.value.id)
+            } catch (error) {
+                Error('No Id found.')
+            }
         }
 
 
