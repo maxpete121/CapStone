@@ -17,6 +17,16 @@
         </div>
       </div>
     </section>
+    <section class="row mt-4 justify-content-center text-center">
+      <div class="col-5 rounded-2 me-2 m-1 info-box">
+        <h3>Top rated builds <i class="mdi mdi-star"></i><i class="mdi mdi-star"></i><i class="mdi mdi-star"></i></h3>
+        <div></div>
+      </div>
+      <div class="col-5 rounded-2 ms-2 m-1 info-box text-center">
+        <h3>Our top picks <i class="mdi mdi-check-outline"></i></h3>
+        <div></div>
+      </div>
+    </section>
   </section>
 </template>
 
@@ -38,6 +48,7 @@ export default {
 .info-box{
   outline: solid 2px purple;
   background-color: black;
+  color: white;
   box-shadow: 3px 7px 7px rgba(0, 0, 0, 0.588);
 }
 .top-img{
