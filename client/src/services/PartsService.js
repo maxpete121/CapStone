@@ -3,6 +3,7 @@ import { api } from "./AxiosService"
 import { logger } from "../utils/Logger"
 import { AppState } from "../AppState"
 import { StockPart } from "../models/StockPart"
+import { NewPart } from "../models/NewPart"
 
 
 class PartsService {
@@ -13,7 +14,11 @@ class PartsService {
         AppState.currentStock = parts
     }
 
-
+    async addPartToBuild(partID, buildId){
+        let buildData = new NewPart({partId: partID, pcId: buildId})
+        let response = await api.post('api/newPart', buildData)
+        console.log(response)
+    }
 }
 
 export const partsService = new PartsService()
