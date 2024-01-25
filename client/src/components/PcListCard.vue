@@ -9,6 +9,11 @@
             <h5 class="me-2">Power Score:</h5>
             <h5>{{ list.powerScore }}</h5>
         </span>
+        <span class="d-flex">
+            <button class="btn btn-outline-dark">Share Build</button>
+            <button class="btn btn-outline-dark ms-2 me-2">View Build</button>
+            <button class="btn btn-outline-dark">Delete Build</button>
+        </span>
     </div>
 </template>
 

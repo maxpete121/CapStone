@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-sm navbar-dark bg-dark px-3">
+  <nav class="navbar navbar-expand-sm px-3 nav-edit">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
         <h2>💻PC Build Bois</h2>
@@ -12,7 +12,7 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto">
         <li>
-          <router-link :to="{ name: 'Lists' }" class="btn text-success lighten-30 selectable text-uppercase">
+          <router-link :to="{ name: 'Lists' }" class="btn text-dark lighten-30 selectable text-uppercase">
             My Builds
           </router-link>
         </li>
@@ -65,6 +65,10 @@ export default {
 </script>
 
 <style scoped>
+.nav-edit {
+  border-bottom: solid 2px purple;
+  background-color: rgb(255, 255, 255);
+}
 a:hover {
   text-decoration: none;
 }
@@ -74,7 +78,7 @@ a:hover {
 }
 
 .navbar-nav .router-link-exact-active {
-  border-bottom: 2px solid var(--bs-success);
+  
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }

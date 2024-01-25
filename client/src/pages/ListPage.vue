@@ -36,6 +36,9 @@
     setup() {
         let listData = ref({})
         let accountId = computed(()=> AppState.account)
+        onMounted(()=>{
+            getLists()
+        })
         watch(accountId, getLists)
         async function createNewList(){
             await pcService.createNewList(listData.value)
