@@ -6,10 +6,8 @@ export const PcBuildSchema = new Schema({
     creatorId: {type: Schema.Types.ObjectId, required: true},
     price: {type: Number, required: true, maxLength: 5},
     powerScore: {type: Number, required: true, maxLength: 15},
-    isSaved: {type: Boolean, required: true, default: false},
-    likeIds: {type: Array},
-    likes: {type: Number, required: true, default: 0},
-    isLiked: {type: Boolean, required: true, default: false},
+    rating: {type: String, enum:['1','2','3','4','5','0'], default: '0'},
+    isShared: {type: Boolean, default: false}
 }, {toJSON: {virtuals: true}})
 
 PcBuildSchema.virtual('creator', {
