@@ -16,6 +16,12 @@ class PcService{
         let allBuilds = response.data.map(build => new PcList(build))
         AppState.userBuilds = allBuilds
     }
+
+    async deletePc(pcId){
+        let response = await api.delete(`api/builds/${pcId}`)
+        let pcIndex = AppState.userBuilds.findIndex(pc => pc.id == pcId)
+        AppState.userBuilds.splice(pcIndex, 1)
+    }
 }
 
 

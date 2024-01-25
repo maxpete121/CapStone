@@ -11,5 +11,6 @@ export class PcList{
         this.rating = data.rating
         this.isShared = data.isShared
         this.creator = data.creator
+        this.id = data._id
     }
 }
