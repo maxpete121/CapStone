@@ -10,6 +10,6 @@ export const AppState = reactive({
   currentStock: [],
 /**@type {PcList[]} */
   userBuilds: [],
-
+/**@type {PcList} */
   activeBuild: {}
 })

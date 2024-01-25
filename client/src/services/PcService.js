@@ -22,6 +22,12 @@ class PcService{
         let pcIndex = AppState.userBuilds.findIndex(pc => pc.id == pcId)
         AppState.userBuilds.splice(pcIndex, 1)
     }
+
+    async viewBuild(buildId){
+        let response = await api.get(`api/builds/${buildId}`)
+        let activeList = new PcList(response.data)
+        AppState.activeBuild = activeList
+    }
 }
 
 

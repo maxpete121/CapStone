@@ -1,7 +1,7 @@
 <template>
     <div class="card border shadow m-2 text-center">
         <div>
-            <img :src="part.productImage" :alt="part.name" :title="part.name">
+            <img class="img-fluid" :src="part.productImage" :alt="part.name" :title="part.name">
         </div>
         <h2>{{ part.name }}</h2>
         <h3>{{ part.company }}</h3>
