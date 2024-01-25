@@ -1,5 +1,5 @@
 <template>
-    <div class="v-tip">
+    <div class="v-tip text-dark">
         <v-tour name="myTour" :steps="steps" :options="options"></v-tour>
     </div>
 </template>
