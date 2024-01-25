@@ -23,6 +23,11 @@ class PcService{
         await foundPc.deleteOne()
         return foundPc
     }
+
+    async getAccountsPcs(pcId){
+        let pcsFound = await dbContext.PcBuilds.find({creatorId: pcId}).populate('creator')
+        return pcsFound
+    }
 }
 
 export const pcService = new PcService()

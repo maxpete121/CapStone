@@ -11,7 +11,7 @@ export class PcController extends BaseController{
         .get('/:PcId', this.getOnePc)
         .use(Auth0Provider.getAuthorizedUserInfo)
         .post('', this.postPc)
-        .delete('')
+        .delete('/:PcId', this.deletePc)
     }
 
     async postPc(request, response, next){
