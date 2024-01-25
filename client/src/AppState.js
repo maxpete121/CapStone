@@ -9,5 +9,7 @@ export const AppState = reactive({
   /** @type {import('./models/StockPart.js').StockPart[]} */
   currentStock: [],
 /**@type {PcList[]} */
-  userBuilds: []
+  userBuilds: [],
+
+  activeBuild: {}
 })

@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="row flex-column align-items-center">
-            <div class="col-5 list-card mt-3" v-for="list in lists">
+            <div class="col-4 list-card mt-3" v-for="list in lists">
                 <PcListCard :list="list"/>
             </div>
         </div>
@@ -48,6 +48,7 @@
         async function getLists(){
             await pcService.getLists(accountId.value.id)
         }
+
 
       return {
         account: computed(()=> AppState.account),
