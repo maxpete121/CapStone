@@ -5,7 +5,7 @@
     </section>
     <section class="two ms-3 sticky-top" id="v-step-0">
       <VueTour />
-      <section class="row p-2 m-2 justify-content-center">
+      <section class="row p-1 justify-content-center">
         <div class="col-8 d-flex flex-column align-items-center">
           <h4>Part type</h4>
           <span>
@@ -17,12 +17,14 @@
           </span>
         </div>
       </section>
-      <section class="row p-2 m-2 justify-content-center">
-        <div class="col-8">
-          <button class="col btn btn-outline-dark" id="v-step-6" @click="getParts('cpuCooler')">Cpu Coolers</button>
-          <button class="col btn btn-outline-dark" id="v-step-7" @click="getParts('powerSupply')">Power Supplies</button>
-          <button class="col btn btn-outline-dark" id="v-step-8" @click="getParts('case')">Case's</button>
-          <button class="col btn btn-outline-dark" id="v-step-9" @click="getParts('caseFan')">Case Fan's</button>
+      <section class="row p-1 justify-content-center">
+        <div class="col-8 d-flex flex-column align-items-center">
+          <span>
+            <button class="col btn btn-outline-dark" id="v-step-6" @click="getParts('cpuCooler')">Cpu Coolers</button>
+            <button class="col btn btn-outline-dark" id="v-step-7" @click="getParts('powerSupply')">Power Supplies</button>
+            <button class="col btn btn-outline-dark" id="v-step-8" @click="getParts('case')">Case's</button>
+            <button class="col btn btn-outline-dark" id="v-step-9" @click="getParts('caseFan')">Case Fan's</button>
+          </span>
         </div>
       </section>
       <section class="row">
