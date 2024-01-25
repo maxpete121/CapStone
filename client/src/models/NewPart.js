@@ -8,5 +8,6 @@ export class NewPart{
         this.partId = data.partId
         this.creator = data.creator
         this.part = data.part
+        this.id = data._id
     }
 }

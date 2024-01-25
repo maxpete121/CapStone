@@ -11,5 +11,6 @@ export class StockPart {
         this.speed = data.speed
         this.gigs = data.gigs
         this.powerScore = data.powerScore
+        this.id = data._id
     }
 }
