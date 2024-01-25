@@ -3,27 +3,35 @@
     <section class="one sticky-top me-3">
       <div v-for="activePart in activeParts">Part</div>
     </section>
-    <section class="two ms-3 sticky-top" id="v-step-0">
+    <section class="two ms-3 sticky-top">
       <VueTour />
       <section class="row p-1 justify-content-center">
         <div class="col-8 d-flex flex-column align-items-center">
           <h4>Part type</h4>
           <span>
-            <button class="btn btn-outline-dark" id="v-step-1" @click="getParts('cpu')">Cpu's</button>
-            <button class="btn btn-outline-dark" id="v-step-2" @click="getParts('gpu')">Gpu's</button>
-            <button class="btn btn-outline-dark" id="v-step-3" @click="getParts('motherboard')">Motherboards</button>
-            <button class="btn btn-outline-dark" id="v-step-4" @click="getParts('ram')">Ram</button>
-            <button class="btn btn-outline-dark" id="v-step-5" @click="getParts('storage')">Storage</button>
+            <button v-if="currentStep == 1" class="btn btn-outline-dark" id="v-step-1"
+              @click="getParts('cpu')">Cpu's</button>
+            <button v-if="currentStep == 2" class="btn btn-outline-dark" id="v-step-2"
+              @click="getParts('gpu')">Gpu's</button>
+            <button v-if="currentStep == 3" class="btn btn-outline-dark" id="v-step-3"
+              @click="getParts('motherboard')">Motherboards</button>
+            <button v-if="currentStep == 4" class="btn btn-outline-dark" id="v-step-4"
+              @click="getParts('ram')">Ram</button>
+            <button v-if="currentStep == 5" class="btn btn-outline-dark" id="v-step-5"
+              @click="getParts('storage')">Storage</button>
           </span>
         </div>
-      </section>
-      <section class="row p-1 justify-content-center">
         <div class="col-8 d-flex flex-column align-items-center">
           <span>
-            <button class="col btn btn-outline-dark" id="v-step-6" @click="getParts('cpuCooler')">Cpu Coolers</button>
-            <button class="col btn btn-outline-dark" id="v-step-7" @click="getParts('powerSupply')">Power Supplies</button>
-            <button class="col btn btn-outline-dark" id="v-step-8" @click="getParts('case')">Case's</button>
-            <button class="col btn btn-outline-dark" id="v-step-9" @click="getParts('caseFan')">Case Fan's</button>
+            <button v-if="currentStep == 6" class="col btn btn-outline-dark" id="v-step-6"
+              @click="getParts('cpuCooler')">Cpu Coolers</button>
+            <button v-if="currentStep == 7" class="col btn btn-outline-dark" id="v-step-7"
+              @click="getParts('powerSupply')">Power
+              Supplies</button>
+            <button v-if="currentStep == 8" class="col btn btn-outline-dark" id="v-step-8"
+              @click="getParts('case')">Case's</button>
+            <button v-if="currentStep == 9" class="col btn btn-outline-dark" id="v-step-9"
+              @click="getParts('caseFan')">Case Fan's</button>
           </span>
         </div>
       </section>
@@ -61,6 +69,7 @@ export default {
       account: computed(() => AppState.account),
       parts: computed(() => AppState.currentStock),
       activeParts: computed(()=> AppState.activeParts),
+      currentStep: computed(() => AppState.currentStep),
       async getParts(type) {
         try {
           await partsService.getParts(type);

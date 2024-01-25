@@ -1,4 +1,4 @@
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 import { PcList } from './models/PcList.js'
 import { NewPart } from './models/NewPart.js'
 
@@ -9,10 +9,13 @@ export const AppState = reactive({
   account: {},
   /** @type {import('./models/StockPart.js').StockPart[]} */
   currentStock: [],
-/**@type {PcList[]} */
+  /**@type {PcList[]} */
   userBuilds: [],
-/**@type {PcList} */
+  /**@type {PcList} */
   activeBuild: {},
-/**@type {NewPart[]} */
+
+  currentStep: 0,
+,
+  /**@type {NewPart[]} */
   activeParts: []
 })
