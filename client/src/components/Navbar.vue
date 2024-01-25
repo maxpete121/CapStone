@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-sm px-3 nav-edit">
-    <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
+    <router-link v-if="account.id" class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
         <h2>💻PC Build Bois</h2>
       </div>
@@ -39,9 +39,10 @@
 </template>
 
 <script>
-import { onMounted, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { loadState, saveState } from '../utils/Store.js';
 import Login from './Login.vue';
+import { AppState } from '../AppState';
 export default {
   setup() {
 
@@ -57,7 +58,8 @@ export default {
         theme.value = theme.value == 'light' ? 'dark' : 'light'
         document.documentElement.setAttribute('data-bs-theme', theme.value)
         saveState('theme', theme.value)
-      }
+      },
+      account: computed(()=> AppState.account)
     }
   },
   components: { Login }
