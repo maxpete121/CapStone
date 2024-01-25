@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <section class="one sticky-top me-3">
-
+      <div v-for="activePart in activeParts">Part</div>
     </section>
     <section class="two ms-3 sticky-top" id="v-step-0">
       <VueTour />
@@ -40,19 +40,27 @@
 <script>
 import Pop from '../utils/Pop';
 import { partsService } from '../services/PartsService.js'
-import { computed, onMounted, ref } from 'vue';
+import { computed, onMounted, ref, watch } from 'vue';
 import { AppState } from '../AppState';
 import VueTour from '../components/VueTour.vue';
 import PartCard from '../components/PartCard.vue';
 
 export default {
   setup() {
+    let activePc = computed(()=> AppState.activeBuild)
     onMounted(()=>{
-    
+      if(activePc.value.id){
+        getActiveParts()
+      }
     })
+    watch(activePc, getActiveParts)
+    async function getActiveParts(){
+      await partsService.getActiveParts(activePc.value.id)
+    }
     return {
       account: computed(() => AppState.account),
       parts: computed(() => AppState.currentStock),
+      activeParts: computed(()=> AppState.activeParts),
       async getParts(type) {
         try {
           await partsService.getParts(type);
