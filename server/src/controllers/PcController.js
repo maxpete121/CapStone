@@ -3,18 +3,18 @@ import { pcService } from "../services/PcService.js";
 import BaseController from "../utils/BaseController.js";
 
 
-export class PcController extends BaseController{
-    constructor(){
+export class PcController extends BaseController {
+    constructor() {
         super('api/builds')
         this.router
-        .get('', this.getPcs)
-        .get('/:PcId', this.getOnePc)
-        .use(Auth0Provider.getAuthorizedUserInfo)
-        .post('', this.postPc)
-        .delete('/:PcId', this.deletePc)
+            .get('', this.getPcs)
+            .get('/:PcId', this.getOnePc)
+            .use(Auth0Provider.getAuthorizedUserInfo)
+            .post('', this.postPc)
+            .delete('/:PcId', this.deletePc)
     }
 
-    async postPc(request, response, next){
+    async postPc(request, response, next) {
         try {
             let userId = request.userInfo.id
             let pcData = request.body
@@ -26,7 +26,7 @@ export class PcController extends BaseController{
         }
     }
 
-    async getPcs(request, response, next){
+    async getPcs(request, response, next) {
         try {
             let allPc = await pcService.getPcs()
             response.send(allPc)
@@ -35,7 +35,7 @@ export class PcController extends BaseController{
         }
     }
 
-    async getOnePc(request, response, next){
+    async getOnePc(request, response, next) {
         try {
             let PcId = request.params.PcId
             let foundPc = await pcService.getOnePc(PcId)
@@ -45,7 +45,7 @@ export class PcController extends BaseController{
         }
     }
 
-    async deletePc(request, response, next){
+    async deletePc(request, response, next) {
         try {
             let PcId = request.params.PcId
             let deleted = await pcService.deletePc(PcId)
