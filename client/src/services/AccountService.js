@@ -12,6 +12,19 @@ class AccountService {
       logger.error('HAVE YOU STARTED YOUR SERVER YET???', err)
     }
   }
+  async doneTour() {
+    try {
+      let oldAccount = AppState.account
+      let userId = AppState.account.id
+      console.log(userId)
+      let response = await api.put(`account/${userId}`, oldAccount)
+      console.log('getting updated account', response.data)
+      const account = new Account(response.data)
+      AppState.account = account
+    } catch (error) {
+      logger.error('something went wrong with put request in service', error)
+    }
+  }
 }
 
 export const accountService = new AccountService()

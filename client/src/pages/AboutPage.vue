@@ -55,20 +55,20 @@ import PartCard from '../components/PartCard.vue';
 
 export default {
   setup() {
-    let activePc = computed(()=> AppState.activeBuild)
-    onMounted(()=>{
-      if(activePc.value.id){
+    let activePc = computed(() => AppState.activeBuild)
+    onMounted(() => {
+      if (activePc.value.id) {
         getActiveParts()
       }
     })
     watch(activePc, getActiveParts)
-    async function getActiveParts(){
+    async function getActiveParts() {
       await partsService.getActiveParts(activePc.value.id)
     }
     return {
       account: computed(() => AppState.account),
       parts: computed(() => AppState.currentStock),
-      activeParts: computed(()=> AppState.activeParts),
+      activeParts: computed(() => AppState.activeParts),
       currentStep: computed(() => AppState.currentStep),
       async getParts(type) {
         try {

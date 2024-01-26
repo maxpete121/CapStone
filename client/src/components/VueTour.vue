@@ -6,6 +6,8 @@
   
 <script>
 import { AppState } from '../AppState';
+import { Account } from '../models/Account';
+import { accountService } from '../services/AccountService';
 
 export default {
     name: 'my-tour',
@@ -22,7 +24,7 @@ export default {
                 },
                 onSkip: () => {
                     console.log('skipping tour')
-                    AppState.account.tour = true
+                    accountService.doneTour()
                 }
             },
             myOptions: {
