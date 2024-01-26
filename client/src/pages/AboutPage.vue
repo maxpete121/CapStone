@@ -1,8 +1,11 @@
 <template>
   <div class="wrapper">
     <section class="one sticky-top me-3">
+      <div class="row">
+        <div class="col-3">{{ activePc.powerScore }}</div>
+      </div>
       <div v-for="activePart in activeParts" class="row">
-        <NewPartCard :activePart="activePart" class="col-3 mt-4 ms-4"/>
+        <NewPartCard :activePart="activePart" class="col-4 mt-4 ms-4"/>
       </div>
     </section>
     <section class="two ms-3 sticky-top">
@@ -95,6 +98,7 @@ export default {
       activeParts: computed(() => AppState.activeParts),
       currentStep: computed(() => AppState.currentStep),
       isActive: computed(() => AppState.tourActive),
+      activePc: computed(()=> AppState.activeBuild),
       async getParts(type) {
         try {
           await partsService.getParts(type);

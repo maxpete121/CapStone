@@ -18,12 +18,17 @@ import { AppState } from '../AppState';
 import { computed, ref, onMounted } from 'vue';
 import { StockPart } from '../models/StockPart.js';
 import { partsService } from '../services/PartsService';
+import { useRoute } from 'vue-router';
+import { pcService } from '../services/PcService';
 export default {
     props: { part: { type: StockPart, required: true } },
     setup(props) {
         let active = computed(()=> AppState.activeBuild)
+        let route = useRoute()
+        let pcID = route.params.PcId
         async function addPartToBuild(partId){
-            await partsService.addPartToBuild(partId, active.value.id)
+            await partsService.addPartToBuild(partId, pcID)
+            pcService.updateBuild(props.part)
         }
         return {
             addPartToBuild

@@ -11,6 +11,7 @@ export class PcController extends BaseController {
             .get('/:PcId', this.getOnePc)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.postPc)
+            .put('/:pcId', this.updatePc)
             .delete('/:PcId', this.deletePc)
     }
 
@@ -50,6 +51,18 @@ export class PcController extends BaseController {
             let PcId = request.params.PcId
             let deleted = await pcService.deletePc(PcId)
             response.send(deleted)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async updatePc(request, response, next){
+        try {
+            let userId = request.userInfo.id
+            let newData = request.body
+            let pcId = request.params.pcId
+            // let updated = await pcService.updatePc(newData, pcId, userId)
+            // response.send(updated)
         } catch (error) {
             next(error)
         }

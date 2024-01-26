@@ -1,19 +1,24 @@
 <template>
-  <div class="list-card d-flex">
-    <span class="me-4">
-      <img class="img-fluid product-img" :src="activePart.part.productImage" alt="">
-    </span>
-    <span class="ms-4">
-      <h3>{{ activePart.part.name }}</h3>
-      <h4>{{ activePart.part.company }}</h4>
-      <span class="d-flex">
-        <h4>$</h4>
-        <h4>{{ activePart.part.price }}</h4>
+  <div class="list-card d-flex justify-content-between">
+    <div class="d-flex">
+      <span class="me-4">
+        <img class="img-fluid product-img" :src="activePart.part.productImage" alt="">
       </span>
-    </span>
-    <span class="ms-3">
+      <span class="ms-4">
+        <h4>{{ activePart.part.name }}</h4>
+        <span class="d-flex">
+          <h5 class="me-2">Made by:</h5>
+          <h5>{{ activePart.part.company }}</h5>
+        </span>
+        <span class="d-flex">
+          <h6>$</h6>
+          <h6>{{ activePart.part.price }}</h6>
+        </span>
+      </span>
+    </div>
+    <div class="ms-3">
       <button @click="deletePart()" class="btn btn-outline-dark"><i class="mdi mdi-delete"></i></button>
-    </span>
+    </div>
   </div>
   </template>
   
@@ -23,11 +28,13 @@
   import { AuthService } from '../services/AuthService'
 import { NewPart } from '../models/NewPart'
 import {partsService} from '../services/PartsService.js'
+import { pcService } from '../services/PcService'
   export default {
     props:{activePart: {type: NewPart, required: true}},
     setup(props) {
       async function deletePart(){
         await partsService.deletePart(props.activePart.id)
+        pcService.updateDelete(props.activePart.part)
       }
       return {
         deletePart
