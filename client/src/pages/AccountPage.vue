@@ -1,25 +1,76 @@
 <template>
-  <div class="about text-center">
+  <div class="about text-center text-info ">
     <h1>Welcome {{ account.name }}</h1>
-    <img class="rounded" :src="account.picture" alt="" />
-    <p>{{ account.email }}</p>
+    <img class="rounded bg-img" :src="account.picture" alt="" />
+    <h3>{{ account.email }}</h3>
+  </div>
+  <div class="container-fluid">
+    <section class="row">
+      <div class="col-12 text-center">
+        <form @submit.prevent="updateAccount">
+          <div class="mb-3">
+            <label for="name">Name</label>
+            <input v-model="update.name" class="form-control" id="name" type="text" required>
+          </div>
+          <div class="mb-3">
+            <label for="picture">Picture</label>
+            <input v-model="update.picture" class="form-control" id="picture" type="url" required>
+          </div>
+          <!-- <div class="mb-3">
+            <label class="mx-2" for="tour">Reset Tour: </label>
+            <input v-model="update.tour" id="tour" type="checkbox">
+          </div> -->
+          <div class="text-center mb-3">
+            <button type="submit">Update</button>
+          </div>
+        </form>
+      </div>
+    </section>
   </div>
 </template>
 
 <script>
-import { computed } from 'vue';
+import { computed, watch, ref } from 'vue';
 import { AppState } from '../AppState';
+import { accountService } from '../services/AccountService';
+import Pop from '../utils/Pop';
 export default {
   setup() {
+    const update = ref({})
+    const account = computed(() => AppState.account)
+    watch(
+      account,
+      () => {
+        update.value = { ...AppState.account }
+      },
+      { immediate: true }
+    )
     return {
-      account: computed(() => AppState.account)
+      update,
+      account,
+      async updateAccount() {
+        try {
+          const accountData = update.value
+          await accountService.updateAccount(accountData)
+          Pop.success('Updated Account!')
+        } catch (error) {
+          Pop.error(error)
+        }
+      }
     }
   }
 }
 </script>
 
 <style scoped>
-img {
-  max-width: 100px;
+label {
+  color: purple;
+}
+
+.bg-img {
+  height: 50%;
+  width: 50%;
+  object-fit: contain;
+  object-position: center;
 }
 </style>

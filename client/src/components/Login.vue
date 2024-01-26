@@ -18,6 +18,11 @@
                 Manage Account
               </div>
             </router-link>
+            <router-link :to="{ name: 'Lists' }">
+              <div @click="account.tour = false" class="list-group-item dropdown-item list-group-item-action">
+                Reset Tour?
+              </div>
+            </router-link>
             <div class="list-group-item dropdown-item list-group-item-action text-danger selectable" @click="logout">
               <i class="mdi mdi-logout"></i>
               logout
@@ -38,6 +43,7 @@ export default {
     return {
       user: computed(() => AppState.user),
       account: computed(() => AppState.account),
+      currentStep: computed(() => AppState.currentStep),
       async login() {
         AuthService.loginWithPopup()
       },

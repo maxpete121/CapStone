@@ -25,6 +25,17 @@ class AccountService {
       logger.error('something went wrong with put request in service', error)
     }
   }
+  async updateAccount(accountData) {
+    try {
+      logger.log(accountData)
+      const response = await api.put('/account', accountData)
+      logger.log('Account Updated', response.data)
+      const newAccount = new Account(response.data)
+      AppState.account = newAccount
+    } catch (error) {
+      logger.error(error)
+    }
+  }
 }
 
 export const accountService = new AccountService()
