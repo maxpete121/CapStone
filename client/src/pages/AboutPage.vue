@@ -2,7 +2,7 @@
   <div class="wrapper">
     <section class="one sticky-top me-3">
       <div v-for="activePart in activeParts" class="row">
-        <NewPartCard :activePart="activePart" class="col-3 mt-4 ms-4"/>
+        <NewPartCard :activePart="activePart" class="col-3 mt-4 ms-4" />
       </div>
     </section>
     <section class="two ms-3 sticky-top">
@@ -84,16 +84,23 @@ export default {
     let route = useRoute()
     let pcID = route.params.PcId
     onMounted(() => {
-        getActiveParts(pcID)
+      getActiveParts(pcID)
+      clearAppstate()
     })
     async function getActiveParts() {
       await partsService.getActiveParts(pcID)
+    }
+    function clearAppstate() {
+      AppState.currentStep = 1
+      AppState.currentStock = []
+      AppState.activeParts = []
     }
     return {
       account: computed(() => AppState.account),
       parts: computed(() => AppState.currentStock),
       activeParts: computed(() => AppState.activeParts),
       currentStep: computed(() => AppState.currentStep),
+      currentStock: computed(() => AppState.currentStock),
       isActive: computed(() => AppState.tourActive),
       async getParts(type) {
         try {

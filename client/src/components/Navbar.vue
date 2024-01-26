@@ -18,9 +18,9 @@
         </li>
       </ul>
       <!-- LOGIN COMPONENT HERE -->
+      <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+        aria-controls="offcanvasRight">Cart</button>
       <div>
-        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-          aria-controls="offcanvasRight">Cart</button>
         <button class="btn text-light" @click="toggleTheme"><i class="mdi"
             :class="theme == 'light' ? 'mdi-weather-sunny' : 'mdi-weather-night'"></i></button>
       </div>
@@ -59,7 +59,7 @@ export default {
         document.documentElement.setAttribute('data-bs-theme', theme.value)
         saveState('theme', theme.value)
       },
-      account: computed(()=> AppState.account)
+      account: computed(() => AppState.account)
     }
   },
   components: { Login }
@@ -72,6 +72,7 @@ export default {
   background-color: rgb(255, 255, 255);
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.453);
 }
+
 a:hover {
   text-decoration: none;
 }
@@ -81,7 +82,7 @@ a:hover {
 }
 
 .navbar-nav .router-link-exact-active {
-  
+
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
