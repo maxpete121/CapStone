@@ -10,7 +10,10 @@ export class AccountController extends BaseController {
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getUserAccount)
       .get('/:pcId', this.getAccountsPcs)
+      // NOTE do not use the accountid as an endpoint this will let people to mess up peoples account data from postman
+
       .put('/:accountId', this.updateTour)
+      .put('', this.updateAccount)
   }
 
   async getUserAccount(req, res, next) {
@@ -22,7 +25,7 @@ export class AccountController extends BaseController {
     }
   }
 
-  async getAccountsPcs(request, response, next){
+  async getAccountsPcs(request, response, next) {
     try {
       let pcId = request.params.pcId
       let foundPc = await pcService.getAccountsPcs(pcId)
@@ -32,10 +35,20 @@ export class AccountController extends BaseController {
     }
   }
 
-  async updateTour(request, response, next){
+  async updateTour(request, response, next) {
     try {
       let accountId = request.params.accountId
       let updated = await accountService.updateTour(accountId)
+      response.send(updated)
+    } catch (error) {
+      next(error)
+    }
+  }
+  async updateAccount(request, response, next) {
+    try {
+      let accountId = request.userInfo
+      let editData = request.body
+      let updated = await accountService.updateAccount(accountId, editData)
       response.send(updated)
     } catch (error) {
       next(error)
