@@ -15,7 +15,7 @@ export const AppState = reactive({
   activeBuild: {},
 
   currentStep: 0,
-,
+  
   /**@type {NewPart[]} */
   activeParts: []
 })

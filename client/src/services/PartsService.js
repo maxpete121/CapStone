@@ -3,6 +3,7 @@ import { api } from "./AxiosService"
 import { logger } from "../utils/Logger"
 import { AppState } from "../AppState"
 import { StockPart } from "../models/StockPart"
+import { NewPart } from "../models/NewPart"
 
 
 class PartsService {
@@ -20,6 +21,14 @@ class PartsService {
             "pcId": buildId
         }
         let response = await api.post('api/newPart', buildData)
+        let newPart = new NewPart(response.data)
+        AppState.activeParts.unshift(newPart)
+    }
+
+    async getActiveParts(pcId){
+        let response = await api.get(`api/newPart/${pcId}`)
+        let allParts = response.data.map(part => new NewPart(part))
+        AppState.activeParts = allParts
     }
 }
 
