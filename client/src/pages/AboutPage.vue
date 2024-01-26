@@ -41,20 +41,20 @@
         <div class="col-8 d-flex flex-column align-items-center">
           <h4>Part type</h4>
           <span>
-            <button class="btn btn-outline-dark" id="v-step-1" @click="getParts('cpu')">Cpu's</button>
-            <button class="btn btn-outline-dark" id="v-step-2" @click="getParts('gpu')">Gpu's</button>
-            <button class="btn btn-outline-dark" id="v-step-3" @click="getParts('motherboard')">Motherboards</button>
-            <button class="btn btn-outline-dark" id="v-step-4" @click="getParts('ram')">Ram</button>
-            <button class="btn btn-outline-dark" id="v-step-5" @click="getParts('storage')">Storage</button>
+            <button class="btn btn-outline-dark" @click="getParts('cpu')">Cpu's</button>
+            <button class="btn btn-outline-dark" @click="getParts('gpu')">Gpu's</button>
+            <button class="btn btn-outline-dark" @click="getParts('motherboard')">Motherboards</button>
+            <button class="btn btn-outline-dark" @click="getParts('ram')">Ram</button>
+            <button class="btn btn-outline-dark" @click="getParts('storage')">Storage</button>
           </span>
         </div>
         <div class="col-8 d-flex flex-column align-items-center">
           <span>
-            <button class="col btn btn-outline-dark" id="v-step-6" @click="getParts('cpuCooler')">Cpu Coolers</button>
-            <button class="col btn btn-outline-dark" id="v-step-7" @click="getParts('powerSupply')">Power
+            <button class="col btn btn-outline-dark" @click="getParts('cpuCooler')">Cpu Coolers</button>
+            <button class="col btn btn-outline-dark" @click="getParts('powerSupply')">Power
               Supplies</button>
-            <button class="col btn btn-outline-dark" id="v-step-8" @click="getParts('case')">Case's</button>
-            <button class="col btn btn-outline-dark" id="v-step-9" @click="getParts('caseFan')">Case Fan's</button>
+            <button class="col btn btn-outline-dark" @click="getParts('case')">Case's</button>
+            <button class="col btn btn-outline-dark" @click="getParts('caseFan')">Case Fan's</button>
           </span>
         </div>
       </section>
@@ -90,7 +90,7 @@ export default {
     async function getActiveParts() {
       await partsService.getActiveParts(pcID)
     }
-    function clearAppstate() {
+    async function clearAppstate() {
       AppState.currentStep = 1
       AppState.currentStock = []
       AppState.activeParts = []
@@ -116,22 +116,24 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
+// FIXME rip some of these lines out to check to see how the structure is getting JACKED
 .wrapper {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   gap: 20px;
-  grid-auto-rows: minmax(90px, auto);
+  margin-top: 60px;
+  grid-auto-rows: minmax(100px, auto);
 
   >.one {
     grid-column: 1/12;
-    grid-row: 1/8;
+    grid-row: 2/10;
     background-color: rgba(255, 255, 255, 0);
   }
 
   >.two {
     grid-column: 5/11;
-    grid-row: 1/8;
+    grid-row: 1/10;
     background-color: rgba(176, 176, 176, 0.467);
 
   }

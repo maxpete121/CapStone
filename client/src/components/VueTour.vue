@@ -1,5 +1,5 @@
 <template>
-    <div class="v-tip text-dark">
+    <div class="v-tip text-light">
         <v-tour name="myTour" :steps="steps" :options="myOptions" :callbacks="myCallbacks"></v-tour>
     </div>
 </template>
@@ -8,15 +8,17 @@
 import { AppState } from '../AppState';
 import { Account } from '../models/Account';
 import { accountService } from '../services/AccountService';
+import { partsService } from '../services/PartsService';
 
 export default {
     name: 'my-tour',
     data() {
         return {
             myCallbacks: {
-                onNextStep: () => {
+                onNextStep: async () => {
                     console.log('Going forward a step, also Jerms is the goat');
                     AppState.currentStep++
+                    await partsService.getParts
                 },
                 onPreviousStep: () => {
                     console.log('going back a step');
@@ -30,7 +32,7 @@ export default {
             myOptions: {
                 useKeyBoardNavigation: false,
                 labels: {
-                    buttonSkip: 'Returning User?',
+                    buttonSkip: 'Skip Tour?',
                     buttonPrevious: 'Woops, forgot something',
                     buttonNext: 'next!'
                 }
@@ -120,7 +122,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .v-tip {
     background-color: #333;
     color: white;
