@@ -1,8 +1,8 @@
 <template>
   <div class="wrapper">
     <section class="one sticky-top me-3">
-      <div v-for="activePart in activeParts">
-        <NewPartCard :activePart="activePart"/>
+      <div v-for="activePart in activeParts" class="row">
+        <NewPartCard :activePart="activePart" class="col-3 mt-4 ms-4"/>
       </div>
     </section>
     <section class="two ms-3 sticky-top">
@@ -76,18 +76,18 @@ import { AppState } from '../AppState';
 import VueTour from '../components/VueTour.vue';
 import PartCard from '../components/PartCard.vue';
 import NewPartCard from '../components/NewPartCard.vue';
+import { useRoute } from 'vue-router';
 
 export default {
   setup() {
     let activePc = computed(() => AppState.activeBuild)
+    let route = useRoute()
+    let pcID = route.params.PcId
     onMounted(() => {
-      if (activePc.value.id) {
-        getActiveParts()
-      }
+        getActiveParts(pcID)
     })
-    watch(AppState.activeBuild, getActiveParts)
     async function getActiveParts() {
-      await partsService.getActiveParts(activePc.value.id)
+      await partsService.getActiveParts(pcID)
     }
     return {
       account: computed(() => AppState.account),

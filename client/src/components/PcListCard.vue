@@ -39,7 +39,6 @@ export default {
         async function viewBuild(){
             await pcService.viewBuild(props.list.id)
             router.push({name: 'About', params:{PcId: props.list.id}})
-            partsService.getActiveParts(props.list.id)
         }
         return {
             deletePc,

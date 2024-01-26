@@ -30,6 +30,12 @@ class PartsService {
         let allParts = response.data.map(part => new NewPart(part))
         AppState.activeParts = allParts
     }
+
+    async deletePart(partId){
+        let response = await api.delete(`api/newPart/${partId}`)
+        let found = AppState.activeParts.findIndex(part => part.id == partId)
+        AppState.activeParts.splice(found, 1)
+    }
 }
 
 export const partsService = new PartsService()
