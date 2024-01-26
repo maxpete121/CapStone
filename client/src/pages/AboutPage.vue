@@ -1,7 +1,9 @@
 <template>
   <div class="wrapper">
     <section class="one sticky-top me-3">
-      <div v-for="activePart in activeParts">Part</div>
+      <div v-for="activePart in activeParts" class="row">
+        <NewPartCard :activePart="activePart" class="col-3 mt-4 ms-4"/>
+      </div>
     </section>
     <section class="two ms-3 sticky-top">
       <section v-if="account.tour == false" class="row p-1 justify-content-center">
@@ -73,18 +75,19 @@ import { computed, onMounted, ref, watch } from 'vue';
 import { AppState } from '../AppState';
 import VueTour from '../components/VueTour.vue';
 import PartCard from '../components/PartCard.vue';
+import NewPartCard from '../components/NewPartCard.vue';
+import { useRoute } from 'vue-router';
 
 export default {
   setup() {
     let activePc = computed(() => AppState.activeBuild)
+    let route = useRoute()
+    let pcID = route.params.PcId
     onMounted(() => {
-      if (activePc.value.id) {
-        getActiveParts()
-      }
+        getActiveParts(pcID)
     })
-    watch(activePc, getActiveParts)
     async function getActiveParts() {
-      await partsService.getActiveParts(activePc.value.id)
+      await partsService.getActiveParts(pcID)
     }
     return {
       account: computed(() => AppState.account),
@@ -102,7 +105,7 @@ export default {
       }
     };
   },
-  components: { PartCard, VueTour }
+  components: { PartCard, VueTour, NewPartCard }
 }
 </script>
 
@@ -120,7 +123,7 @@ export default {
   }
 
   >.two {
-    grid-column: 5/12;
+    grid-column: 5/11;
     grid-row: 1/8;
     background-color: rgba(176, 176, 176, 0.467);
 

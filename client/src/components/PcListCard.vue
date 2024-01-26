@@ -28,6 +28,7 @@ import { StockPart } from '../models/StockPart.js';
 import { PcList } from '../models/PcList';
 import {pcService} from '../services/PcService.js';
 import { router } from '../router';
+import { partsService } from '../services/PartsService';
 export default {
     props: {list: {type: PcList, required: true}},
     setup(props) {
