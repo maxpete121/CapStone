@@ -19,6 +19,10 @@ export default {
                 onPreviousStep: () => {
                     console.log('going back a step');
                     AppState.currentStep--
+                },
+                onSkip: () => {
+                    console.log('skipping tour')
+                    AppState.account.tour = true
                 }
             },
             myOptions: {
