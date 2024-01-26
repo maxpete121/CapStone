@@ -70,6 +70,7 @@ export default {
       parts: computed(() => AppState.currentStock),
       activeParts: computed(() => AppState.activeParts),
       currentStep: computed(() => AppState.currentStep),
+      isActive: computed(()=> AppState.tourActive),
       async getParts(type) {
         try {
           await partsService.getParts(type);

@@ -17,5 +17,7 @@ export const AppState = reactive({
   currentStep: 0,
   
   /**@type {NewPart[]} */
-  activeParts: []
+  activeParts: [],
+
+  tourActive: true
 })

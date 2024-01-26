@@ -10,6 +10,7 @@ export class AccountController extends BaseController {
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getUserAccount)
       .get('/:pcId', this.getAccountsPcs)
+      .put('/:accountId', this.updateTour)
   }
 
   async getUserAccount(req, res, next) {
@@ -26,6 +27,16 @@ export class AccountController extends BaseController {
       let pcId = request.params.pcId
       let foundPc = await pcService.getAccountsPcs(pcId)
       response.send(foundPc)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async updateTour(request, response, next){
+    try {
+      let accountId = request.params.accountId
+      let updated = await accountService.updateTour(accountId)
+      response.send(updated)
     } catch (error) {
       next(error)
     }

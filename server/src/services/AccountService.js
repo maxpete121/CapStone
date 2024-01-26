@@ -77,5 +77,12 @@ class AccountService {
     )
     return account
   }
+
+  async updateTour(accountId){
+    let found = await dbContext.Account.findById(accountId)
+    found.tour = true
+    await found.save()
+    return found
+  }
 }
 export const accountService = new AccountService()
