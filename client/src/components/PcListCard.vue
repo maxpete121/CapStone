@@ -28,6 +28,7 @@ import { StockPart } from '../models/StockPart.js';
 import { PcList } from '../models/PcList';
 import {pcService} from '../services/PcService.js';
 import { router } from '../router';
+import { partsService } from '../services/PartsService';
 export default {
     props: {list: {type: PcList, required: true}},
     setup(props) {
@@ -38,6 +39,7 @@ export default {
         async function viewBuild(){
             await pcService.viewBuild(props.list.id)
             router.push({name: 'About', params:{PcId: props.list.id}})
+            partsService.getActiveParts(props.list.id)
         }
         return {
             deletePc,
