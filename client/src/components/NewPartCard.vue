@@ -35,9 +35,10 @@ import { pcService } from '../services/PcService'
       async function deletePart(){
         await partsService.deletePart(props.activePart.id)
         pcService.updateDelete(props.activePart.part)
+        document.getElementById(`${props.activePart.part.type}`).style.display= 'inline'
       }
       return {
-        deletePart
+        deletePart,
       }
     }
   }

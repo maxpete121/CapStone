@@ -29,6 +29,7 @@ export default {
         async function addPartToBuild(partId){
             await partsService.addPartToBuild(partId, pcID)
             pcService.updateBuild(props.part)
+            AppState.currentStock = []
         }
         return {
             addPartToBuild
