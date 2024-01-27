@@ -42,7 +42,8 @@ export default {
         }
         return {
             deletePc,
-            viewBuild
+            viewBuild,
+            
         }
     }
 };

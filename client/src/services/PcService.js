@@ -1,3 +1,4 @@
+import { applyStyles } from "@popperjs/core"
 import { AppState } from "../AppState"
 import { PcList } from "../models/PcList"
 import { api } from "./AxiosService"
@@ -27,6 +28,18 @@ class PcService{
         let response = await api.get(`api/builds/${buildId}`)
         let activeList = new PcList(response.data)
         AppState.activeBuild = activeList
+    }
+
+    async updateBuild(partInfo, pcId){
+        let pc = AppState.activeBuild
+        pc.price += partInfo.price
+        pc.powerScore += partInfo.powerScore
+    }
+
+    async updateDelete(partInfo){
+        let pc = AppState.activeBuild
+        pc.price -= partInfo.price
+        pc.powerScore -= partInfo.powerScore
     }
 }
 

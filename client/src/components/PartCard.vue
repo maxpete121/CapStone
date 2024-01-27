@@ -1,13 +1,13 @@
 <template>
-    <div type="button" @click="addPartToBuild(part.id)" :title="`Add ${part.name} to build`" class="list-card border shadow m-2 text-center">
-        <div>
+    <div type="button" @click="addPartToBuild(part.id)" :title="`Add ${part.name} to build`" class="list-card d-flex w-75 justify-content-between border m-2 text-center">
+        <div class="me-2">
             <img class="img-fluid" :src="part.productImage" :alt="part.name">
         </div>
         <div class="spec-card">
-            <h2>{{ part.name }}</h2>
-            <h3>{{ part.company }}</h3>
-            <h4>{{ part.price }}</h4>
-            <h5>{{ part.speed }}</h5>
+            <h5>{{ part.name }}</h5>
+            <h5>{{ part.company }}</h5>
+            <h5>{{ part.price }}</h5>
+            <h6>{{ part.speed }}</h6>
         </div>
     </div>
 </template>
@@ -18,12 +18,18 @@ import { AppState } from '../AppState';
 import { computed, ref, onMounted } from 'vue';
 import { StockPart } from '../models/StockPart.js';
 import { partsService } from '../services/PartsService';
+import { useRoute } from 'vue-router';
+import { pcService } from '../services/PcService';
 export default {
     props: { part: { type: StockPart, required: true } },
     setup(props) {
         let active = computed(()=> AppState.activeBuild)
+        let route = useRoute()
+        let pcID = route.params.PcId
         async function addPartToBuild(partId){
-            await partsService.addPartToBuild(partId, active.value.id)
+            await partsService.addPartToBuild(partId, pcID)
+            pcService.updateBuild(props.part)
+            AppState.currentStock = []
         }
         return {
             addPartToBuild

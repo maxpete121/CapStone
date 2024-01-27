@@ -28,6 +28,32 @@ class PcService{
         let pcsFound = await dbContext.PcBuilds.find({creatorId: pcId}).populate('creator')
         return pcsFound
     }
+
+    // async updatePc(newData, pcId, userId){
+    //     let defaultPC = await dbContext.PcBuilds.findById(pcId)
+    //     defaultPC.price = newData.price ? defaultPC.price : newData.price
+    //     defaultPC.powerScore = newData.powerScore ? defaultPC.powerScore : newData.powerScore
+    //     await defaultPC.save()
+    //     return defaultPC
+    // }
+
+    async addPart(newPart){
+        let pc = await dbContext.PcBuilds.findById(newPart.pcId)
+        pc.price += newPart.part.price
+        pc.powerScore += newPart.part.powerScore
+        await pc.save()
+    }
+
+    async removePart(deletePart){
+        let pc = await dbContext.PcBuilds.findById(deletePart.pcId)
+        pc.price -= deletePart.part.price
+        pc.powerScore -= deletePart.part.powerScore
+        await pc.save()
+    }
+
+    async updatePart(part, pcId){
+
+    }
 }
 
 export const pcService = new PcService()
