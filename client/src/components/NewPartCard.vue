@@ -1,19 +1,27 @@
 <template>
   <div class="list-card d-flex justify-content-between">
-    <div class="d-flex">
+    <div class="d-flex align-items-center">
       <span class="me-4">
-        <img class="img-fluid product-img" :src="activePart.part.productImage" alt="">
+        <img class="img-fluid product-img rounded-circle" :src="activePart.part.productImage" alt="">
       </span>
       <span class="ms-4">
-        <h5>{{ activePart.part.name }}</h5>
         <span class="d-flex">
-          <h6 class="me-2">Made by:</h6>
-          <h6>{{ activePart.part.company }}</h6>
+          <h6 class="me-2">▪️</h6>
+          <h6>{{ activePart.part.name }}</h6>
         </span>
         <span class="d-flex">
+          <h6 class="me-2">▪️</h6>
           <h6>$</h6>
           <h6>{{ activePart.part.price }}</h6>
         </span>
+        <span class="d-flex">
+          <h6 class="me-2">▪️</h6>
+          <h6>{{ activePart.part.company }}</h6>
+        </span>
+      </span>
+      <span class="power d-flex">
+        <h6 class="">Power: ⚡</h6>
+        <h6>{{ activePart.part.powerScore }}</h6>
       </span>
     </div>
     <div class="ms-3">
@@ -45,9 +53,20 @@ import { pcService } from '../services/PcService'
   </script>
   
   <style lang="scss" scoped>
+  .power{
+    position: absolute;
+    margin-left: 250px;
+    margin-top: 30px;
+    background-color: black;
+    color: white;
+    padding: 5px;
+    border-radius: 10px;
+    outline: solid 2px purple;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.562);
+  }
   .product-img{
-    height: 130px;
-    width: 130px;
+    height: 70px;
+    width: 70px;
   }
   .list-card{
     outline: solid 2px purple;
