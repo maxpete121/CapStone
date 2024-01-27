@@ -1,15 +1,15 @@
 <template>
   <div class="container-fluid">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mt-3">
       <div class="col-4 list-card text-center">
         <h3>{{ activePc.name }}</h3>
         <div class="d-flex justify-content-center">
           <div class="d-flex power-card me-2">
-            <h4>PC Power Score:</h4>
+            <h4 class="me-2">PC Power Score:</h4>
             <h4>{{ activePc.powerScore }}</h4>
           </div>
           <div class="d-flex price-card ms-2">
-            <h4>Price:</h4>
+            <h4>Price: $</h4>
             <h4>{{ activePc.price }}</h4>
           </div>
         </div>
