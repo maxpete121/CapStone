@@ -1,17 +1,15 @@
 <template>
-  <div class="wrapper">
-    <section class="one sticky-top me-3">
-      <div class="row">
-        <div class="col-3">{{ activePc.powerScore }}</div>
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-5">
+        <div v-for="activePart in activeParts" class="">
+          <NewPartCard :activePart="activePart" class="mt-3"/>
+        </div>
       </div>
-      <div v-for="activePart in activeParts" class="row">
-        <NewPartCard :activePart="activePart" class="col-4 mt-4 ms-4"/>
-      </div>
-    </section>
-    <section class="two ms-3 sticky-top">
-      <section v-if="account.tour == false" class="row p-1 justify-content-center">
+    <section class="col-5">
+      <section v-if="account.tour == false" class="p-1 justify-content-center">
         <VueTour />
-        <div class="col-8 d-flex flex-column align-items-center">
+        <div class="d-flex flex-column align-items-center">
           <h4>Part type</h4>
           <span>
             <button v-if="currentStep == 1" class="btn btn-outline-dark" id="v-step-1"
@@ -26,7 +24,7 @@
               @click="getParts('storage')">Storage</button>
           </span>
         </div>
-        <div class="col-8 d-flex flex-column align-items-center">
+        <div class="d-flex flex-column align-items-center">
           <span>
             <button v-if="currentStep == 6" class="col btn btn-outline-dark" id="v-step-6"
               @click="getParts('cpuCooler')">Cpu Coolers</button>
@@ -40,8 +38,8 @@
           </span>
         </div>
       </section>
-      <section v-else class="row p-1 justify-content-center">
-        <div class="col-8 d-flex flex-column align-items-center">
+      <section v-else class="p-1 justify-content-center">
+        <div class="d-flex flex-column align-items-center">
           <h4>Part type</h4>
           <span>
             <button class="btn btn-outline-dark" @click="getParts('cpu')">Cpu's</button>
@@ -51,7 +49,7 @@
             <button class="btn btn-outline-dark" @click="getParts('storage')">Storage</button>
           </span>
         </div>
-        <div class="col-8 d-flex flex-column align-items-center">
+        <div class="d-flex flex-column align-items-center">
           <span>
             <button class="col btn btn-outline-dark" @click="getParts('cpuCooler')">Cpu Coolers</button>
             <button class="col btn btn-outline-dark" @click="getParts('powerSupply')">Power
@@ -61,14 +59,15 @@
           </span>
         </div>
       </section>
-      <section class="row">
-        <div class="col-3" v-for="part in parts">
+      <section class="">
+        <div class="d-flex flex-column align-items-center" v-for="part in parts">
           <PartCard :part="part" />
         </div>
       </section>
     </section>
 
   </div>
+    </div>
 </template>
 
 <script>

@@ -5,10 +5,10 @@
         <img class="img-fluid product-img" :src="activePart.part.productImage" alt="">
       </span>
       <span class="ms-4">
-        <h4>{{ activePart.part.name }}</h4>
+        <h5>{{ activePart.part.name }}</h5>
         <span class="d-flex">
-          <h5 class="me-2">Made by:</h5>
-          <h5>{{ activePart.part.company }}</h5>
+          <h6 class="me-2">Made by:</h6>
+          <h6>{{ activePart.part.company }}</h6>
         </span>
         <span class="d-flex">
           <h6>$</h6>
