@@ -12,10 +12,5 @@ export class PcList{
         this.isShared = data.isShared
         this.creator = data.creator
         this.id = data._id
-        this.hasCpu = data.hasCpu
-        this.hasGpu = data.hasGpu
-        this.hasMotherboard = data.hasMotherboard
-        this.hasPowerSupply = data.hasPowerSupply
-        this.hasCase = data.hasCase
     }
 }

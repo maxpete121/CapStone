@@ -41,9 +41,8 @@ import { pcService } from '../services/PcService'
     props:{activePart: {type: NewPart, required: true}},
     setup(props) {
       async function deletePart(){
+        await pcService.updateDelete(props.activePart.part)
         await partsService.deletePart(props.activePart.id)
-        pcService.updateDelete(props.activePart.part)
-        document.getElementById(`${props.activePart.part.type}`).style.display= 'inline'
       }
       return {
         deletePart,

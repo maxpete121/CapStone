@@ -1,6 +1,21 @@
 <template>
   <div class="container-fluid">
     <div class="row justify-content-center">
+      <div class="col-4 list-card text-center">
+        <h3>{{ activePc.name }}</h3>
+        <div class="d-flex justify-content-center">
+          <div class="d-flex power-card me-2">
+            <h4>PC Power Score:</h4>
+            <h4>{{ activePc.powerScore }}</h4>
+          </div>
+          <div class="d-flex price-card ms-2">
+            <h4>Price:</h4>
+            <h4>{{ activePc.price }}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
       <div class="col-5">
         <div v-for="activePart in activeParts" class="">
           <NewPartCard :activePart="activePart" class="mt-3" />
@@ -79,6 +94,7 @@ import VueTour from '../components/VueTour.vue';
 import PartCard from '../components/PartCard.vue';
 import NewPartCard from '../components/NewPartCard.vue';
 import { useRoute } from 'vue-router';
+import { pcService } from '../services/PcService';
 
 export default {
   setup() {
@@ -87,6 +103,7 @@ export default {
     let pcID = route.params.PcId
     onMounted(() => {
       getActiveParts(pcID)
+      pcService.viewBuild(pcID)
       clearAppstate()
     })
     async function getActiveParts() {
@@ -148,25 +165,30 @@ export default {
 </script>
 
 <style lang="scss">
-// FIXME rip some of these lines out to check to see how the structure is getting JACKED
-.wrapper {
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  gap: 20px;
-  margin-top: 60px;
-  grid-auto-rows: minmax(100px, auto);
-
-  >.one {
-    grid-column: 1/12;
-    grid-row: 2/10;
-    background-color: rgba(255, 255, 255, 0);
-  }
-
-  >.two {
-    grid-column: 5/11;
-    grid-row: 1/10;
-    background-color: rgba(176, 176, 176, 0.467);
-
-  }
+.price-card{
+    background-color: whitesmoke;
+    color: black;
+    border-radius: 15px;
+    padding-top: 5px;
+    padding-left: 7px;
+    padding-right: 7px;
+    outline: solid 2px purple;
+    box-shadow: 3px 5px 3px rgba(0, 0, 0, 0.658);
 }
+.power-card{
+    background-color: whitesmoke;
+    color: black;
+    border-radius: 15px;
+    padding-top: 5px;
+    padding-left: 7px;
+    padding-right: 7px;
+    outline: solid 2px purple;
+    box-shadow: 3px 5px 3px rgba(0, 0, 0, 0.658);
+}
+.list-card{
+    outline: solid 2px purple;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 5px 8px 5px rgba(0, 0, 0, 0.54);
+  }
 </style>

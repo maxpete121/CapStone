@@ -1,11 +1,11 @@
 <template>
     <div type="button" @click="addPartToBuild(part.id)" :title="`Add ${part.name} to build`" class="list-card d-flex w-75 justify-content-between border m-2 text-center">
-        <div>
+        <div class="me-2">
             <img class="img-fluid" :src="part.productImage" :alt="part.name">
         </div>
         <div class="spec-card">
-            <h3>{{ part.name }}</h3>
-            <h4>{{ part.company }}</h4>
+            <h5>{{ part.name }}</h5>
+            <h5>{{ part.company }}</h5>
             <h5>{{ part.price }}</h5>
             <h6>{{ part.speed }}</h6>
         </div>
