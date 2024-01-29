@@ -30,6 +30,7 @@ export default {
             await partsService.addPartToBuild(partId, pcID)
             pcService.updateBuild(props.part)
             AppState.currentStock = []
+            scrollTo(0, 0)
         }
         return {
             addPartToBuild

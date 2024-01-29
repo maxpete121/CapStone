@@ -12,5 +12,6 @@ export class PcList{
         this.isShared = data.isShared
         this.creator = data.creator
         this.id = data._id
+        this.createdAt = new Date(data.createdAt).toLocaleDateString()
     }
 }

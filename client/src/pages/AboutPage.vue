@@ -10,7 +10,7 @@
           </div>
           <div class="d-flex price-card ms-2">
             <h4>Price: $</h4>
-            <h4>{{ activePc.price }}</h4>
+            <h4>{{ pcPrice }}</h4>
           </div>
         </div>
       </div>
@@ -122,6 +122,12 @@ export default {
       currentStock: computed(() => AppState.currentStock),
       isActive: computed(() => AppState.tourActive),
       activePc: computed(() => AppState.activeBuild),
+      pcPrice: computed(()=>{
+        let price = AppState.activeBuild
+        let newPrice = Math.round(price.price * 100) / 100
+        return newPrice
+      }
+      ),
       displayCpu: computed(() => {
         let part = AppState.activeParts.find(part => part.part.type == 'cpu')
         return part != undefined

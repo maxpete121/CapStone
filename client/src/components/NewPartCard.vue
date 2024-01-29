@@ -41,8 +41,11 @@ import { pcService } from '../services/PcService'
     props:{activePart: {type: NewPart, required: true}},
     setup(props) {
       async function deletePart(){
-        await pcService.updateDelete(props.activePart.part)
-        await partsService.deletePart(props.activePart.id)
+        if(window.confirm('Are you sure you want to delete this part?')){
+          await pcService.updateDelete(props.activePart.part)
+          await partsService.deletePart(props.activePart.id)
+          scrollTo(0, 0)
+        }
       }
       return {
         deletePart,

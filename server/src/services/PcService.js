@@ -66,7 +66,7 @@ class PcService{
     }
 
     async getSharedBuilds(){
-        let shared = await dbContext.PcBuilds.find({isShared: true}).populate('creator')
+        let shared = await dbContext.PcBuilds.find({isShared: true}).populate('creator').limit(20).sort('-createdAt')
         return shared
     }
 }

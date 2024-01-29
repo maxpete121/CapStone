@@ -15,7 +15,7 @@ class PcService{
     async getLists(accountId){
         let response = await api.get(`account/${accountId}`)
         let allBuilds = response.data.map(build => new PcList(build))
-        AppState.userBuilds = allBuilds
+        AppState.userBuilds = allBuilds.reverse()
     }
 
     async deletePc(pcId){
@@ -46,17 +46,13 @@ class PcService{
         let response = await api.put(`api/builds/${pcId}`, pcData)
         let updatedList = await new PcList(response.data)
         AppState.userBuilds = AppState.userBuilds.map(build => build.id !== pcId ? build : updatedList)
-        // let index = AppState.userBuilds.findIndex(build => build.id == pcId)
-        // AppState.userBuilds.splice(index, 1)
-        // AppState.userBuilds.unshift(updatedList)
-
     }
 
     async getSharedBuilds(){
         let response = await api.get('api/builds/shared/true')
         let builds = response.data.map(build => new PcList(build))
         AppState.sharedBuilds = builds
-        console.log(builds)
+        console.log(response)
     }
 }
 

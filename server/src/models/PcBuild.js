@@ -9,7 +9,7 @@ export const PcBuildSchema = new Schema({
     powerScore: {type: Number, maxLength: 15, default: 0},
     rating: {type: String, enum:['1','2','3','4','5','0'], default: '0'},
     isShared: {type: Boolean, default: false},
-}, {toJSON: {virtuals: true}})
+}, {toJSON: {virtuals: true}, timestamps: true}, )
 
 PcBuildSchema.virtual('creator', {
     localField: 'creatorId',

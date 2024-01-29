@@ -34,7 +34,9 @@ export default {
     props: {list: {type: PcList, required: true}},
     setup(props) {
         async function deletePc(pcId){
-            await pcService.deletePc(pcId)
+            if(window.confirm('Are you sure you want to delete this build?')){
+                await pcService.deletePc(pcId)
+            }
         }
 
         async function viewBuild(){
