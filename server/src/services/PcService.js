@@ -31,14 +31,6 @@ class PcService{
         return pcsFound
     }
 
-    // async updatePc(newData, pcId, userId){
-    //     let defaultPC = await dbContext.PcBuilds.findById(pcId)
-    //     defaultPC.price = newData.price ? defaultPC.price : newData.price
-    //     defaultPC.powerScore = newData.powerScore ? defaultPC.powerScore : newData.powerScore
-    //     await defaultPC.save()
-    //     return defaultPC
-    // }
-
     async addPart(newPart){
         let pc = await dbContext.PcBuilds.findById(newPart.pcId)
         pc.price += newPart.part.price
@@ -69,6 +61,8 @@ class PcService{
         let shared = await dbContext.PcBuilds.find({isShared: true}).populate('creator').limit(20).sort('-createdAt')
         return shared
     }
+
+    async reviewPc(){}
 }
 
 export const pcService = new PcService()

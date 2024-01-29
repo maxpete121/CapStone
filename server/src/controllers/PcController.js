@@ -77,5 +77,7 @@ export class PcController extends BaseController {
         }
     }
 
+    async reviewPc(request, response, next){}
+
 
 }

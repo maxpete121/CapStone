@@ -1,17 +1,24 @@
 <template>
-    <div class="list-card-m d-flex">
-        <div class="price-card-m align-items-center me-3">
-            <h3>{{ shareBuild.name }}</h3>
+    <div class="list-card-m">
+        <div class="d-flex">
+            <div class="price-card-m align-items-center me-3">
+                <h3>{{ shareBuild.name }}</h3>
+            </div>
+            <div class="d-flex power-card-m justify-content-between align-items-center me-3">
+                <h6 class="ms-4">Power Score: </h6>
+                <h6 class="me-4">⚡{{ shareBuild.powerScore }}</h6>
+            </div>
+            <div class="d-flex price-card-m justify-content-center align-items-center me-3">
+                <h6>Price: $</h6>
+                <h6>{{ shareBuild.price }}</h6>
+            </div>
+            <button @click="viewBuild()" class="btn btn-outline-dark ms-2">Details</button>
         </div>
-        <div class="d-flex power-card-m justify-content-between align-items-center me-3">
-            <h6 class="ms-4">Power Score: </h6>
-            <h6 class="me-4">⚡{{ shareBuild.powerScore }}</h6>
+        <div class="d-flex">
+            <div>
+                <h6></h6>
+            </div>
         </div>
-        <div class="d-flex price-card-m justify-content-center align-items-center me-3">
-            <h6>Price: $</h6>
-            <h6>{{ shareBuild.price }}</h6>
-        </div>
-        <button @click="viewBuild()" class="btn btn-outline-dark ms-2">Details</button>
     </div>
   </template>
   
@@ -52,8 +59,6 @@ import { router } from '../router';
     color: black;
     border-radius: 15px;
     padding-top: 5px;
-    padding-left: 7px;
-    padding-right: 7px;
     outline: solid 2px purple;
     box-shadow: 3px 5px 3px rgba(0, 0, 0, 0.658);
 }
