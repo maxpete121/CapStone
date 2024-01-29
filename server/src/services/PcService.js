@@ -51,8 +51,16 @@ class PcService{
         await pc.save()
     }
 
-    async updatePart(part, pcId){
-
+    async shareBuild(pcId, userId){
+        let pc = await dbContext.PcBuilds.findById(pcId)
+        await pc.populate('creator')
+        if(pc.isShared == false){
+            pc.isShared = true
+        }else{
+            pc.isShared = false
+        }
+        await pc.save()
+        return pc
     }
 }
 

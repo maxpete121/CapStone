@@ -41,6 +41,15 @@ class PcService{
         pc.price -= partInfo.price
         pc.powerScore -= partInfo.powerScore
     }
+
+    async shareBuild(pcId, pcData){
+        let response = await api.put(`api/builds/${pcId}`, pcData)
+        let updatedList = await new PcList(response.data)
+        let index = AppState.userBuilds.findIndex(build => build.id == pcId)
+        AppState.userBuilds.splice(index, 1)
+        AppState.userBuilds.unshift(updatedList)
+
+    }
 }
 
 

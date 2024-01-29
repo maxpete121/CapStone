@@ -11,8 +11,8 @@ export class PcController extends BaseController {
             .get('/:PcId', this.getOnePc)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.postPc)
-            .put('/:pcId', this.updatePc)
             .delete('/:PcId', this.deletePc)
+            .put('/:pcId', this.shareBuild)
     }
 
     async postPc(request, response, next) {
@@ -56,15 +56,16 @@ export class PcController extends BaseController {
         }
     }
 
-    async updatePc(request, response, next){
+    async shareBuild(request, response, next){
         try {
-            let userId = request.userInfo.id
-            let newData = request.body
             let pcId = request.params.pcId
-            // let updated = await pcService.updatePc(newData, pcId, userId)
-            // response.send(updated)
+            let userId = request.userInfo.id
+            let shared = await pcService.shareBuild(pcId, userId)
+            response.send(shared)
         } catch (error) {
             next(error)
         }
     }
+
+
 }

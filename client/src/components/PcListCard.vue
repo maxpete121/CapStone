@@ -12,8 +12,9 @@
             </span>
         </div>
         <span class="d-flex mt-2">
-            <button class="btn btn-outline-dark">Share Build</button>
-            <button class="btn btn-outline-dark ms-2">Purchase</button>
+            <button @click="shareBuild()" v-if="list.isShared == false" class="btn btn-outline-dark">Share Build</button>
+            <button @click="shareBuild()" v-if="list.isShared == true" class="btn btn-outline-dark">Make Private</button>
+            <button class="btn btn-outline-danger ms-2">Purchase</button>
             <button @click="viewBuild()" class="btn btn-outline-dark ms-2 me-2">View Build</button>
             <button @click="deletePc(list.id)" class="btn btn-outline-dark"><i class="mdi mdi-delete"></i></button>
         </span>
@@ -40,9 +41,14 @@ export default {
             await pcService.viewBuild(props.list.id)
             router.push({name: 'About', params:{PcId: props.list.id}})
         }
+
+        async function shareBuild(){
+            await pcService.shareBuild(props.list.id, props.list)
+        }
         return {
             deletePc,
             viewBuild,
+            shareBuild
             
         }
     }
