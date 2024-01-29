@@ -1,9 +1,10 @@
-import mongoose from 'mongoose'
+import mongoose, { Mongoose } from 'mongoose'
 import { AccountSchema } from '../models/Account'
 import { ValueSchema } from '../models/Value'
 import { PcBuildSchema } from '../models/PcBuild.js';
 import { StockPartSchema } from '../models/StockPart.js';
 import { BuildPartSchema } from '../models/BuildPart.js';
+import { ReviewSchema } from '../models/Review';
 
 class DbContext {
   Values = mongoose.model('Value', ValueSchema);
@@ -14,6 +15,8 @@ class DbContext {
   StockParts = mongoose.model('StockPart', StockPartSchema);
 
   NewParts = mongoose.model('NewPart', BuildPartSchema);
+
+  Reviews = mongoose.model('Review', ReviewSchema)
 }
 
 export const dbContext = new DbContext()

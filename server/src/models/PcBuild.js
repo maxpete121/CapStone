@@ -17,5 +17,3 @@ PcBuildSchema.virtual('creator', {
     ref: 'Account',
     justOne: true
 })
-
- 
