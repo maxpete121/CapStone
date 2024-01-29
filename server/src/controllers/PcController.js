@@ -9,6 +9,7 @@ export class PcController extends BaseController {
         this.router
             .get('', this.getPcs)
             .get('/:PcId', this.getOnePc)
+            .get('/shared', this.getSharedBuilds)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.postPc)
             .delete('/:PcId', this.deletePc)
@@ -62,6 +63,15 @@ export class PcController extends BaseController {
             let userId = request.userInfo.id
             let shared = await pcService.shareBuild(pcId, userId)
             response.send(shared)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async getSharedBuilds(request, response, next){
+        try {
+            let pc = await pcService.getSharedBuilds()
+            response.send(pc)
         } catch (error) {
             next(error)
         }

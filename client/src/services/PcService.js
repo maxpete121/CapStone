@@ -45,10 +45,15 @@ class PcService{
     async shareBuild(pcId, pcData){
         let response = await api.put(`api/builds/${pcId}`, pcData)
         let updatedList = await new PcList(response.data)
-        let index = AppState.userBuilds.findIndex(build => build.id == pcId)
-        AppState.userBuilds.splice(index, 1)
-        AppState.userBuilds.unshift(updatedList)
+        AppState.userBuilds = AppState.userBuilds.map(build => build.id !== pcId ? build : updatedList)
+        // let index = AppState.userBuilds.findIndex(build => build.id == pcId)
+        // AppState.userBuilds.splice(index, 1)
+        // AppState.userBuilds.unshift(updatedList)
 
+    }
+
+    async getSharedBuilds(){
+        let response = api.get('api/builds/shared')
     }
 }
 

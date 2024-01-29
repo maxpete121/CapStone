@@ -24,17 +24,26 @@
       </div>
       <div class="col-5 rounded-2 ms-2 m-1 info-box text-center">
         <h3>Our top picks <i class="mdi mdi-check-outline"></i></h3>
-        <div></div>
+        <div v-for="sharedBuild in sharedBuilds"></div>
       </div>
     </section>
   </section>
 </template>
 
 <script>
+import { computed, onMounted } from 'vue';
+import { AppState } from '../AppState';
+import { pcService } from '../services/PcService';
 export default {
   setup() {
+    onMounted(()=>{
+      getSharedBuilds()
+    })
+    async function getSharedBuilds(){
+      await pcService.getSharedBuilds()
+    }
     return {
-
+      sharedBuilds: computed(()=> AppState.sharedBuilds)
     }
   }
 }

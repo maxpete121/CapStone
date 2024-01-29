@@ -19,5 +19,9 @@ export const AppState = reactive({
   /**@type {NewPart[]} */
   activeParts: [],
 
-  tourActive: true
+  tourActive: true,
+
+  sharedBuilds: [],
+
+  topReviewed: [],
 })
