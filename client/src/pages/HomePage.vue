@@ -22,9 +22,11 @@
         <h3>Top rated builds <i class="mdi mdi-star"></i><i class="mdi mdi-star"></i><i class="mdi mdi-star"></i></h3>
         <div></div>
       </div>
-      <div class="col-5 rounded-2 ms-2 m-1 info-box text-center">
-        <h3>Our top picks <i class="mdi mdi-check-outline"></i></h3>
-        <div v-for="sharedBuild in sharedBuilds"></div>
+      <div class="col-5 rounded-2 ms-2 m-1 p-3 info-box text-center">
+        <h3>Recent Customer Builds <i class="mdi mdi-check-outline"></i></h3>
+        <div v-for="sharedBuild in sharedBuilds" class="mt-3 d-flex flex-column align-items-center">
+          <HomeBuilds :shareBuild="sharedBuild"/>
+        </div>
       </div>
     </section>
   </section>
@@ -34,6 +36,7 @@
 import { computed, onMounted } from 'vue';
 import { AppState } from '../AppState';
 import { pcService } from '../services/PcService';
+import HomeBuilds from '../components/HomeBuilds.vue';
 export default {
   setup() {
     onMounted(()=>{
@@ -45,7 +48,7 @@ export default {
     return {
       sharedBuilds: computed(()=> AppState.sharedBuilds)
     }
-  }
+  }, components: {HomeBuilds}
 }
 </script>
 

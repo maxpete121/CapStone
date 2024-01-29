@@ -1,5 +1,6 @@
 import { response } from "express"
 import { dbContext } from "../db/DbContext.js"
+import { logger } from "../utils/Logger.js"
 
 
 
@@ -66,7 +67,7 @@ class PcService{
 
     async getSharedBuilds(){
         let shared = await dbContext.PcBuilds.find({isShared: true}).populate('creator')
-        response.send(shared)
+        return shared
     }
 }
 

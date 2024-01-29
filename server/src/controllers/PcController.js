@@ -1,15 +1,15 @@
 import { Auth0Provider } from "@bcwdev/auth0provider";
 import { pcService } from "../services/PcService.js";
 import BaseController from "../utils/BaseController.js";
+import { logger } from "../utils/Logger.js";
 
 
 export class PcController extends BaseController {
     constructor() {
         super('api/builds')
         this.router
-            .get('', this.getPcs)
             .get('/:PcId', this.getOnePc)
-            .get('/shared', this.getSharedBuilds)
+            .get('/shared/true', this.getSharedBuilds)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.postPc)
             .delete('/:PcId', this.deletePc)

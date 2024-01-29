@@ -18,6 +18,11 @@ const routes = [
     beforeEnter: authGuard
   },
   {
+    path: '/viewBuild/:PcId',
+    name: 'ViewBuild',
+    component: loadPage('ViewBuildPage'),
+  },
+  {
     path: '/about/:PcId',
     name: 'About',
     component: loadPage('AboutPage')

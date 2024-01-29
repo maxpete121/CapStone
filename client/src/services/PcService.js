@@ -53,7 +53,10 @@ class PcService{
     }
 
     async getSharedBuilds(){
-        let response = api.get('api/builds/shared')
+        let response = await api.get('api/builds/shared/true')
+        let builds = response.data.map(build => new PcList(build))
+        AppState.sharedBuilds = builds
+        console.log(builds)
     }
 }
 
