@@ -1,22 +1,25 @@
 <template>
-  <div class="list-card-m d-flex w-75 justify-content-center">
-    <div class="price-card-m p-2 me-4 d-flex flex-column justify-content-center">
-      <div class="price-card-m">
-        <h5 class="fst-italic text-success">{{ shareBuild.name }}</h5>
+  <div class="list-card-m d-flex w-75 justify-content-center align-items-center">
+    <div class="power-card-m p-3 me-4 d-flex flex-column justify-content-center">
+      <div class="power-card-m">
+        <h5 class="fst-italic">{{ shareBuild.name }}</h5>
       </div>
-      <div class="d-flex price-card-m justify-content-between align-items-center mt-3">
-        <h6 class="ms-2 text-success">Power Score: </h6>
-        <h6 class="me-2 text-success">⚡{{ shareBuild.powerScore }}</h6>
+      <div class="d-flex power-card-m justify-content-between align-items-center mt-3">
+        <h6 class="ms-2">Power Score: </h6>
+        <h6 class="me-2">⚡{{ shareBuild.powerScore }}</h6>
       </div>
-      <div class="d-flex price-card-m justify-content-center align-items-center mt-3">
-        <h6 class="me-2 text-success">Price:</h6>
+      <div class="d-flex power-card-m justify-content-center align-items-center mt-3">
+        <h6 class="me-2">Price:</h6>
         <h6 class="text-warning">${{ shareBuild.price }}</h6>
+      </div>
+      <div class="power-card-m mt-3">
+        <h6 class="">Review Score</h6>
       </div>
     </div>
     <div class="justify-content-center ms-4">
       <div class="price-card-m d-flex flex-column p-3">
-        <h5 class="me-2">Review Score</h5>
-        <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        
+        <button type="button" class="btn btn-outline-success button-m" data-bs-toggle="modal" data-bs-target="#exampleModal">
           Reviews
         </button>
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -48,8 +51,8 @@
             </div>
           </div>
         </div>
-        <button @click="viewBuild()" class="btn btn-outline-success mt-2">Details</button>
-        <button class="btn btn-outline-success mt-2">Add to cart</button>
+        <button @click="viewBuild()" class="btn btn-outline-success mt-4 button-m">Details</button>
+        <button class="btn btn-outline-success mt-4 button-m">Add to cart</button>
       </div>
     </div>
   </div>
@@ -94,6 +97,9 @@ export default {
 </script>
   
 <style lang="scss" scoped>
+.button-m{
+  box-shadow: 0px 5px 5px black;
+}
 .price-card-m {
   background-color: #212529;
   color: white;
@@ -102,16 +108,16 @@ export default {
   padding-left: 7px;
   padding-right: 7px;
   outline: solid 2px #198754;
-  box-shadow: 3px 5px 3px rgba(0, 0, 0, 0.658);
+  box-shadow: 0px 9px 9px rgba(0, 0, 0, 0.729);
 }
 
 .power-card-m {
-  background-color: black;
-  color: white;
+  background-color: #212529;
+  color: rgb(13, 155, 176);
   border-radius: 15px;
   padding-top: 5px;
-  outline: solid 2px rgb(17, 114, 156);
-  box-shadow: 3px 5px 3px rgba(0, 0, 0, 0.658);
+  outline: solid 2px rgb(13, 155, 176);
+  box-shadow: 0px 9px 9px rgba(0, 0, 0, 0.729);
 }
 
 .list-card-m {
