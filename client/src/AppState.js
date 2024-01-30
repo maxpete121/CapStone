@@ -15,7 +15,9 @@ export const AppState = reactive({
   activeBuild: {},
 
   currentStep: 0,
-  
+
+  reviews: [],
+
   /**@type {NewPart[]} */
   activeParts: [],
 
