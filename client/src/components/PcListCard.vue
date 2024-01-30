@@ -7,15 +7,15 @@
                 <h4 class="ms-1">${{ list.price }}</h4>
             </div>
             <span class="d-flex power-card ms-2 align-items-baseline">
-                <h4 class="me-2">Power Score:</h4>
+                <h4 class="">Power Score: ⚡</h4>
                 <h4>{{ list.powerScore }}</h4>
             </span>
         </div>
         <span class="d-flex mt-2">
+            <button class="btn btn-outline-dark me-2">Add to cart</button>
             <button @click="shareBuild()" v-if="list.isShared == false" class="btn btn-outline-dark">Share Build</button>
             <button @click="shareBuild()" v-if="list.isShared == true" class="btn btn-outline-dark">Make Private</button>
-            <button class="btn btn-outline-danger ms-2">Purchase</button>
-            <button @click="viewBuild()" class="btn btn-outline-dark ms-2 me-2">View Build</button>
+            <button @click="viewBuild()" class="btn btn-outline-dark ms-2 me-2">Edit Build</button>
             <button @click="deletePc(list.id)" class="btn btn-outline-dark"><i class="mdi mdi-delete"></i></button>
         </span>
     </div>
@@ -45,7 +45,11 @@ export default {
         }
 
         async function shareBuild(){
-            await pcService.shareBuild(props.list.id, props.list)
+            if(props.list.isShared == false && window.confirm('This will allow users to see and review this build. Would you like to proceed?')){
+                await pcService.shareBuild(props.list.id, props.list)
+            }else if(props.list.isShared == true && window.confirm('Wold you like to make this build private?')){
+                await pcService.shareBuild(props.list.id, props.list)
+            }
         }
         return {
             deletePc,
