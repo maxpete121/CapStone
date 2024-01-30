@@ -15,6 +15,7 @@
             <div class="d-flex mt-3">
                 <button class="btn btn-outline-success me-2">Add to cart</button>
                 <button class="btn btn-outline-success ms-2">Review Build</button>
+                <button @click="editBuild()" v-if="account.id == activePc.creatorId" class="btn btn-outline-success ms-3">Edit Build</button>
             </div>
         </div>
     </section>
@@ -39,12 +40,18 @@ import { pcService } from '../services/PcService';
 import { useRoute } from 'vue-router';
 import { partsService } from '../services/PartsService';
 import NewPartCard from '../components/NewPartCard.vue';
+import { router } from '../router';
 export default {
     setup(){
         onMounted(()=>{
             viewBuild()
+            scrollTo(0, 0)
         })
         let route = useRoute()
+        async function editBuild(){
+            await pcService.viewBuild(route.params.PcId)
+            router.push({ name: 'About', params: { PcId: route.params.PcId } })
+        }
         async function viewBuild(){
             await pcService.viewBuild(route.params.PcId)
             getActiveParts()
@@ -54,7 +61,9 @@ export default {
         }
     return { 
         activePc: computed(()=> AppState.activeBuild),
-        activeParts: computed(()=> AppState.activeParts)
+        activeParts: computed(()=> AppState.activeParts),
+        account: computed(()=> AppState.account),
+        editBuild
      }
     }, components: {NewPartCard}
 };

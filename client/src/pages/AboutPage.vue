@@ -59,17 +59,20 @@
             <span>
               <button v-if="!displayCpu" class="btn btn-outline-success" @click="getParts('cpu')">Cpu's</button>
               <button v-if="!displayGpu" class="btn btn-outline-success ms-2" @click="getParts('gpu')">Gpu's</button>
-              <button v-if="!displayMotherboard" class="btn btn-outline-success me-2 ms-2" @click="getParts('motherboard')">Motherboards</button>
+              <button v-if="!displayMotherboard" class="btn btn-outline-success me-2 ms-2"
+                @click="getParts('motherboard')">Motherboards</button>
               <button v-if="!displayRam" class="btn btn-outline-success me-2" @click="getParts('ram')">Ram</button>
               <button class="btn btn-outline-success" @click="getParts('storage')">Storage</button>
             </span>
           </div>
           <div class="d-flex flex-column align-items-center">
             <span>
-              <button v-if="!displayCpuCool" class="col btn btn-outline-success" @click="getParts('cpuCooler')">Cpu Coolers</button>
+              <button v-if="!displayCpuCool" class="col btn btn-outline-success" @click="getParts('cpuCooler')">Cpu
+                Coolers</button>
               <button v-if="!displayPower" class="col btn btn-outline-success ms-2" @click="getParts('powerSupply')">Power
                 Supplies</button>
-              <button v-if="!displayCases" class="col btn btn-outline-success me-2 ms-2" @click="getParts('case')">Case's</button>
+              <button v-if="!displayCases" class="col btn btn-outline-success me-2 ms-2"
+                @click="getParts('case')">Case's</button>
               <button class="col btn btn-outline-success" @click="getParts('caseFan')">Case Fan's</button>
             </span>
           </div>
@@ -122,7 +125,7 @@ export default {
       currentStock: computed(() => AppState.currentStock),
       isActive: computed(() => AppState.tourActive),
       activePc: computed(() => AppState.activeBuild),
-      pcPrice: computed(()=>{
+      pcPrice: computed(() => {
         let price = AppState.activeBuild
         let newPrice = Math.round(price.price * 100) / 100
         return newPrice
@@ -171,32 +174,33 @@ export default {
 </script>
 
 <style lang="scss">
-.price-card{
-    background-color: whitesmoke;
-    color: black;
-    border-radius: 15px;
-    padding-top: 5px;
-    padding-left: 7px;
-    padding-right: 7px;
-    outline: solid 2px rgb(13, 155, 176);
-    box-shadow: 3px 5px 3px rgba(0, 0, 0, 0.658);
+.price-card {
+  background-color: whitesmoke;
+  color: black;
+  border-radius: 15px;
+  padding-top: 5px;
+  padding-left: 7px;
+  padding-right: 7px;
+  outline: solid 2px rgb(13, 155, 176);
+  box-shadow: 3px 5px 3px rgba(0, 0, 0, 0.658);
 }
-.power-card{
-    background-color: whitesmoke;
-    color: black;
-    border-radius: 15px;
-    padding-top: 5px;
-    padding-left: 7px;
-    padding-right: 7px;
-    outline: solid 2px rgb(13, 155, 176);
-    box-shadow: 3px 5px 3px rgba(0, 0, 0, 0.658);
+
+.power-card {
+  background-color: whitesmoke;
+  color: black;
+  border-radius: 15px;
+  padding-top: 5px;
+  padding-left: 7px;
+  padding-right: 7px;
+  outline: solid 2px rgb(13, 155, 176);
+  box-shadow: 3px 5px 3px rgba(0, 0, 0, 0.658);
 }
-.list-card{
-    outline: solid 2px rgb(13, 155, 176);
-    border-radius: 10px;
-    background-color: #212529;
-    color: #0cbc87;
-    padding: 15px;
-    box-shadow: 5px 8px 5px rgba(0, 0, 0, 0.54);
-  }
-</style>
+
+.list-card {
+  outline: solid 2px rgb(13, 155, 176);
+  border-radius: 10px;
+  background-color: #212529;
+  color: #0cbc87;
+  padding: 15px;
+  box-shadow: 5px 8px 5px rgba(0, 0, 0, 0.54);
+}</style>
