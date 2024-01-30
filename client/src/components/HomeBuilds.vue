@@ -6,7 +6,7 @@
       </div>
       <div class="d-flex power-card-m justify-content-between align-items-center mt-3">
         <h6 class="ms-2">Power Score: </h6>
-        <h6 class="me-2">⚡{{ shareBuild.powerScore }}</h6>
+        <h6 class="me-2 text-danger">⚡{{ shareBuild.powerScore }}</h6>
       </div>
       <div class="d-flex power-card-m justify-content-center align-items-center mt-3">
         <h6 class="me-2">Price:</h6>
