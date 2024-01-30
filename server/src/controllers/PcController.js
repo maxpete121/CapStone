@@ -2,6 +2,7 @@ import { Auth0Provider } from "@bcwdev/auth0provider";
 import { pcService } from "../services/PcService.js";
 import BaseController from "../utils/BaseController.js";
 import { logger } from "../utils/Logger.js";
+import { reviewsService } from "../services/ReviewsService.js";
 
 
 export class PcController extends BaseController {
@@ -57,7 +58,7 @@ export class PcController extends BaseController {
         }
     }
 
-    async shareBuild(request, response, next){
+    async shareBuild(request, response, next) {
         try {
             let pcId = request.params.pcId
             let userId = request.userInfo.id
@@ -68,7 +69,7 @@ export class PcController extends BaseController {
         }
     }
 
-    async getSharedBuilds(request, response, next){
+    async getSharedBuilds(request, response, next) {
         try {
             let pc = await pcService.getSharedBuilds()
             response.send(pc)
@@ -77,7 +78,13 @@ export class PcController extends BaseController {
         }
     }
 
-    async reviewPc(request, response, next){}
-
-
+    async getPcReviews(request, response, next) {
+        try {
+            const PcId = request.params.PcId
+            const reviews = await reviewsService.getReviews(PcId)
+            response.send(reviews)
+        } catch (error) {
+            next(error)
+        }
+    }
 }

@@ -10,7 +10,8 @@ class ReviewsService {
         return review
     }
     async getReviews(PcId) {
-
+        const reviews = await dbContext.Reviews.find({ PcId: PcId }).populate('creator', 'name picture')
+        return reviews
     }
 }
 export const reviewsService = new ReviewsService()
