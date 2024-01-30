@@ -1,24 +1,24 @@
 <template>
-    <div class="list-card-m">
-        <div class="d-flex">
-            <div class="price-card-m align-items-center me-3">
+    <div class="list-card-m d-flex w-75 justify-content-center">
+        <div class="price-card-m p-2 me-4 d-flex flex-column justify-content-center">
+            <div class="">
                 <h5 class="fst-italic text-success">{{ shareBuild.name }}</h5>
             </div>
-            <div class="d-flex price-card-m justify-content-between align-items-center me-3">
+            <div class="d-flex price-card-m justify-content-between align-items-center mt-2">
                 <h6 class="ms-2">Power Score: </h6>
                 <h6 class="me-2">⚡{{ shareBuild.powerScore }}</h6>
             </div>
-            <div class="d-flex price-card-m justify-content-center align-items-center me-3">
-                <h6>Price: $</h6>
-                <h6>{{ shareBuild.price }}</h6>
+            <div class="d-flex price-card-m justify-content-center align-items-center mt-3">
+                <h6 class="me-2">Price:</h6>
+                <h6>${{ shareBuild.price }}</h6>
             </div>
           </div>
-          <div class="d-flex mt-3 justify-content-center">
-            <div class="power-card-m p-2 d-flex align-items-center ps-3 pe-3">
+          <div class="justify-content-center ms-4">
+            <div class="power-card-m d-flex flex-column p-3">
               <h5 class="me-2">Review Score</h5>
               <button class="btn btn-outline-light">Reviews</button>
-              <button @click="viewBuild()" class="btn btn-outline-light ms-3 me-3">Details</button>
-              <button class="btn btn-outline-success">Add to cart</button>
+              <button @click="viewBuild()" class="btn btn-outline-light mt-2">Details</button>
+              <button class="btn btn-outline-success mt-2">Add to cart</button>
             </div>
         </div>
     </div>
