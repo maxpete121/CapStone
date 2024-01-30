@@ -7,15 +7,15 @@
                 <h4 class="ms-1">${{ list.price }}</h4>
             </div>
             <span class="d-flex power-card ms-2 align-items-baseline">
-                <h4 class="">Power Score: ⚡</h4>
+                <h4 class="me-2">Power Score:</h4>
                 <h4>{{ list.powerScore }}</h4>
             </span>
         </div>
         <span class="d-flex mt-2">
-            <button class="btn btn-outline-dark me-2">Add to cart</button>
             <button @click="shareBuild()" v-if="list.isShared == false" class="btn btn-outline-dark">Share Build</button>
             <button @click="shareBuild()" v-if="list.isShared == true" class="btn btn-outline-dark">Make Private</button>
-            <button @click="viewBuild()" class="btn btn-outline-dark ms-2 me-2">Edit Build</button>
+            <button class="btn btn-outline-danger ms-2">Purchase</button>
+            <button @click="viewBuild()" class="btn btn-outline-dark ms-2 me-2">View Build</button>
             <button @click="deletePc(list.id)" class="btn btn-outline-dark"><i class="mdi mdi-delete"></i></button>
         </span>
     </div>
@@ -27,35 +27,31 @@ import { AppState } from '../AppState';
 import { computed, ref, onMounted } from 'vue';
 import { StockPart } from '../models/StockPart.js';
 import { PcList } from '../models/PcList';
-import {pcService} from '../services/PcService.js';
+import { pcService } from '../services/PcService.js';
 import { router } from '../router';
 import { partsService } from '../services/PartsService';
 export default {
-    props: {list: {type: PcList, required: true}},
+    props: { list: { type: PcList, required: true } },
     setup(props) {
-        async function deletePc(pcId){
-            if(window.confirm('Are you sure you want to delete this build?')){
+        async function deletePc(pcId) {
+            if (window.confirm('Are you sure you want to delete this build?')) {
                 await pcService.deletePc(pcId)
             }
         }
 
-        async function viewBuild(){
+        async function viewBuild() {
             await pcService.viewBuild(props.list.id)
-            router.push({name: 'About', params:{PcId: props.list.id}})
+            router.push({ name: 'About', params: { PcId: props.list.id } })
         }
 
-        async function shareBuild(){
-            if(props.list.isShared == false && window.confirm('This will allow users to see and review this build. Would you like to proceed?')){
-                await pcService.shareBuild(props.list.id, props.list)
-            }else if(props.list.isShared == true && window.confirm('Wold you like to make this build private?')){
-                await pcService.shareBuild(props.list.id, props.list)
-            }
+        async function shareBuild() {
+            await pcService.shareBuild(props.list.id, props.list)
         }
         return {
             deletePc,
             viewBuild,
             shareBuild
-            
+
         }
     }
 };
@@ -63,7 +59,7 @@ export default {
 
 
 <style lang="scss" scoped>
-.price-card{
+.price-card {
     background-color: whitesmoke;
     color: black;
     border-radius: 15px;
@@ -73,7 +69,8 @@ export default {
     outline: solid 2px purple;
     box-shadow: 3px 5px 3px rgba(0, 0, 0, 0.658);
 }
-.power-card{
+
+.power-card {
     background-color: whitesmoke;
     color: black;
     border-radius: 15px;
@@ -83,15 +80,17 @@ export default {
     outline: solid 2px purple;
     box-shadow: 3px 5px 3px rgba(0, 0, 0, 0.658);
 }
+
 img {
     height: 20vh;
     object-fit: contain;
     object-position: center;
 }
-.list-card{
+
+.list-card {
     outline: solid 2px purple;
     border-radius: 10px;
     padding: 15px;
     box-shadow: 5px 8px 5px rgba(0, 0, 0, 0.54);
-  }
+}
 </style>
