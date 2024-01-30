@@ -1,5 +1,5 @@
 <template>
-  <section class="container-fluid">
+  <section class="container-fluid mb-2">
     <section class="row justify-content-center mt-4">
       <div class="col-8 d-flex info-box p-2 rounded-2 justify-content-between">
         <div class="w-50">
@@ -18,12 +18,16 @@
       </div>
     </section>
     <section class="row mt-4 justify-content-center text-center">
-      <div class="col-5 rounded-2 me-2 m-1 info-box">
-        <h3 class="text-success">Top rated builds <i class="mdi mdi-star text-warning"></i><i class="mdi mdi-star text-warning"></i><i class="mdi mdi-star text-warning"></i></h3>
+      <div class="col-lg-5 col-8 rounded-2 me-lg-2 m-1 info-box">
+        <div class="sticky-top title-bg p-1">
+          <h3 class="text-success">Top rated builds <i class="mdi mdi-star text-warning"></i><i class="mdi mdi-star text-warning"></i><i class="mdi mdi-star text-warning"></i></h3>
+        </div>
         <div></div>
       </div>
-      <div class="col-4 rounded-2 ms-2 m-1 p-3 info-box text-center">
-        <h3 class="text-success">Recent Customer Builds <i class="mdi mdi-check-outline text-success"></i></h3>
+      <div class="col-lg-4 col-8 rounded-2 ms-lg-2 mt-3 mt-lg-1 pb-3 info-box-scroll text-center">
+        <div class="sticky-top title-bg p-1">
+          <h3 class="text-success">Recent Customer Builds <i class="mdi mdi-check-outline text-success"></i></h3>
+        </div>
         <div v-for="sharedBuild in sharedBuilds" class="mt-3 d-flex flex-column align-items-center">
           <HomeBuilds :shareBuild="sharedBuild"/>
         </div>
@@ -53,6 +57,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
+.title-bg{
+  backdrop-filter: blur(15px);
+}
 .place{
   margin-right: 130px;
   margin-top: 55px;
@@ -62,6 +70,14 @@ export default {
   background-color: #212529;
   color: white;
   box-shadow: 3px 7px 7px rgba(0, 0, 0, 0.588);
+}
+.info-box-scroll{
+  outline: solid 2px rgb(17, 114, 156);
+  background-color: #212529;
+  color: white;
+  box-shadow: 3px 7px 7px rgba(0, 0, 0, 0.588);
+  overflow-y: scroll;
+  height: 450px;
 }
 .top-img{
   height: 260px;

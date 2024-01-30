@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid mb-3">
     <div class="row justify-content-center mt-3">
       <div class="col-4 list-card text-center">
         <h3>{{ activePc.name }}</h3>
