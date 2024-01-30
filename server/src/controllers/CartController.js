@@ -11,6 +11,8 @@ export class CartController extends BaseController{
         this.router
         .get('/:accountId', this.getCartItems)
         .use(Auth0Provider.getAuthorizedUserInfo)
+        .post('', this.postCartItem)
+        .delete('/:pcId', this.deleteItem)
     }
 
     async getCartItems(request, response, next){
@@ -18,6 +20,29 @@ export class CartController extends BaseController{
             let accountId = request.params.accountId
             let items = await cartService.getCartItems(accountId)
             response.send(items)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async postCartItem(request, response, next){
+        try {
+            let userId = request.userInfo.id
+            let cartData = request.body
+            cartData.accountId = userId
+            let posted = await cartService.postCartItem(cartData, userId)
+            response.send(posted)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async deleteItem(request, response, next){
+        try {
+            let pcId = request.params.pcId
+            let userId = request.userInfo.id
+            let deleted = await cartService.deleteItem(pcId, userId)
+            response.send(deleted)
         } catch (error) {
             next(error)
         }
