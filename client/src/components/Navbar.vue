@@ -18,8 +18,8 @@
         </li>
       </ul>
       <!-- LOGIN COMPONENT HERE -->
-      <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-        aria-controls="offcanvasRight">Cart</button>
+      <button v-if="account.id" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+        aria-controls="offcanvasRight"  @click="getCartItems()">Cart</button>
       <div>
         <button class="btn text-light" @click="toggleTheme"><i class="mdi"
             :class="theme == 'light' ? 'mdi-weather-sunny' : 'mdi-weather-night'"></i></button>
@@ -29,29 +29,32 @@
   </nav>
   <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="offcanvasRightLabel">Offcanvas right</h5>
+      <h5 class="offcanvas-title" id="offcanvasRightLabel">Your Cart</h5>
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-      ...
+      <div v-for="cartItem in cartItems"></div>
     </div>
   </div>
 </template>
 
 <script>
-import { computed, onMounted, ref } from 'vue';
+import { computed, onMounted, ref, watch } from 'vue';
 import { loadState, saveState } from '../utils/Store.js';
 import Login from './Login.vue';
 import { AppState } from '../AppState';
+import {cartService} from '../services/CartService.js'
 export default {
   setup() {
 
     const theme = ref(loadState('theme') || 'light')
-
+    let accountId = computed(()=> AppState.account)
     onMounted(() => {
       document.documentElement.setAttribute('data-bs-theme', theme.value)
     })
-
+    async function getCartItems(){
+      await cartService.getCartItems(accountId.value.id)
+    }
     return {
       theme,
       toggleTheme() {
@@ -59,7 +62,9 @@ export default {
         document.documentElement.setAttribute('data-bs-theme', theme.value)
         saveState('theme', theme.value)
       },
-      account: computed(() => AppState.account)
+      account: computed(() => AppState.account),
+      cartItems: computed(()=> AppState.cartItems),
+      getCartItems
     }
   },
   components: { Login }
