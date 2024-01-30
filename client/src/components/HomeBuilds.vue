@@ -31,8 +31,13 @@
                   <label class="text-center my-2" for="review-body">Make a Review!</label>
                   <input v-model="reviewData.body" class="form-control" type="text" name="review-body"
                     id="create-review-body" required minlength="5" maxlength="150">
+                  <label for="review-rating" class="text-center my-2">Give the build a rating!</label>
+                  <select v-model="reviewData.rating" name="review-rating" id="review-rating" class="form-control">
+                    <option value="" selected disabled>Pick a rating for this build</option>
+                    <option class="text-capitalize my-2" v-for="rating in ratings" :value="rating">{{ rating }}</option>
+                  </select>
                   <div class="mb-3 d-flex align-items-end justify-content-center">
-                    <button class="btn btn-primary">Create Reviews <i class="mdi mdi-plus"></i></button>
+                    <button class="btn btn-primary my-2">Create Reviews <i class="mdi mdi-plus"></i></button>
                   </div>
                 </form>
               </div>
@@ -72,6 +77,7 @@ export default {
     return {
       viewBuild,
       reviewData,
+      ratings: [1, 2, 3, 4, 5],
       account: computed(() => AppState.account),
       async createReview() {
         try {
