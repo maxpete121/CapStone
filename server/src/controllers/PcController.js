@@ -11,6 +11,7 @@ export class PcController extends BaseController {
         this.router
             .get('/:PcId', this.getOnePc)
             .get('/shared/true', this.getSharedBuilds)
+            .get('/:PcId/reviews', this.getPcReviews)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.postPc)
             .delete('/:PcId', this.deletePc)

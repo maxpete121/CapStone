@@ -19,7 +19,7 @@
     <div class="justify-content-center ms-4">
       <div class="price-card-m d-flex flex-column p-3">
 
-        <button type="button" class="btn btn-outline-success button-m" data-bs-toggle="modal"
+        <button @click="getPcReviews()" type="button" class="btn btn-outline-success button-m" data-bs-toggle="modal"
           data-bs-target="#exampleModal">
           Reviews
         </button>
@@ -48,8 +48,8 @@
               <section class="row">
                 <div class="text-center border border-light shadow justify-content-center my-2" v-for="review in reviews"
                   :key="review.id">
-                  <p>{{ review.body }}</p>
-                  <span>{{ review.rating }}</span>
+                  <p>{{ reviews.body }}</p>
+                  <span>{{ reviews.rating }}</span>
                   <!-- <button v-if="review.creatorId == account.id" class="btn btn-danger"><i
                       class="mdi mdi-delete"></i>Delete?</button> -->
                 </div>
@@ -75,28 +75,36 @@ import { AuthService } from '../services/AuthService'
 import { PcList } from '../models/PcList'
 import { pcService } from '../services/PcService'
 import { router } from '../router';
-import Pop from '../utils/Pop'
-import { useRoute } from 'vue-router'
-import { reviewsService } from '../services/ReviewsService'
+import Pop from '../utils/Pop';
+import { useRoute } from 'vue-router';
+import { reviewsService } from '../services/ReviewsService.js';
 export default {
   props: { shareBuild: { type: PcList, required: true } },
   setup(props) {
     const reviewData = ref({})
     const route = useRoute()
-    watchEffect(() => {
-      route.params.PcId
-      getPcReviews()
-    })
+    // watchEffect(() => {
+    //   route.params.PcId
+    //   getPcReviews()
+    // })
     async function viewBuild() {
       await pcService.viewBuild(props.shareBuild.id)
       router.push({ name: 'ViewBuild', params: { PcId: props.shareBuild.id } })
     }
+
     async function getPcReviews() {
+      await reviewsService.getPcReviews(props.shareBuild.id)
+    }
+
+    async function createReview() {
       try {
-        await reviewsService.getPcReviews(props.shareBuild.id)
+        let pcID = route.params.PcId
+        await reviewsService.createReview(reviewData.value, pcID)
+        Pop.success('Review Posted!')
       } catch (error) {
         Pop.error(error)
       }
+
     }
     return {
       viewBuild,
@@ -104,20 +112,14 @@ export default {
       ratings: [1, 2, 3, 4, 5],
       account: computed(() => AppState.account),
       reviews: computed(() => AppState.reviews),
-      async createReview() {
-        try {
-          reviewData.value.PcId = route.params.PcId
-          await reviewsService.createReview(reviewData.value)
-          Pop.success('Review Posted!')
-        } catch (error) {
-          Pop.error(error)
-        }
-      }
+      createReview,
+      getPcReviews
+
     }
   }
 }
 </script>
-  
+
 <style lang="scss" scoped>
 .button-m {
   box-shadow: 0px 5px 5px black;
