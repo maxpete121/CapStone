@@ -1,16 +1,16 @@
 <template>
   <div class="list-card-m d-flex w-75 justify-content-center">
     <div class="price-card-m p-2 me-4 d-flex flex-column justify-content-center">
-      <div class="">
+      <div class="price-card-m">
         <h5 class="fst-italic text-success">{{ shareBuild.name }}</h5>
       </div>
-      <div class="d-flex price-card-m justify-content-between align-items-center mt-2">
-        <h6 class="ms-2">Power Score: </h6>
-        <h6 class="me-2">⚡{{ shareBuild.powerScore }}</h6>
+      <div class="d-flex price-card-m justify-content-between align-items-center mt-3">
+        <h6 class="ms-2 text-success">Power Score: </h6>
+        <h6 class="me-2 text-success">⚡{{ shareBuild.powerScore }}</h6>
       </div>
       <div class="d-flex price-card-m justify-content-center align-items-center mt-3">
-        <h6 class="me-2">Price:</h6>
-        <h6>${{ shareBuild.price }}</h6>
+        <h6 class="me-2 text-success">Price:</h6>
+        <h6 class="text-warning">${{ shareBuild.price }}</h6>
       </div>
     </div>
     <div class="justify-content-center ms-4">
