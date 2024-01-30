@@ -8,7 +8,6 @@ class ReviewsService {
         const response = await api.post('api/reviews', reviewData)
         console.log('baking review', response.data)
         const newReview = new Review(response.data)
-
         AppState.reviews.push(newReview)
     }
     async getPcReviews(PcId) {

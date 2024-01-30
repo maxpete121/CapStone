@@ -45,6 +45,15 @@
                   </div>
                 </form>
               </div>
+              <section class="row">
+                <div class="text-center border border-light shadow justify-content-center my-2" v-for="review in reviews"
+                  :key="review.id">
+                  <p>{{ review.body }}</p>
+                  <span>{{ review.rating }}</span>
+                  <!-- <button v-if="review.creatorId == account.id" class="btn btn-danger"><i
+                      class="mdi mdi-delete"></i>Delete?</button> -->
+                </div>
+              </section>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary">Save changes</button>
@@ -84,7 +93,7 @@ export default {
     }
     async function getPcReviews() {
       try {
-        await reviewsService.getPcReviews(route.params.PcId)
+        await reviewsService.getPcReviews(props.shareBuild.id)
       } catch (error) {
         Pop.error(error)
       }
@@ -94,6 +103,7 @@ export default {
       reviewData,
       ratings: [1, 2, 3, 4, 5],
       account: computed(() => AppState.account),
+      reviews: computed(() => AppState.reviews),
       async createReview() {
         try {
           reviewData.value.PcId = route.params.PcId
