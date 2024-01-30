@@ -19,11 +19,11 @@
     </section>
     <section class="row mt-4 justify-content-center text-center">
       <div class="col-5 rounded-2 me-2 m-1 info-box">
-        <h3>Top rated builds <i class="mdi mdi-star"></i><i class="mdi mdi-star"></i><i class="mdi mdi-star"></i></h3>
+        <h3 class="text-success">Top rated builds <i class="mdi mdi-star text-warning"></i><i class="mdi mdi-star text-warning"></i><i class="mdi mdi-star text-warning"></i></h3>
         <div></div>
       </div>
       <div class="col-4 rounded-2 ms-2 m-1 p-3 info-box text-center">
-        <h3>Recent Customer Builds <i class="mdi mdi-check-outline text-success"></i></h3>
+        <h3 class="text-success">Recent Customer Builds <i class="mdi mdi-check-outline text-success"></i></h3>
         <div v-for="sharedBuild in sharedBuilds" class="mt-3 d-flex flex-column align-items-center">
           <HomeBuilds :shareBuild="sharedBuild"/>
         </div>

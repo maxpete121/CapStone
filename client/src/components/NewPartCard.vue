@@ -19,13 +19,13 @@
           <h6>{{ activePart.part.company }}</h6>
         </span>
       </span>
-      <span class="power d-flex">
-        <h6 class="">Power: ⚡</h6>
+      <span class="power d-flex align-items-baseline p-2">
+        <h6 class="mt-1">Power: ⚡</h6>
         <h6>{{ activePart.part.powerScore }}</h6>
       </span>
     </div>
     <div class="ms-3">
-      <button v-if="account.id == activePart.accountId" @click="deletePart()" class="btn btn-outline-dark"><i class="mdi mdi-delete"></i></button>
+      <button v-if="account.id == activePart.accountId" @click="deletePart()" class="btn btn-outline-danger"><i class="mdi mdi-delete"></i></button>
     </div>
   </div>
   </template>
@@ -62,9 +62,8 @@ import { pcService } from '../services/PcService'
     margin-top: 30px;
     background-color: black;
     color: white;
-    padding: 5px;
     border-radius: 10px;
-    outline: solid 2px purple;
+    outline: solid 2px #0cbc87;
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.562);
   }
   .product-img{
@@ -72,7 +71,9 @@ import { pcService } from '../services/PcService'
     width: 70px;
   }
   .list-card{
-    outline: solid 2px purple;
+    outline: solid 2px rgb(13, 155, 176);
+    background-color: #212529;
+    color: #0cbc87;
     border-radius: 10px;
     padding: 15px;
     box-shadow: 5px 8px 5px rgba(0, 0, 0, 0.54);

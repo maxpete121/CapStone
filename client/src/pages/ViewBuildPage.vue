@@ -63,28 +63,28 @@ export default {
 
 <style lang="scss" scoped>
 .list-card-d{
-    outline: solid 2px purple;
+    outline: solid 2px rgb(13, 155, 176);
     border-radius: 10px;
     padding: 15px;
-    background-color: black;
-    color: #198754;
-    box-shadow: 0px 5px 6px rgba(255, 255, 255, 0.488);
+    background-color: #212529;
+    color: #0cbc87;
+    box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.488);
   }
 
   .power-card-d{
     background-color: rgba(72, 72, 72, 0.393);
-    color: #198754;
+    color: #0cbc87;
     border-radius: 15px;
-    outline: solid 2px purple;
+    outline: solid 2px #0cbc87;
     box-shadow: 3px 5px 3px rgba(0, 0, 0, 0.658);
 }
 
 .title-card-d{
-    background-color: black;
-    color: #198754;
+    background-color: #212529;
+    color: #0cbc87;
     border-top-right-radius: 15px;
     border-top-left-radius: 15px;
-    outline: solid 2px purple;
-    box-shadow: 3px 5px 3px rgba(0, 0, 0, 0.658);
+    outline: solid 2px rgb(13, 155, 176);
+    box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.658);
 }
 </style>

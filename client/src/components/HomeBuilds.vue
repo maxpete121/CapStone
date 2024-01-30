@@ -107,7 +107,7 @@ export default {
   padding-top: 5px;
   padding-left: 7px;
   padding-right: 7px;
-  outline: solid 2px #198754;
+  outline: solid 2px #0cbc87;
   box-shadow: 0px 9px 9px rgba(0, 0, 0, 0.729);
 }
 
@@ -121,7 +121,7 @@ export default {
 }
 
 .list-card-m {
-  outline: solid 2px #198754;;
+  outline: solid 2px #0cbc87;
   border-radius: 10px;
   padding: 15px;
   background-color: rgb(0, 0, 0);

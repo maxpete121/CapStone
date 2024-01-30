@@ -4,19 +4,19 @@
         <div class="d-flex mt-2 mb-2">
             <div class="d-flex price-card me-2 align-items-baseline">
                 <h4>Price: </h4>
-                <h4 class="ms-1">${{ list.price }}</h4>
+                <h4 class="ms-2 text-warning">${{ list.price }}</h4>
             </div>
             <span class="d-flex power-card ms-2 align-items-baseline">
                 <h4 class="me-2">Power Score:</h4>
-                <h4>{{ list.powerScore }}</h4>
+                <h4>⚡{{ list.powerScore }}</h4>
             </span>
         </div>
         <span class="d-flex mt-2">
-            <button @click="shareBuild()" v-if="list.isShared == false" class="btn btn-outline-dark">Share Build</button>
-            <button @click="shareBuild()" v-if="list.isShared == true" class="btn btn-outline-dark">Make Private</button>
-            <button class="btn btn-outline-danger ms-2">Purchase</button>
-            <button @click="viewBuild()" class="btn btn-outline-dark ms-2 me-2">View Build</button>
-            <button @click="deletePc(list.id)" class="btn btn-outline-dark"><i class="mdi mdi-delete"></i></button>
+            <button @click="shareBuild()" v-if="list.isShared == false" class="btn btn-outline-success">Share Build</button>
+            <button @click="shareBuild()" v-if="list.isShared == true" class="btn btn-outline-success">Make Private</button>
+            <button class="btn btn-outline-success ms-2">Purchase</button>
+            <button @click="viewBuild()" class="btn btn-outline-success ms-2 me-2">View Build</button>
+            <button @click="deletePc(list.id)" class="btn btn-outline-success"><i class="mdi mdi-delete"></i></button>
         </span>
     </div>
 </template>
@@ -60,24 +60,24 @@ export default {
 
 <style lang="scss" scoped>
 .price-card {
-    background-color: whitesmoke;
-    color: black;
+    background-color: black;
+    color: #0cbc87;
     border-radius: 15px;
     padding-top: 5px;
     padding-left: 7px;
     padding-right: 7px;
-    outline: solid 2px purple;
+    outline: solid 2px #0cbc87;
     box-shadow: 3px 5px 3px rgba(0, 0, 0, 0.658);
 }
 
 .power-card {
-    background-color: whitesmoke;
-    color: black;
+    background-color: black;
+    color: #0cbc87;
     border-radius: 15px;
     padding-top: 5px;
     padding-left: 7px;
     padding-right: 7px;
-    outline: solid 2px purple;
+    outline: solid 2px #0cbc87;;
     box-shadow: 3px 5px 3px rgba(0, 0, 0, 0.658);
 }
 
@@ -87,10 +87,4 @@ img {
     object-position: center;
 }
 
-.list-card {
-    outline: solid 2px purple;
-    border-radius: 10px;
-    padding: 15px;
-    box-shadow: 5px 8px 5px rgba(0, 0, 0, 0.54);
-}
 </style>

@@ -178,7 +178,7 @@ export default {
     padding-top: 5px;
     padding-left: 7px;
     padding-right: 7px;
-    outline: solid 2px purple;
+    outline: solid 2px rgb(13, 155, 176);
     box-shadow: 3px 5px 3px rgba(0, 0, 0, 0.658);
 }
 .power-card{
@@ -188,12 +188,14 @@ export default {
     padding-top: 5px;
     padding-left: 7px;
     padding-right: 7px;
-    outline: solid 2px purple;
+    outline: solid 2px rgb(13, 155, 176);
     box-shadow: 3px 5px 3px rgba(0, 0, 0, 0.658);
 }
 .list-card{
-    outline: solid 2px purple;
+    outline: solid 2px rgb(13, 155, 176);
     border-radius: 10px;
+    background-color: #212529;
+    color: #0cbc87;
     padding: 15px;
     box-shadow: 5px 8px 5px rgba(0, 0, 0, 0.54);
   }
