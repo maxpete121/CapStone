@@ -16,7 +16,7 @@
     <div class="justify-content-center ms-4">
       <div class="power-card-m d-flex flex-column p-3">
         <h5 class="me-2">Review Score</h5>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
           Reviews
         </button>
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -43,7 +43,7 @@
             </div>
           </div>
         </div>
-        <button @click="viewBuild()" class="btn btn-outline-light mt-2">Details</button>
+        <button @click="viewBuild()" class="btn btn-outline-success mt-2">Details</button>
         <button class="btn btn-outline-success mt-2">Add to cart</button>
       </div>
     </div>
