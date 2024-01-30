@@ -22,4 +22,16 @@ export class CartController extends BaseController{
             next(error)
         }
     }
+
+    async postCartItem(request, response, next){
+        try {
+            let userId = request.userInfo.id
+            let cartData = request.body
+            cartData.accountId = userId
+            let posted = await cartService.postCartItem(cartData, userId)
+            response.send(posted)
+        } catch (error) {
+            next(error)
+        }
+    }
 }
