@@ -27,7 +27,14 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                this will be a review, maybe a v-for?
+                <form v-if="account.id" class="row" @submit.prevent="createReview()">
+                  <label class="text-center my-2" for="review-body">Make a Review!</label>
+                  <input v-model="reviewsData.body" class="form-control" type="text" name="review-body"
+                    id="create-review-body" required minlength="5" maxlength="150">
+                  <div class="mb-3 d-flex align-items-end justify-content-center">
+                    <button class="btn btn-primary">Create Reviews <i class="mdi mdi-plus"></i></button>
+                  </div>
+                </form>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -50,19 +57,31 @@ import { AuthService } from '../services/AuthService'
 import { PcList } from '../models/PcList'
 import { pcService } from '../services/PcService'
 import { router } from '../router';
+import Pop from '../utils/Pop'
+import { useRoute } from 'vue-router'
+import { reviewsService } from '../services/ReviewsService'
 export default {
   props: { shareBuild: { type: PcList, required: true } },
   setup(props) {
+    const reviewData = ref({})
+    const route = useRoute()
     async function viewBuild() {
       await pcService.viewBuild(props.shareBuild.id)
       router.push({ name: 'ViewBuild', params: { PcId: props.shareBuild.id } })
     }
-    async function reviewBuild() {
-      await 
-        }
     return {
       viewBuild,
-
+      reviewData,
+      account: computed(() => AppState.account),
+      async createReview() {
+        try {
+          reviewData.value.PcId = route.params.PcId
+          await reviewsService.createReview(reviewData.value)
+          Pop.success('Review Posted!')
+        } catch (error) {
+          Pop.error(error)
+        }
+      }
     }
   }
 }
