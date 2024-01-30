@@ -27,14 +27,14 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                <form  class="row" @submit.prevent="createReview()">
+                <!-- <form class="row" @submit.prevent="createReview()">
                   <label class="text-center my-2" for="review-body">Make a Review!</label>
                   <input v-model="reviewsData.body" class="form-control" type="text" name="review-body"
                     id="create-review-body" required minlength="5" maxlength="150">
                   <div class="mb-3 d-flex align-items-end justify-content-center">
                     <button class="btn btn-primary">Create Reviews <i class="mdi mdi-plus"></i></button>
                   </div>
-                </form>
+                </form> -->
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -57,19 +57,35 @@ import { AuthService } from '../services/AuthService'
 import { PcList } from '../models/PcList'
 import { pcService } from '../services/PcService'
 import { router } from '../router';
-  export default {
-    props: {shareBuild: {type: PcList, required: true}},
-    setup(props) {
-        async function viewBuild(){
-            await pcService.viewBuild(props.shareBuild.id)
-            router.push({name: 'ViewBuild', params:{PcId: props.shareBuild.id}})
+import Pop from '../utils/Pop'
+import { useRoute } from 'vue-router'
+import { reviewsService } from '../services/ReviewsService'
+export default {
+  props: { shareBuild: { type: PcList, required: true } },
+  setup(props) {
+    const reviewData = ref({})
+    const route = useRoute()
+    async function viewBuild() {
+      await pcService.viewBuild(props.shareBuild.id)
+      router.push({ name: 'ViewBuild', params: { PcId: props.shareBuild.id } })
+    }
+    return {
+      viewBuild,
+      reviewData,
+      account: computed(() => AppState.account),
+      async createReview() {
+        try {
+          reviewData.value.PcId = route.params.PcId
+          await reviewsService.createReview(reviewData.value)
+          Pop.success('Review Posted!')
+        } catch (error) {
+          Pop.error(error)
         }
-      return {
-        viewBuild
       }
     }
   }
-  </script>
+}
+</script>
   
 <style lang="scss" scoped>
 .price-card-m {
