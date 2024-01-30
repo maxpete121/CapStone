@@ -53,24 +53,24 @@
             </span>
           </div>
         </section>
-        <section v-else class="p-1 justify-content-center">
-          <div class="d-flex flex-column align-items-center">
+        <section v-else class="p-1 justify-content-center list-card mt-3">
+          <div class="d-flex flex-column align-items-center mb-2">
             <h4>Part type</h4>
             <span>
-              <button v-if="!displayCpu" class="btn btn-outline-dark" @click="getParts('cpu')">Cpu's</button>
-              <button v-if="!displayGpu" class="btn btn-outline-dark" @click="getParts('gpu')">Gpu's</button>
-              <button v-if="!displayMotherboard" class="btn btn-outline-dark" @click="getParts('motherboard')">Motherboards</button>
-              <button v-if="!displayRam" class="btn btn-outline-dark" @click="getParts('ram')">Ram</button>
-              <button class="btn btn-outline-dark" @click="getParts('storage')">Storage</button>
+              <button v-if="!displayCpu" class="btn btn-outline-success" @click="getParts('cpu')">Cpu's</button>
+              <button v-if="!displayGpu" class="btn btn-outline-success ms-2" @click="getParts('gpu')">Gpu's</button>
+              <button v-if="!displayMotherboard" class="btn btn-outline-success me-2 ms-2" @click="getParts('motherboard')">Motherboards</button>
+              <button v-if="!displayRam" class="btn btn-outline-success me-2" @click="getParts('ram')">Ram</button>
+              <button class="btn btn-outline-success" @click="getParts('storage')">Storage</button>
             </span>
           </div>
           <div class="d-flex flex-column align-items-center">
             <span>
-              <button v-if="!displayCpuCool" class="col btn btn-outline-dark" @click="getParts('cpuCooler')">Cpu Coolers</button>
-              <button v-if="!displayPower" class="col btn btn-outline-dark" @click="getParts('powerSupply')">Power
+              <button v-if="!displayCpuCool" class="col btn btn-outline-success" @click="getParts('cpuCooler')">Cpu Coolers</button>
+              <button v-if="!displayPower" class="col btn btn-outline-success ms-2" @click="getParts('powerSupply')">Power
                 Supplies</button>
-              <button v-if="!displayCases" class="col btn btn-outline-dark" @click="getParts('case')">Case's</button>
-              <button class="col btn btn-outline-dark" @click="getParts('caseFan')">Case Fan's</button>
+              <button v-if="!displayCases" class="col btn btn-outline-success me-2 ms-2" @click="getParts('case')">Case's</button>
+              <button class="col btn btn-outline-success" @click="getParts('caseFan')">Case Fan's</button>
             </span>
           </div>
         </section>

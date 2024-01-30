@@ -45,7 +45,11 @@ export default {
         }
 
         async function shareBuild() {
-            await pcService.shareBuild(props.list.id, props.list)
+            if(props.list.isShared == false && window.confirm('Are you sure you want to share this build with others?')){
+                await pcService.shareBuild(props.list.id, props.list)
+            }else if(props.list.isShared == true && window.confirm('Are you sure you want to make this build private')){
+                await pcService.shareBuild(props.list.id, props.list)
+            }
         }
         return {
             deletePc,
