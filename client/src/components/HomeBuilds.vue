@@ -109,7 +109,7 @@ export default {
   padding-top: 5px;
   padding-left: 7px;
   padding-right: 7px;
-  outline: solid 2px #198754;
+  outline: solid 2px #0cbc87;
   box-shadow: 0px 9px 9px rgba(0, 0, 0, 0.729);
 }
 
@@ -130,4 +130,5 @@ export default {
   background-color: rgb(0, 0, 0);
   color: black;
   box-shadow: 2px 5px 6px rgba(0, 0, 0, 0.599);
-}</style>
+}
+</style>

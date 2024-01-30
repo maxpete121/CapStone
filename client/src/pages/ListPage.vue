@@ -1,7 +1,7 @@
 <template>
     <section class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-lg-4 col-10 bg-light d-flex flex-column align-items-center list-card mt-4">
+            <div class="col-lg-4 col-10 d-flex flex-column align-items-center list-card-l mt-4">
                 <span class="d-flex">
                     <h3 class="me-2">Hello</h3>
                     <h3>{{ account.name }}</h3>
@@ -15,14 +15,14 @@
                         <label for="">New Build Name</label>
                         <input class="form-control" v-model="listData.name" type="text" required>
                         <span>
-                            <button class="btn btn-outline-dark mt-2">Create New Build</button>
+                            <button class="btn btn-outline-success mt-2">Create New Build</button>
                         </span>
                     </form>
                 </span>
             </div>
         </div>
         <div class="row flex-column align-items-center">
-            <div class="col-4 list-card mt-3" v-for="list in lists">
+            <div class="col-4 list-card-l mt-3" v-for="list in lists">
                 <PcListCard :list="list"/>
             </div>
         </div>
@@ -67,10 +67,12 @@
   </script>
   
   <style scoped>
-  .list-card{
-    outline: solid 2px purple;
+  .list-card-l{
+    outline: solid 2px rgb(13, 155, 176);
     border-radius: 10px;
     padding: 15px;
+    color: #0cbc87;
+    background-color: #212529;
     box-shadow: 5px 8px 5px rgba(0, 0, 0, 0.54);
   }
   img {

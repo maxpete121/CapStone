@@ -42,14 +42,14 @@ export default {
 
 <style lang="scss" scoped>
 .list-card{
-    outline: solid 2px purple;
+    outline: solid 2px #0cbc87;
     border-radius: 10px;
     padding: 15px;
     background-color: white;
     box-shadow: 5px 8px 5px rgba(0, 0, 0, 0.54);
   }
   .list-card:hover{
-    outline: solid 2px purple;
+    outline: solid 2px #0cbc87;
     border-radius: 10px;
     padding: 15px;
     box-shadow: 5px 8px 5px rgba(0, 0, 0, 0.54);
@@ -59,11 +59,11 @@ export default {
   }
 
   .spec-card{
-    background-color: whitesmoke;
-    color: black;
+    background-color: #212529;
+    color: #0cbc87;
     border-radius: 15px;
     padding: 10px;
-    outline: solid 2px purple;
+    outline: solid 2px #0cbc87;
     box-shadow: 3px 5px 3px rgba(0, 0, 0, 0.658);
 }
 img {
