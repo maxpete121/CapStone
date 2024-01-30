@@ -23,7 +23,7 @@
         <div></div>
       </div>
       <div class="col-4 rounded-2 ms-2 m-1 p-3 info-box text-center">
-        <h3>Recent Customer Builds <i class="mdi mdi-check-outline"></i></h3>
+        <h3>Recent Customer Builds <i class="mdi mdi-check-outline text-success"></i></h3>
         <div v-for="sharedBuild in sharedBuilds" class="mt-3 d-flex flex-column align-items-center">
           <HomeBuilds :shareBuild="sharedBuild"/>
         </div>
