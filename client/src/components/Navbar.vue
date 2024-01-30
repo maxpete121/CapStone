@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-sm px-3 nav-edit">
     <router-link v-if="account.id" class="navbar-brand d-flex" :to="{ name: 'Home' }">
-      <div class="d-flex flex-column align-items-center">
+      <div class="d-flex flex-column align-items-center text-light">
         <h2>💻PC Build Bois</h2>
       </div>
     </router-link>
@@ -12,7 +12,7 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto">
         <li>
-          <router-link :to="{ name: 'Lists' }" class="btn text-dark lighten-30 selectable text-uppercase">
+          <router-link :to="{ name: 'Lists' }" class="btn text-light lighten-30 selectable text-uppercase">
             My Builds
           </router-link>
         </li>
@@ -68,8 +68,8 @@ export default {
 
 <style scoped>
 .nav-edit {
-  border-bottom: solid 2px purple;
-  background-color: rgb(255, 255, 255);
+  border-bottom: solid 2px rgb(17, 114, 156);
+  background-color: #212529;
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.453);
 }
 

@@ -14,7 +14,7 @@
       </div>
     </div>
     <div class="justify-content-center ms-4">
-      <div class="power-card-m d-flex flex-column p-3">
+      <div class="price-card-m d-flex flex-column p-3">
         <h5 class="me-2">Review Score</h5>
         <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
           Reviews
@@ -89,13 +89,13 @@ export default {
   
 <style lang="scss" scoped>
 .price-card-m {
-  background-color: black;
+  background-color: #212529;
   color: white;
   border-radius: 15px;
   padding-top: 5px;
   padding-left: 7px;
   padding-right: 7px;
-  outline: solid 2px purple;
+  outline: solid 2px #198754;
   box-shadow: 3px 5px 3px rgba(0, 0, 0, 0.658);
 }
 
@@ -104,16 +104,16 @@ export default {
   color: white;
   border-radius: 15px;
   padding-top: 5px;
-  outline: solid 2px purple;
+  outline: solid 2px rgb(17, 114, 156);
   box-shadow: 3px 5px 3px rgba(0, 0, 0, 0.658);
 }
 
 .list-card-m {
-  outline: solid 2px purple;
+  outline: solid 2px #198754;;
   border-radius: 10px;
   padding: 15px;
-  background-color: whitesmoke;
+  background-color: rgb(0, 0, 0);
   color: black;
-  box-shadow: 0px 5px 6px rgba(255, 255, 255, 0.488);
+  box-shadow: 2px 5px 6px rgba(0, 0, 0, 0.599);
 }
 </style>
