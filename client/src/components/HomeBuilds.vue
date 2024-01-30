@@ -27,7 +27,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                <form v-if="account.id" class="row" @submit.prevent="createReview()">
+                <form  class="row" @submit.prevent="createReview()">
                   <label class="text-center my-2" for="review-body">Make a Review!</label>
                   <input v-model="reviewsData.body" class="form-control" type="text" name="review-body"
                     id="create-review-body" required minlength="5" maxlength="150">
