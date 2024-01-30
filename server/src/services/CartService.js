@@ -10,10 +10,24 @@ class CartService{
     }
 
     async postCartItem(postData, userId){
-        let newItem = await dbContext.CartItems.create(postData)
-        await newItem.populate('account', 'name picture')
-        await newItem.populate('pc')
-        return newItem
+        if(userId){
+            let newItem = await dbContext.CartItems.create(postData)
+            await newItem.populate('account', 'name picture')
+            await newItem.populate('pc')
+            return newItem
+        }else{
+            throw Error('No ID Found')
+        }
+    }
+
+    async deleteItem(pcId, userId){
+        let found = await dbContext.CartItems.findById(pcId)
+        if(userId == found.accountId){
+            await found.deleteOne()
+            return 'Deleted'
+        }else{
+            throw Error('Unauthorized')
+        }
     }
 }
 
