@@ -27,14 +27,14 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                <!-- <form class="row" @submit.prevent="createReview()">
+                <form v-if="account.id" class="row" @submit.prevent="createReview()">
                   <label class="text-center my-2" for="review-body">Make a Review!</label>
-                  <input v-model="reviewsData.body" class="form-control" type="text" name="review-body"
+                  <input v-model="reviewData.body" class="form-control" type="text" name="review-body"
                     id="create-review-body" required minlength="5" maxlength="150">
                   <div class="mb-3 d-flex align-items-end justify-content-center">
                     <button class="btn btn-primary">Create Reviews <i class="mdi mdi-plus"></i></button>
                   </div>
-                </form> -->
+                </form>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
