@@ -25,7 +25,7 @@
       </span>
     </div>
     <div class="ms-3">
-      <button @click="deletePart()" class="btn btn-outline-dark"><i class="mdi mdi-delete"></i></button>
+      <button v-if="account.id == activePart.accountId" @click="deletePart()" class="btn btn-outline-dark"><i class="mdi mdi-delete"></i></button>
     </div>
   </div>
   </template>
@@ -49,6 +49,7 @@ import { pcService } from '../services/PcService'
       }
       return {
         deletePart,
+        account: computed(()=> AppState.account)
       }
     }
   }
