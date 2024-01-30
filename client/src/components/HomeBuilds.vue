@@ -60,7 +60,7 @@
 </template>
   
 <script>
-import { computed, ref } from 'vue'
+import { computed, ref, watchEffect } from 'vue'
 import { AppState } from '../AppState'
 import { AuthService } from '../services/AuthService'
 import { PcList } from '../models/PcList'
@@ -74,9 +74,20 @@ export default {
   setup(props) {
     const reviewData = ref({})
     const route = useRoute()
+    watchEffect(() => {
+      route.params.PcId
+      getPcReviews()
+    })
     async function viewBuild() {
       await pcService.viewBuild(props.shareBuild.id)
       router.push({ name: 'ViewBuild', params: { PcId: props.shareBuild.id } })
+    }
+    async function getPcReviews() {
+      try {
+        await reviewsService.getPcReviews(route.params.PcId)
+      } catch (error) {
+        Pop.error(error)
+      }
     }
     return {
       viewBuild,

@@ -20,7 +20,4 @@ export class ReviewsController extends BaseController {
             next(error)
         }
     }
-    async getReviews(PcId) {
-        const reviews = await dbContext.Reviews.findById({ PcId: PcId }).populate('creator', 'name picture')
-    }
 }
