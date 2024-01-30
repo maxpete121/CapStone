@@ -51,7 +51,7 @@
 </template>
   
 <script>
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { AppState } from '../AppState'
 import { AuthService } from '../services/AuthService'
 import { PcList } from '../models/PcList'
