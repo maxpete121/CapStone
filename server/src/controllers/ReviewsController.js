@@ -1,6 +1,7 @@
 import { Auth0Provider } from "@bcwdev/auth0provider";
 import BaseController from "../utils/BaseController";
 import { reviewsService } from "../services/ReviewsService";
+import { dbContext } from "../db/DbContext.js";
 
 export class ReviewsController extends BaseController {
     constructor() {
@@ -18,5 +19,8 @@ export class ReviewsController extends BaseController {
         } catch (error) {
             next(error)
         }
+    }
+    async getReviews(PcId) {
+        const reviews = await dbContext.Reviews.findById({ PcId: PcId }).populate('creator', 'name picture')
     }
 }

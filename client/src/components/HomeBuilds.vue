@@ -18,8 +18,9 @@
     </div>
     <div class="justify-content-center ms-4">
       <div class="price-card-m d-flex flex-column p-3">
-        
-        <button type="button" class="btn btn-outline-success button-m" data-bs-toggle="modal" data-bs-target="#exampleModal">
+
+        <button type="button" class="btn btn-outline-success button-m" data-bs-toggle="modal"
+          data-bs-target="#exampleModal">
           Reviews
         </button>
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -97,9 +98,10 @@ export default {
 </script>
   
 <style lang="scss" scoped>
-.button-m{
+.button-m {
   box-shadow: 0px 5px 5px black;
 }
+
 .price-card-m {
   background-color: #212529;
   color: white;
@@ -121,7 +123,8 @@ export default {
 }
 
 .list-card-m {
-  outline: solid 2px #0cbc87;
+  outline: solid 2px #198754;
+  ;
   border-radius: 10px;
   padding: 15px;
   background-color: rgb(0, 0, 0);
