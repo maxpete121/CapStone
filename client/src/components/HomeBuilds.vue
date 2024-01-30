@@ -34,10 +34,10 @@
                   <label for="review-rating" class="text-center my-2">Give the build a rating!</label>
                   <select v-model="reviewData.rating" name="review-rating" id="review-rating" class="form-control">
                     <option value="" selected disabled>Pick a rating for this build</option>
-                    <option class="text-capitalize" v-for="rating in ratings" :value="rating">{{ rating }}</option>
+                    <option class="text-capitalize my-2" v-for="rating in ratings" :value="rating">{{ rating }}</option>
                   </select>
                   <div class="mb-3 d-flex align-items-end justify-content-center">
-                    <button class="btn btn-primary">Create Reviews <i class="mdi mdi-plus"></i></button>
+                    <button class="btn btn-primary my-2">Create Reviews <i class="mdi mdi-plus"></i></button>
                   </div>
                 </form>
               </div>
