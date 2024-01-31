@@ -19,15 +19,15 @@
     <div class="justify-content-center ms-4">
       <div class="price-card-m d-flex flex-column p-3">
         <button @click="addItem()" class="btn btn-outline-success button-m">Add to cart</button>
-        <button @click="getPcReviews()" type="button" class="btn btn-outline-success button-m mt-4" data-bs-toggle="modal"
-          data-bs-target="#exampleModal">
+        <button @click="getPcReviews()" class="btn btn-outline-success button-m mt-4" data-bs-toggle="modal"
+          :data-bs-target="target">
           Reviews
         </button>
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" :id="catchId" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">{{ shareBuild.name }}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
@@ -96,6 +96,7 @@ export default {
 
     async function createReview() {
       try {
+        // reviewData.value.pcId = props.shareBuild.id
         await reviewsService.createReview(reviewData.value, props.shareBuild.id)
         Pop.success('Review Posted!')
       } catch (error) {
@@ -118,6 +119,16 @@ export default {
       createReview,
       getPcReviews,
       addItem,
+      target: computed(()=>{
+        let pc = "#mod"
+        pc += `${props.shareBuild.id}`
+        return pc
+      }),
+      catchId: computed(()=>{
+        let pc = "mod"
+        pc += `${props.shareBuild.id}`
+        return pc
+      })
 
     }
   },

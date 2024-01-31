@@ -81,7 +81,7 @@ export class PcController extends BaseController {
 
     async getPcReviews(request, response, next) {
         try {
-            const PcId = request.params.PcId
+            let PcId = request.params.PcId
             const reviews = await reviewsService.getReviews(PcId)
             response.send(reviews)
         } catch (error) {
