@@ -154,16 +154,15 @@ export default {
   border-radius: 15px;
   padding-top: 5px;
   outline: solid 2px rgb(13, 155, 176);
-  box-shadow: 0px 9px 9px rgba(0, 0, 0, 0.729);
+  box-shadow: 3px 9px 9px rgba(0, 0, 0, 0.777);
 }
 
 .list-card-m {
   outline: solid 2px #198754;
-  ;
   border-radius: 10px;
   padding: 15px;
   background-color: rgb(0, 0, 0);
   color: black;
-  box-shadow: 2px 5px 6px rgba(0, 0, 0, 0.599);
+  box-shadow: 6px 9px 9px rgba(0, 0, 0, 0.699);
 }
 </style>

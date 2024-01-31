@@ -4,7 +4,7 @@
             <h5>{{ cartItem.pc.name }}</h5>
             <span class="d-flex">
                 <h6>Price:</h6>
-                <h6 class="ms-2 text-warning">${{ cartItem.pc.price }}</h6>
+                <h6 class="ms-2 text-warning">${{ newPrice }}</h6>
             </span>
         </div>
         <div class="ms-2">
@@ -34,7 +34,11 @@ export default {
             }
         }
     return { 
-        deleteItem
+        deleteItem,
+        newPrice: computed(()=>{
+            let price = Math.round(props.cartItem.pc.price * 100) / 100
+            return price
+        })
      }
     }
 };
