@@ -18,8 +18,8 @@
     </div>
     <div class="justify-content-center ms-4">
       <div class="price-card-m d-flex flex-column p-3">
-
-        <button @click="getPcReviews()" type="button" class="btn btn-outline-success button-m" data-bs-toggle="modal"
+        <button class="btn btn-outline-success button-m">Add to cart</button>
+        <button @click="getPcReviews()" type="button" class="btn btn-outline-success button-m mt-4" data-bs-toggle="modal"
           data-bs-target="#exampleModal">
           Reviews
         </button>
@@ -62,7 +62,7 @@
           </div>
         </div>
         <button @click="viewBuild()" class="btn btn-outline-success mt-4 button-m">Details</button>
-        <button class="btn btn-outline-success mt-4 button-m">Add to cart</button>
+        
       </div>
     </div>
   </div>
@@ -78,6 +78,7 @@ import { router } from '../router';
 import Pop from '../utils/Pop';
 import { useRoute } from 'vue-router';
 import { reviewsService } from '../services/ReviewsService.js';
+import { cartService } from '../services/CartService'
 export default {
   props: { shareBuild: { type: PcList, required: true } },
   setup(props) {
@@ -106,6 +107,8 @@ export default {
       }
 
     }
+
+    async function addItem(){}
     return {
       viewBuild,
       reviewData,
