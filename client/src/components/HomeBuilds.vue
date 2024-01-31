@@ -46,9 +46,9 @@
                 </form>
               </div>
               <section class="row">
-                <div class="text-center border border-light shadow justify-content-center my-2" v-for="review in reviews">
-                  <p>{{ reviews.body }}</p>
-                  <span>{{ reviews.rating }}</span>
+                <div class="text-center justify-content-center my-2" v-for="review in reviews" :key="review.id">
+                  <p>{{ review.body }}</p>
+                  <span>{{ review.rating }}</span>
                   <!-- <button v-if="review.creatorId == account.id" class="btn btn-danger"><i
                       class="mdi mdi-delete"></i>Delete?</button> -->
                 </div>
@@ -61,7 +61,7 @@
           </div>
         </div>
         <button @click="viewBuild()" class="btn btn-outline-success mt-4 button-m">Details</button>
-        
+
       </div>
     </div>
   </div>
@@ -111,7 +111,7 @@ export default {
     }
 
 
-    async function addItem(){
+    async function addItem() {
       await cartService.addItem(props.shareBuild.id)
       Pop.success('Item added')
     }
