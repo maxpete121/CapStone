@@ -9,5 +9,6 @@ export class Cart{
         this.pcId = data.pcId
         this.account = data.account
         this.pc = data.pc
+        this.id = data._id
     }
 }

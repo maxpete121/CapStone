@@ -5,7 +5,7 @@
             <div class="d-flex mt-1">
                 <div class="d-flex align-items-center me-2 power-card-d p-2">
                     <h3>Power Score:</h3>
-                    <h3>⚡{{ activePc.powerScore }}</h3>
+                    <h3><i class="mdi mdi-arm-flex"></i>{{ activePc.powerScore }}</h3>
                 </div>
                 <div class="d-flex ms-4 align-items-center power-card-d p-2">
                     <h3 class="me-2">Price:</h3>

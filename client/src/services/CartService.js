@@ -21,6 +21,12 @@ class CartService{
         let returnItem = new Cart(response.data)
         AppState.cartItems.push(returnItem)
     }
+
+    async deleteItem(itemId){
+        let response = await api.delete(`api/cart/${itemId}`)
+        let itemIndex = AppState.cartItems.findIndex(item => item.id == itemId)
+        AppState.cartItems.splice(itemIndex, 1)
+    }
 }
 
 

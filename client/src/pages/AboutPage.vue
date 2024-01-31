@@ -6,7 +6,7 @@
         <div class="d-flex justify-content-center">
           <div class="d-flex power-card me-2">
             <h4 class="me-2">PC Power Score:</h4>
-            <h4>{{ activePc.powerScore }}</h4>
+            <h4><i class="mdi mdi-arm-flex"></i>{{ activePc.powerScore }}</h4>
           </div>
           <div class="d-flex price-card ms-2">
             <h4>Price: $</h4>
