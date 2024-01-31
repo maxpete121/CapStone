@@ -94,12 +94,16 @@ export default {
     }
 
     async function getPcReviews() {
-      await reviewsService.getPcReviews(props.shareBuild.id)
+      try {
+        await reviewsService.getPcReviews(props.shareBuild.id)
+      } catch (error) {
+        Pop.error(error)
+      }
     }
 
     async function createReview() {
       try {
-        let pcID = route.params.PcId
+        let pcID = props.shareBuild.id
         await reviewsService.createReview(reviewData.value, pcID)
         Pop.success('Review Posted!')
       } catch (error) {

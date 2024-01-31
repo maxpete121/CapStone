@@ -6,7 +6,7 @@ import { api } from "./AxiosService"
 
 class ReviewsService {
     async createReview(reviewData, pcId) {
-        reviewData += `"pcId": ${pcId}`
+        reviewData.pcId = pcId
         console.log('test', reviewData)
         const response = await api.post('api/reviews', reviewData)
         console.log('baking review', response.data)
