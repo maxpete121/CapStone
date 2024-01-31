@@ -45,17 +45,11 @@
                   </div>
                 </form>
               </div>
-              <section class="row">
-                <div class="text-center justify-content-center my-2" v-for="review in reviews" :key="review.id">
-                  <p>{{ review.body }}</p>
-                  <span>{{ review.rating }}</span>
-                  <!-- <button v-if="review.creatorId == account.id" class="btn btn-danger"><i
-                      class="mdi mdi-delete"></i>Delete?</button> -->
-                </div>
-              </section>
+              <div v-for="review in reviews" :key="review.id">
+                <ReviewCard :review="review" />
+              </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
               </div>
             </div>
           </div>
@@ -77,6 +71,7 @@ import Pop from '../utils/Pop';
 import { useRoute } from 'vue-router';
 import { reviewsService } from '../services/ReviewsService.js';
 import { cartService } from '../services/CartService'
+import ReviewCard from './ReviewCard.vue'
 export default {
   props: { shareBuild: { type: PcList, required: true } },
   setup(props) {
@@ -125,7 +120,8 @@ export default {
       addItem,
 
     }
-  }
+  },
+  components: { ReviewCard }
 }
 </script>
 
