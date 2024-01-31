@@ -33,6 +33,36 @@
         </div>
       </div>
     </section>
+    <section class="row justify-content-center p-1 mt-2">
+      <div class="col-3 info-box mt-3 rounded-2 text-center">
+        <h4>About us!</h4>     
+      </div>
+      <div class="col-3 info-box-two ms-4 me-4 mt-3 rounded-2 text-center p-1">
+        <h4>Create a build!</h4>  
+        <div>
+          <p>Start your journey to becoming a gaming legend! Create your build and make the perfect PC for you!</p>
+          <button class="mt-2 btn btn-outline-success mb-1">Create a build</button>
+        </div>   
+      </div>
+      <div class="col-3 info-box mt-3 d-flex flex-column rounded-2 text-center align-items-center p-1">
+        <h4>Contact us!</h4>
+        <div class="d-flex">
+          <h5><i class="mdi mdi-phone"></i></h5>
+          <h5 class="ms-2 fst-italic">Phone number:</h5>
+          <a class="ms-3" href="">208-555-8763</a>
+        </div>
+        <div class="d-flex">
+          <h5><i class="mdi mdi-mail"></i></h5>
+          <h5 class="ms-2 fst-italic">Email:</h5>
+          <a class="ms-3" href="">FakeEmail@mail.com</a>
+        </div>
+        <div class="d-flex">
+          <h5><i class="mdi mdi-facebook"></i></h5>
+          <h5 class="ms-2 fst-italic">Facebook:</h5>
+          <a class="ms-3" href="">PCBuildBoi</a>
+        </div>      
+      </div>
+    </section>
   </section>
 </template>
 
@@ -66,6 +96,13 @@ export default {
 }
 .info-box{
   outline: solid 2px rgb(17, 114, 156);
+  background-color: #212529;
+  color: white;
+  box-shadow: 5px 7px 7px rgba(0, 0, 0, 0.588);
+}
+
+.info-box-two{
+  outline: solid 2px #0cbc87;
   background-color: #212529;
   color: white;
   box-shadow: 5px 7px 7px rgba(0, 0, 0, 0.588);
