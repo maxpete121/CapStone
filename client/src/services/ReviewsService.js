@@ -15,6 +15,7 @@ class ReviewsService {
     }
     async getPcReviews(PcId) {
         const response = await api.get(`api/builds/${PcId}/reviews`)
+        console.log(PcId)
         console.log('Getting reviews for this PC', response.data)
         let reviews = response.data.map(review => new Review(review))
         AppState.reviews = reviews
