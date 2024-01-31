@@ -14,7 +14,7 @@
             </span>
         </div>
         <div class="ms-2">
-            <button class="text-danger btn btn-outline-danger"><i class="mdi mdi-delete"></i></button>
+            <button @click="deleteItem()" class="text-danger btn btn-outline-danger"><i class="mdi mdi-delete"></i></button>
         </div>
     </div>
 </template>
@@ -29,9 +29,13 @@ export default {
     props: {cartItem: {type: Cart, required: true}},
     setup(props){
         async function deleteItem(){
-            await cartService.deleteItem(props.cartItem.id)
+            if(window.confirm('Are you sure you want to remove this item from your cart?')){
+                await cartService.deleteItem(props.cartItem.id)
+            }
         }
-    return {  }
+    return { 
+        deleteItem
+     }
     }
 };
 </script>
