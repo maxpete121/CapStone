@@ -98,6 +98,7 @@ export default {
       try {
         // reviewData.value.pcId = props.shareBuild.id
         await reviewsService.createReview(reviewData.value, props.shareBuild.id)
+        reviewData.value = {}
         Pop.success('Review Posted!')
       } catch (error) {
         Pop.error(error)
