@@ -46,8 +46,7 @@
                 </form>
               </div>
               <section class="row">
-                <div class="text-center border border-light shadow justify-content-center my-2" v-for="review in reviews"
-                  :key="review.id">
+                <div class="text-center border border-light shadow justify-content-center my-2" v-for="review in reviews">
                   <p>{{ reviews.body }}</p>
                   <span>{{ reviews.rating }}</span>
                   <!-- <button v-if="review.creatorId == account.id" class="btn btn-danger"><i
@@ -103,8 +102,7 @@ export default {
 
     async function createReview() {
       try {
-        let pcID = props.shareBuild.id
-        await reviewsService.createReview(reviewData.value, pcID)
+        await reviewsService.createReview(reviewData.value, props.shareBuild.id)
         Pop.success('Review Posted!')
       } catch (error) {
         Pop.error(error)

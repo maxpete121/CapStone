@@ -38,8 +38,9 @@
       </div>
     </div>
     <div class="offcanvas-footer d-flex justify-content-between align-items-baseline">
-      <div class="m-2">
-        <h5>Cart Total:</h5>
+      <div class="m-2 d-flex">
+        <h5 class="me-2">Cart Total:</h5>
+        <h5>${{ total }}</h5>
       </div>
       <div class="m-2">
         <button class="btn btn-outline-success">Checkout</button>
@@ -74,7 +75,15 @@ export default {
       },
       account: computed(() => AppState.account),
       cartItems: computed(()=> AppState.cartItems),
-      getCartItems
+      getCartItems,
+      total: computed(()=>{
+        let pc = AppState.cartItems
+        let price = 0
+        for(let i = 0; i < AppState.cartItems.length; i++){
+          price += pc[i].pc.price
+        }
+        return Math.round(price * 100) / 100
+      })
     }
   },
   components: { Login, CartItem }
