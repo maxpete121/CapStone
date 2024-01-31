@@ -1,10 +1,12 @@
 <template>
     <section class="row">
-        <div class="text-center justify-content-center my-2">
+        <div class="text-center text-dark justify-content-center my-2">
             <p>{{ review.body }}</p>
             <span>{{ review.rating }}</span>
-            <button @click="deleteReview(review.id)" v-if="review.creatorId == account.id" class="btn btn-danger"><i
-                    class="mdi mdi-delete"></i>Delete?</button>
+            <div class="mt-2">
+                <button @click="deleteReview(review.id)" v-if="review.creatorId == account.id" class="btn btn-danger"><i
+                        class="mdi mdi-delete">Delete?</i></button>
+            </div>
         </div>
     </section>
 </template>
