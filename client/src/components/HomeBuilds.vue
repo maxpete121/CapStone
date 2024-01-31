@@ -55,7 +55,6 @@
           </div>
         </div>
         <button @click="viewBuild()" class="btn btn-outline-success mt-4 button-m">Details</button>
-
       </div>
     </div>
   </div>
