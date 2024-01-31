@@ -68,13 +68,13 @@ export default {
   outline: solid 2px rgb(17, 114, 156);
   background-color: #212529;
   color: white;
-  box-shadow: 3px 7px 7px rgba(0, 0, 0, 0.588);
+  box-shadow: 5px 7px 7px rgba(0, 0, 0, 0.588);
 }
 .info-box-scroll{
   outline: solid 2px rgb(17, 114, 156);
   background-color: #212529;
   color: white;
-  box-shadow: 3px 7px 7px rgba(0, 0, 0, 0.588);
+  box-shadow: 5px 7px 7px rgba(0, 0, 0, 0.701);
   overflow-y: scroll;
   height: 450px;
 }
