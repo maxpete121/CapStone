@@ -33,7 +33,17 @@
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-      <div v-for="cartItem in cartItems"></div>
+      <div v-for="cartItem in cartItems">
+        <CartItem class="mt-3" :cartItem="cartItem"/>
+      </div>
+    </div>
+    <div class="offcanvas-footer d-flex justify-content-between align-items-baseline">
+      <div class="m-2">
+        <h5>Cart Total:</h5>
+      </div>
+      <div class="m-2">
+        <button class="btn btn-outline-success">Checkout</button>
+      </div>
     </div>
   </div>
 </template>
@@ -43,10 +53,10 @@ import { computed, onMounted, ref, watch } from 'vue';
 import { loadState, saveState } from '../utils/Store.js';
 import Login from './Login.vue';
 import { AppState } from '../AppState';
-import {cartService} from '../services/CartService.js'
+import {cartService} from '../services/CartService.js';
+import CartItem from './CartItem.vue';
 export default {
   setup() {
-
     const theme = ref(loadState('theme') || 'light')
     let accountId = computed(()=> AppState.account)
     onMounted(() => {
@@ -67,7 +77,7 @@ export default {
       getCartItems
     }
   },
-  components: { Login }
+  components: { Login, CartItem }
 }
 </script>
 

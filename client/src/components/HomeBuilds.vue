@@ -5,8 +5,8 @@
         <h5 class="fst-italic">{{ shareBuild.name }}</h5>
       </div>
       <div class="d-flex power-card-m justify-content-between align-items-center mt-3">
-        <h6 class="ms-2">Power Score: </h6>
-        <h6 class="me-2 text-danger">⚡{{ shareBuild.powerScore }}</h6>
+        <h6 class="ms-2 me-2">Power Score: </h6>
+        <h6 class="me-2 text-danger"><i class="mdi mdi-arm-flex"></i>{{ shareBuild.powerScore }}</h6>
       </div>
       <div class="d-flex power-card-m justify-content-center align-items-center mt-3">
         <h6 class="me-2">Price:</h6>
@@ -18,8 +18,8 @@
     </div>
     <div class="justify-content-center ms-4">
       <div class="price-card-m d-flex flex-column p-3">
-
-        <button @click="getPcReviews()" type="button" class="btn btn-outline-success button-m" data-bs-toggle="modal"
+        <button @click="addItem()" class="btn btn-outline-success button-m">Add to cart</button>
+        <button @click="getPcReviews()" type="button" class="btn btn-outline-success button-m mt-4" data-bs-toggle="modal"
           data-bs-target="#exampleModal">
           Reviews
         </button>
@@ -62,7 +62,7 @@
           </div>
         </div>
         <button @click="viewBuild()" class="btn btn-outline-success mt-4 button-m">Details</button>
-        <button class="btn btn-outline-success mt-4 button-m">Add to cart</button>
+        
       </div>
     </div>
   </div>
@@ -78,6 +78,7 @@ import { router } from '../router';
 import Pop from '../utils/Pop';
 import { useRoute } from 'vue-router';
 import { reviewsService } from '../services/ReviewsService.js';
+import { cartService } from '../services/CartService'
 export default {
   props: { shareBuild: { type: PcList, required: true } },
   setup(props) {
@@ -110,6 +111,12 @@ export default {
       }
 
     }
+
+
+    async function addItem(){
+      await cartService.addItem(props.shareBuild.id)
+      Pop.success('Item added')
+    }
     return {
       viewBuild,
       reviewData,
@@ -117,7 +124,8 @@ export default {
       account: computed(() => AppState.account),
       reviews: computed(() => AppState.reviews),
       createReview,
-      getPcReviews
+      getPcReviews,
+      addItem,
 
     }
   }
