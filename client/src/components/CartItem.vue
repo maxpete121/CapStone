@@ -48,7 +48,7 @@ export default {
 <style lang="scss" scoped>
 .cart-card{
     background-color: #212529;
-    outline: solid 2px rgb(13, 155, 176);
+    outline: solid 2px #0cbc87;
     color: #0cbc87;
     border-radius: 10px;
     box-shadow: 4px 6px 6px rgba(0, 0, 0, 0.584);

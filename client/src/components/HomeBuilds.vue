@@ -99,11 +99,22 @@ export default {
         // reviewData.value.pcId = props.shareBuild.id
         await reviewsService.createReview(reviewData.value, props.shareBuild.id)
         reviewData.value = {}
+        reviewMath(props.shareBuild.id ,props.shareBuild)
         Pop.success('Review Posted!')
       } catch (error) {
         Pop.error(error)
       }
 
+    }
+
+    async function reviewMath(pcId, buildData){
+      let reviewVal = 0
+      let review = AppState.reviews
+      for(let i = 0; i < AppState.reviews.length; i++){
+        reviewVal += review[i].rating
+      }
+      let average = reviewVal / AppState.reviews.length
+      pcService.shareBuild(pcId, buildData)
     }
 
 
