@@ -20,8 +20,8 @@
         </span>
       </span>
       <span class="power d-flex align-items-baseline p-2">
-        <h6 class="mt-1">Power: ⚡</h6>
-        <h6>{{ activePart.part.powerScore }}</h6>
+        <h6 class="mt-1">Power:</h6>
+        <h6 class="text-danger me-2"><i class="mdi mdi-arm-flex"></i>{{ activePart.part.powerScore }}</h6>
       </span>
     </div>
     <div class="ms-3">

@@ -25,7 +25,7 @@
         <section v-if="account.tour == false" class="p-1 justify-content-center">
           <VueTour />
           <div class="d-flex flex-column align-items-center">
-            <h4>Part type</h4>
+            <h4>Part Type</h4>
             <span>
               <button v-if="currentStep == 1" class="btn btn-outline-dark" id="v-step-1"
                 @click="getParts('cpu')">Cpu's</button>
@@ -55,7 +55,7 @@
         </section>
         <section v-else class="p-1 justify-content-center list-card mt-3">
           <div class="d-flex flex-column align-items-center mb-2">
-            <h4>Part type</h4>
+            <h4>Part Type</h4>
             <span>
               <button v-if="!displayCpu" class="btn btn-outline-success" @click="getParts('cpu')">Cpu's</button>
               <button v-if="!displayGpu" class="btn btn-outline-success ms-2" @click="getParts('gpu')">Gpu's</button>

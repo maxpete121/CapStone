@@ -8,7 +8,7 @@
             </div>
             <span class="d-flex power-card ms-2 align-items-baseline">
                 <h4 class="me-2">Power Score:</h4>
-                <h4><i class="mdi mdi-arm-flex"></i>{{ list.powerScore }}</h4>
+                <h4 class="text-danger"><i class="mdi mdi-arm-flex"></i>{{ list.powerScore }}</h4>
             </span>
         </div>
         <span class="d-flex mt-2">
