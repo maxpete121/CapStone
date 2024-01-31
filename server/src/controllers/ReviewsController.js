@@ -9,6 +9,7 @@ export class ReviewsController extends BaseController {
         this.router
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createReview)
+            .delete('/:reviewId', this.deleteReview)
     }
     async createReview(request, response, next) {
         try {
@@ -16,6 +17,16 @@ export class ReviewsController extends BaseController {
             reviewData.creatorId = request.userInfo.id
             const review = await reviewsService.createReview(reviewData)
             response.send(review)
+        } catch (error) {
+            next(error)
+        }
+    }
+    async deleteReview(request, response, next) {
+        try {
+            const reviewId = request.params.reviewId
+            const userId = request.userInfo.id
+            const message = await reviewsService.deleteReview(reviewId, userId)
+            response.send(message)
         } catch (error) {
             next(error)
         }

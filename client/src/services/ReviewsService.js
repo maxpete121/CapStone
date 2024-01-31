@@ -20,6 +20,14 @@ class ReviewsService {
         let reviews = response.data.map(review => new Review(review))
         AppState.reviews = reviews
     }
+    async deleteReview(reviewId) {
+        const response = await api.delete(`api/reviews/${reviewId}`)
+        logger.log('deleting review', response.data)
+        const indexToRemove = AppState.reviews.findIndex(review => review.id == reviewId)
+        if (indexToRemove > -1) {
+            AppState.reviews.splice(indexToRemove, 1)
+        }
+    }
 }
 
 export const reviewsService = new ReviewsService()
