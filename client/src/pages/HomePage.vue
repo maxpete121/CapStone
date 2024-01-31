@@ -121,7 +121,7 @@ export default {
   background-color: black;
   border-radius: 15px;
   padding: 9px;
-  box-shadow: 1px 6px 6px black;
+  box-shadow: 4px 7px 6px black;
 }
 .top-img{
   height: 240px;
