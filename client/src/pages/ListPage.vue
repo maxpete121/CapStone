@@ -40,6 +40,7 @@
         let accountId = computed(()=> AppState.account)
         onMounted(()=>{
             getLists()
+            scrollTo(0, 0)
         })
         watch(accountId, getLists)
         async function createNewList(){

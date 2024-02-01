@@ -5,8 +5,8 @@
     <h3>{{ account.email }}</h3>
   </div>
   <div class="container-fluid">
-    <section class="row">
-      <div class="col-12 text-center">
+    <section class="row justify-content-center">
+      <div class="col-12 text-center d-flex flex-column align-items-center w-25">
         <form @submit.prevent="updateAccount">
           <div class="mb-3">
             <label for="name">Name</label>
@@ -21,7 +21,7 @@
             <input v-model="update.tour" id="tour" type="checkbox">
           </div> -->
           <div class="text-center mb-3">
-            <button type="submit">Update</button>
+            <button class="btn btn-outline-success" type="submit">Update</button>
           </div>
         </form>
       </div>
@@ -64,12 +64,12 @@ export default {
 
 <style scoped>
 label {
-  color: purple;
+  color: #0cbc87;
 }
 
 .bg-img {
-  height: 50%;
-  width: 50%;
+  height: 80px;
+  width: 80px;
   object-fit: contain;
   object-position: center;
 }
