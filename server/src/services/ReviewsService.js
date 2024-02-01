@@ -8,10 +8,11 @@ class ReviewsService {
         const Pc = await pcService.getOnePc(reviewData.id)
         const review = await dbContext.Reviews.create(reviewData)
         await review.populate('creator', 'name picture')
+        await review.populate('pc')
         return review
     }
     async getReviews(pcId) {
-        const reviews = await dbContext.Reviews.find({ pcId: pcId }).populate('creator', 'name picture')
+        const reviews = await dbContext.Reviews.find({ pcId: pcId }).populate('creator', 'name picture').populate('pc')
         return reviews
     }
     async deleteReview(reviewId, userId) {

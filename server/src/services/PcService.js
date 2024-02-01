@@ -62,7 +62,12 @@ class PcService{
         return shared
     }
 
-    async reviewPc(){}
+    async reviewUpdate(pcId, newPc, userId){
+        let foundPc = await dbContext.PcBuilds.findById(pcId)
+        foundPc.rating = newPc.rating
+        await foundPc.save()
+        return foundPc
+    }
 }
 
 export const pcService = new PcService()

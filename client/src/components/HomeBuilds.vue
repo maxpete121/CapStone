@@ -13,7 +13,7 @@
         <h6 class="text-warning">${{ shareBuild.price }}</h6>
       </div>
       <div class="power-card-m mt-3">
-        <h6 class="">Review Score</h6>
+        <h6 class="">{{shareBuild.rating}}</h6>
       </div>
     </div>
     <div class="justify-content-center ms-4">
@@ -77,10 +77,6 @@ export default {
   setup(props) {
     const reviewData = ref({})
     const route = useRoute()
-    // watchEffect(() => {
-    //   route.params.PcId
-    //   getPcReviews()
-    // })
     async function viewBuild() {
       await pcService.viewBuild(props.shareBuild.id)
       router.push({ name: 'ViewBuild', params: { PcId: props.shareBuild.id } })
@@ -108,13 +104,7 @@ export default {
     }
 
     async function reviewMath(pcId, buildData){
-      let reviewVal = 0
-      let review = AppState.reviews
-      for(let i = 0; i < AppState.reviews.length; i++){
-        reviewVal += review[i].rating
-      }
-      let average = reviewVal / AppState.reviews.length
-      pcService.shareBuild(pcId, buildData)
+      await pcService.reviewMath(pcId, buildData)
     }
 
 

@@ -18,15 +18,18 @@ import { computed, ref, onMounted } from 'vue';
 import { Review } from '../models/Review';
 import Pop from '../utils/Pop';
 import { reviewsService } from '../services/ReviewsService';
+import { pcService } from '../services/PcService';
 export default {
     props: { review: { type: Review, required: true } },
-    setup() {
+    setup(props) {
         return {
             account: computed(() => AppState.account),
             async deleteReview(reviewId) {
                 try {
                     if (await Pop.confirm('Do you really want to take this back?')) {
+                        let pc = props.review.pc
                         await reviewsService.deleteReview(reviewId)
+                        await pcService.reviewMath(props.review.pcId, pc)
                         Pop.success('Review Deleted')
                     } else {
                         Pop.error('We will just leave this here then.')

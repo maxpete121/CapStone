@@ -18,3 +18,10 @@ ReviewSchema.virtual('creator', {
     justOne: true,
 })
 
+ReviewSchema.virtual('pc', {
+    localField: 'pcId',
+    foreignField: '_id',
+    ref: 'PcBuild',
+    justOne: true,
+})
+

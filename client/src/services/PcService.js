@@ -2,6 +2,7 @@ import { applyStyles } from "@popperjs/core"
 import { AppState } from "../AppState"
 import { PcList } from "../models/PcList"
 import { api } from "./AxiosService"
+import { reviewsService } from "./ReviewsService"
 
 
 
@@ -53,6 +54,27 @@ class PcService{
         let builds = response.data.map(build => new PcList(build))
         AppState.sharedBuilds = builds
         console.log(response)
+    }
+
+    async reviewMath(pcId, buildData){
+        // console.log(buildData, 'pls')
+        let reviewVal = 0
+        let review = AppState.reviews
+          for(let i = 0; i < AppState.reviews.length; i++){
+            reviewVal += review[i].rating
+          }
+          let average = reviewVal / AppState.reviews.length
+          let newVal = Math.round(average * 10) / 10
+          buildData.rating = newVal
+          await this.updateReview(pcId, buildData)
+    }
+
+    
+    async updateReview(pcId, buildData){
+        let response = await api.put(`api/builds/rating/${pcId}`, buildData)
+        let updatedList = new PcList(response.data)
+        console.log(pcId, 'new rating?')
+        AppState.sharedBuilds = AppState.sharedBuilds.map(build => build.id !== pcId ? build : updatedList)
     }
 }
 
