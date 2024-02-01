@@ -19,7 +19,7 @@
           <i class="mdi mdi-star"></i>
           <i class="mdi mdi-star"></i>
         </h6>
-        <h6 v-else-if="shareBuild.rating == 'No reviews'">No Reviews
+        <h6 v-else-if="shareBuild.rating == 'No reviews' || shareBuild.rating == 0">No Reviews
         </h6>
         <h6 v-else-if="shareBuild.rating < 5 && shareBuild.rating >= 4.5"><i class="mdi mdi-star"></i>
           <i class="mdi mdi-star"></i>

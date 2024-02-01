@@ -9,8 +9,9 @@ import { api } from "./AxiosService";
 class CartService{
     async getCartItems(userId){
         let response = await api.get(`api/cart/${userId}`)
-        let newItems = response.data.map(item => new Cart(item))
+        let newItems = await response.data.map(item => new Cart(item))
         AppState.cartItems = newItems
+        console.log(AppState.cartItems)
     }
 
     async addItem(pcId){

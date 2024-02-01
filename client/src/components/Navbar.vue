@@ -77,10 +77,10 @@ export default {
       cartItems: computed(() => AppState.cartItems),
       getCartItems,
       total: computed(() => {
-        let pc = AppState.cartItems
+        let cart = AppState.cartItems
         let price = 0
         for (let i = 0; i < AppState.cartItems.length; i++) {
-          price += pc[i].pc.price
+          price += cart[i].pc.price
         }
         return Math.round(price * 100) / 100
       })

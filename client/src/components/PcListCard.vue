@@ -15,7 +15,7 @@
             <button @click="shareBuild()" v-if="list.isShared == false" class="btn btn-outline-success">Share Build</button>
             <button @click="shareBuild()" v-if="list.isShared == true" class="btn btn-outline-success">Make Private</button>
             <button class="btn btn-outline-success ms-2">Purchase</button>
-            <button @click="viewBuild()" class="btn btn-outline-success ms-2 me-2">View Build</button>
+            <button @click="viewBuild()" class="btn btn-outline-success ms-2 me-2">Edit Build</button>
             <button @click="deletePc(list.id)" class="btn btn-outline-danger"><i class="mdi mdi-delete"></i></button>
         </span>
     </div>
