@@ -53,7 +53,7 @@ class PcService{
         let response = await api.get('api/builds/shared/true')
         let builds = response.data.map(build => new PcList(build))
         AppState.sharedBuilds = builds
-        console.log(response)
+        // console.log(response)
     }
 
     async reviewMath(pcId, buildData){
@@ -73,7 +73,7 @@ class PcService{
     async updateReview(pcId, buildData){
         let response = await api.put(`api/builds/rating/${pcId}`, buildData)
         let updatedList = new PcList(response.data)
-        console.log(pcId, 'new rating?')
+        // console.log(pcId, 'new rating?')
         AppState.sharedBuilds = AppState.sharedBuilds.map(build => build.id !== pcId ? build : updatedList)
     }
 }
