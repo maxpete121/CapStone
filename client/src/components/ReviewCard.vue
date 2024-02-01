@@ -27,8 +27,9 @@ export default {
             async deleteReview(reviewId) {
                 try {
                     if (await Pop.confirm('Do you really want to take this back?')) {
+                        let pc = props.review.pc
                         await reviewsService.deleteReview(reviewId)
-                        await pcService.updateReview(props.review.creatorId, props.review.pc)
+                        await pcService.reviewMath(props.review.pcId, pc)
                         Pop.success('Review Deleted')
                     } else {
                         Pop.error('We will just leave this here then.')
