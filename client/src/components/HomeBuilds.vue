@@ -19,6 +19,8 @@
           <i class="mdi mdi-star"></i>
           <i class="mdi mdi-star"></i>
         </h6>
+        <h6 v-else-if="shareBuild.rating == 'No reviews'">No Reviews
+        </h6>
         <h6 v-else-if="shareBuild.rating < 5 && shareBuild.rating >= 4.5"><i class="mdi mdi-star"></i>
           <i class="mdi mdi-star"></i>
           <i class="mdi mdi-star"></i>
@@ -30,11 +32,26 @@
           <i class="mdi mdi-star"></i>
           <i class="mdi mdi-star"></i>
         </h6>
-        <h6 v-else-if="shareBuild.rating < 4"><i class="mdi mdi-star"></i>
+        <h6 v-else-if="shareBuild.rating < 4 && shareBuild.rating >=3.5"><i class="mdi mdi-star"></i>
           <i class="mdi mdi-star"></i>
+          <i class="mdi mdi-star"></i>
+          <i class="mdi mdi-star-half"></i>
+        </h6>
+        <h6 v-else-if="shareBuild.rating == 3"><i class="mdi mdi-star"></i>
           <i class="mdi mdi-star"></i>
           <i class="mdi mdi-star"></i>
         </h6>
+        <h6 v-else-if="shareBuild.rating >= 2.5"><i class="mdi mdi-star"></i>
+          <i class="mdi mdi-star"></i>
+          <i class="mdi mdi-star-half"></i>
+        </h6>
+        <h6 v-else-if="shareBuild.rating == 2"><i class="mdi mdi-star"></i>
+          <i class="mdi mdi-star"></i>
+        </h6>
+        <h6 v-else-if="shareBuild.rating >= 1.5"><i class="mdi mdi-star"></i>
+          <i class="mdi mdi-star-half"></i>
+        </h6>
+        <h6 v-else-if="shareBuild.rating == 1"><i class="mdi mdi-star"></i></h6>
       </div>
     </div>
     <div class="justify-content-center ms-4">
