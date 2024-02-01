@@ -19,7 +19,7 @@
       </ul>
       <!-- LOGIN COMPONENT HERE -->
       <button v-if="account.id" class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
-        data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" @click="getCartItems()">Cart</button>
+        data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" @click="getCartItems()"><i class="mdi mdi-cart"></i></button>
       <div>
         <button class="btn text-light" @click="toggleTheme"><i class="mdi"
             :class="theme == 'light' ? 'mdi-weather-sunny' : 'mdi-weather-night'"></i></button>
@@ -29,7 +29,7 @@
   </nav>
   <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="offcanvasRightLabel">Your Cart</h5>
+      <h5 class="offcanvas-title" id="offcanvasRightLabel">Your Cart<i class="mdi mdi-cart"></i></h5>
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
