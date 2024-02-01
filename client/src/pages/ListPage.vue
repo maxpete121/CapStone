@@ -21,8 +21,8 @@
                 </span>
             </div>
         </div>
-        <div class="row flex-column align-items-center">
-            <div class="col-4 list-card-l mt-3" v-for="list in lists">
+        <div class="row flex-column align-items-center mb-3">
+            <div class="col-4 list-card-l mt-4" v-for="list in lists">
                 <PcListCard :list="list"/>
             </div>
         </div>

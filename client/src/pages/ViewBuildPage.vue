@@ -24,7 +24,7 @@
             <h3>Build Parts</h3>
         </div>
     </section>
-    <section class="row flex-column align-items-center">
+    <section class="row flex-column align-items-center mb-3">
         <div v-for="activePart in activeParts" class="col-5 mt-3">
             <NewPartCard :activePart="activePart"/>
     </div>
