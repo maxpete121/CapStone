@@ -13,7 +13,7 @@
         <h6 class="text-warning">${{ shareBuild.price }}</h6>
       </div>
       <div class="power-card-m mt-3">
-        <h6 v-if="shareBuild.rating == 5"><i class="mdi mdi-star"></i>
+        <h6 class="text-warning" v-if="shareBuild.rating == 5"><i class="mdi mdi-star"></i>
           <i class="mdi mdi-star"></i>
           <i class="mdi mdi-star"></i>
           <i class="mdi mdi-star"></i>
@@ -21,37 +21,37 @@
         </h6>
         <h6 v-else-if="shareBuild.rating == 'No reviews' || shareBuild.rating == 0">No Reviews
         </h6>
-        <h6 v-else-if="shareBuild.rating < 5 && shareBuild.rating >= 4.5"><i class="mdi mdi-star"></i>
+        <h6 class="text-warning" v-else-if="shareBuild.rating < 5 && shareBuild.rating >= 4.5"><i class="mdi mdi-star"></i>
           <i class="mdi mdi-star"></i>
           <i class="mdi mdi-star"></i>
           <i class="mdi mdi-star"></i>
           <i class="mdi mdi-star-half"></i>
         </h6>
-        <h6 v-else-if="shareBuild.rating == 4"><i class="mdi mdi-star"></i>
+        <h6 class="text-warning" v-else-if="shareBuild.rating == 4"><i class="mdi mdi-star"></i>
           <i class="mdi mdi-star"></i>
           <i class="mdi mdi-star"></i>
           <i class="mdi mdi-star"></i>
         </h6>
-        <h6 v-else-if="shareBuild.rating < 4 && shareBuild.rating >=3.5"><i class="mdi mdi-star"></i>
+        <h6 class="text-warning" v-else-if="shareBuild.rating < 4 && shareBuild.rating >=3.5"><i class="mdi mdi-star"></i>
           <i class="mdi mdi-star"></i>
           <i class="mdi mdi-star"></i>
           <i class="mdi mdi-star-half"></i>
         </h6>
-        <h6 v-else-if="shareBuild.rating == 3"><i class="mdi mdi-star"></i>
+        <h6 class="text-warning" v-else-if="shareBuild.rating == 3"><i class="mdi mdi-star"></i>
           <i class="mdi mdi-star"></i>
           <i class="mdi mdi-star"></i>
         </h6>
-        <h6 v-else-if="shareBuild.rating >= 2.5"><i class="mdi mdi-star"></i>
+        <h6 class="text-warning" v-else-if="shareBuild.rating >= 2.5"><i class="mdi mdi-star"></i>
           <i class="mdi mdi-star"></i>
           <i class="mdi mdi-star-half"></i>
         </h6>
-        <h6 v-else-if="shareBuild.rating == 2"><i class="mdi mdi-star"></i>
+        <h6 class="text-warning" v-else-if="shareBuild.rating == 2"><i class="mdi mdi-star"></i>
           <i class="mdi mdi-star"></i>
         </h6>
-        <h6 v-else-if="shareBuild.rating >= 1.5"><i class="mdi mdi-star"></i>
+        <h6 class="text-warning" v-else-if="shareBuild.rating >= 1.5"><i class="mdi mdi-star"></i>
           <i class="mdi mdi-star-half"></i>
         </h6>
-        <h6 v-else-if="shareBuild.rating == 1"><i class="mdi mdi-star"></i></h6>
+        <h6 class="text-warning" v-else-if="shareBuild.rating == 1"><i class="mdi mdi-star"></i></h6>
       </div>
     </div>
     <div class="justify-content-center ms-4">
@@ -63,7 +63,7 @@
         </button>
         <div class="modal fade" :id="catchId" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
-            <div class="modal-content">
+            <div class="modal-content bg-dark">
               <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">{{ shareBuild.name }}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -133,7 +133,8 @@ export default {
         // reviewData.value.pcId = props.shareBuild.id
         await reviewsService.createReview(reviewData.value, props.shareBuild.id)
         reviewData.value = {}
-        reviewMath(props.shareBuild.id ,props.shareBuild)
+        await reviewMath(props.shareBuild.id ,props.shareBuild)
+        pcService.getTopRated()
         Pop.success('Review Posted!')
       } catch (error) {
         Pop.error(error)

@@ -12,6 +12,7 @@ export class PcController extends BaseController {
             .get('/:PcId', this.getOnePc)
             .get('/shared/true', this.getSharedBuilds)
             .get('/:PcId/reviews', this.getPcReviews)
+            .get('/topRated/shared', this.getTopRated)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.postPc)
             .delete('/:PcId', this.deletePc)
@@ -98,6 +99,15 @@ export class PcController extends BaseController {
             let userId = request.userInfo.id
             let updatedBuild = await pcService.reviewUpdate(pcId, newPC, userId)
             response.send(updatedBuild)      
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async getTopRated(request, response, next){
+        try {
+            let topRated = await pcService.getTopRated()
+            response.send(topRated)
         } catch (error) {
             next(error)
         }
