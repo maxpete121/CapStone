@@ -18,8 +18,8 @@
         </li>
       </ul>
       <!-- LOGIN COMPONENT HERE -->
-      <button v-if="account.id" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-        aria-controls="offcanvasRight"  @click="getCartItems()">Cart</button>
+      <button v-if="account.id" class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" @click="getCartItems()">Cart</button>
       <div>
         <button class="btn text-light" @click="toggleTheme"><i class="mdi"
             :class="theme == 'light' ? 'mdi-weather-sunny' : 'mdi-weather-night'"></i></button>
@@ -34,7 +34,7 @@
     </div>
     <div class="offcanvas-body">
       <div v-for="cartItem in cartItems">
-        <CartItem class="mt-3" :cartItem="cartItem"/>
+        <CartItem class="mt-3" :cartItem="cartItem" />
       </div>
     </div>
     <div class="offcanvas-footer d-flex justify-content-between align-items-baseline">
@@ -43,7 +43,7 @@
         <h5>${{ total }}</h5>
       </div>
       <div class="m-2">
-        <button class="btn btn-outline-success">Checkout</button>
+        <RouterLink :to="{ name: 'Checkout' }" class="btn btn-outline-success">Checkout</RouterLink>
       </div>
     </div>
   </div>
@@ -54,16 +54,16 @@ import { computed, onMounted, ref, watch } from 'vue';
 import { loadState, saveState } from '../utils/Store.js';
 import Login from './Login.vue';
 import { AppState } from '../AppState';
-import {cartService} from '../services/CartService.js';
+import { cartService } from '../services/CartService.js';
 import CartItem from './CartItem.vue';
 export default {
   setup() {
     const theme = ref(loadState('theme') || 'light')
-    let accountId = computed(()=> AppState.account)
+    let accountId = computed(() => AppState.account)
     onMounted(() => {
       document.documentElement.setAttribute('data-bs-theme', theme.value)
     })
-    async function getCartItems(){
+    async function getCartItems() {
       await cartService.getCartItems(accountId.value.id)
     }
     return {
@@ -74,12 +74,12 @@ export default {
         saveState('theme', theme.value)
       },
       account: computed(() => AppState.account),
-      cartItems: computed(()=> AppState.cartItems),
+      cartItems: computed(() => AppState.cartItems),
       getCartItems,
-      total: computed(()=>{
+      total: computed(() => {
         let pc = AppState.cartItems
         let price = 0
-        for(let i = 0; i < AppState.cartItems.length; i++){
+        for (let i = 0; i < AppState.cartItems.length; i++) {
           price += pc[i].pc.price
         }
         return Math.round(price * 100) / 100

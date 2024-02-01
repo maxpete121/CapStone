@@ -32,6 +32,11 @@ const routes = [
     name: 'Account',
     component: loadPage('AccountPage'),
     beforeEnter: authGuard
+  },
+  {
+    path: '/checkout',
+    name: 'Checkout',
+    component: loadPage('CheckoutPage'),
   }
 ]
 
