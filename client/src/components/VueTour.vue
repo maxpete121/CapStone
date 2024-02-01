@@ -18,7 +18,6 @@ export default {
                 onNextStep: async () => {
                     console.log('Going forward a step, also Jerms is the goat');
                     AppState.currentStep++
-                    await partsService.getParts
                 },
                 onPreviousStep: () => {
                     console.log('going back a step');
@@ -33,8 +32,8 @@ export default {
                 useKeyBoardNavigation: false,
                 labels: {
                     buttonSkip: 'Skip Tour?',
-                    buttonPrevious: 'Woops, forgot something',
-                    buttonNext: 'next!'
+                    buttonPrevious: 'Previous Part!',
+                    buttonNext: 'Next Part!'
                 }
             },
             steps: [
@@ -49,65 +48,65 @@ export default {
                 // },
                 {
                     target: '#v-step-1',
-                    content: 'Begin by selecting a CPU! ⬇️',
+                    content: 'Begin by selecting a CPU!',
                     params: {
-                        placement: 'top'
+                        placement: 'right'
                     }
                 },
                 {
                     target: '#v-step-2',
-                    content: 'Select a GPU ⬇️',
+                    content: 'Select a GPU!',
                     params: {
-                        placement: 'top'
+                        placement: 'right'
                     }
                 },
                 {
                     target: '#v-step-3',
-                    content: 'Select a MotherBoard ⬇️',
+                    content: 'Select a MotherBoard!',
                     params: {
-                        placement: 'top'
+                        placement: 'right'
                     }
                 },
                 {
                     target: '#v-step-4',
-                    content: 'Select Ram ⬇️',
+                    content: 'Select Ram!',
                     params: {
-                        placement: 'top'
+                        placement: 'right'
                     }
                 },
                 {
                     target: '#v-step-5',
-                    content: 'Select Storage ⬇️',
+                    content: 'Select Storage!',
                     params: {
-                        placement: 'top'
+                        placement: 'right'
                     }
                 },
                 {
                     target: '#v-step-6',
-                    content: 'Select Cooling System! ⬆️',
+                    content: 'Select Cooling System!',
                     params: {
-                        placement: 'bottom'
+                        placement: 'right'
                     }
                 },
                 {
                     target: '#v-step-7',
-                    content: 'Select PowerSupply! ⬆️',
+                    content: 'Select PowerSupply!',
                     params: {
-                        placement: 'bottom'
+                        placement: 'right'
                     }
                 },
                 {
                     target: '#v-step-8',
-                    content: 'Select a Case! ⬆️',
+                    content: 'Select a Case!',
                     params: {
-                        placement: 'bottom'
+                        placement: 'right'
                     }
                 },
                 {
                     target: '#v-step-9',
-                    content: 'Select Fan! ⬆️',
+                    content: 'Select Fan!',
                     params: {
-                        placement: 'bottom'
+                        placement: 'right'
                     }
                 },
             ],
@@ -124,11 +123,13 @@ export default {
 
 <style lang="scss">
 .v-tip {
-    background-color: #333;
-    color: white;
+    color: rgb(255, 255, 255);
     padding: 5px 10px;
-    border-radius: 4px;
-    font-size: 13px;
+    border-radius: 5px;
+    font-size: 20px;
+    justify-content: end;
+    align-items: end;
+    align-self: self-end;
 }
 </style>
 
