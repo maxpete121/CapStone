@@ -58,7 +58,7 @@ class PcService{
     }
 
     async getSharedBuilds(){
-        let shared = await dbContext.PcBuilds.find({isShared: true}).populate('creator').limit(20).sort('-createdAt')
+        let shared = await dbContext.PcBuilds.find({isShared: true}).populate('creator').limit(15).sort('-createdAt')
         return shared
     }
 
@@ -67,6 +67,11 @@ class PcService{
         foundPc.rating = newPc.rating
         await foundPc.save()
         return foundPc
+    }
+
+    async getTopRated(){
+        let topRated = await dbContext.PcBuilds.find({isShared: true}).populate('creator').limit(15).sort('-rating')
+        return topRated
     }
 }
 

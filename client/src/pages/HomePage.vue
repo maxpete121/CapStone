@@ -20,12 +20,14 @@
       </div>
     </section>
     <section class="row mt-4 justify-content-center text-center">
-      <div class="col-lg-5 col-8 rounded-2 me-lg-2 m-1 info-box">
+      <div class="col-lg-5 col-8 rounded-2 me-lg-2 m-1 info-box-scroll">
         <div class="sticky-top title-bg p-1">
           <h3 class="text-success">Top rated builds <i class="mdi mdi-star text-warning"></i><i
               class="mdi mdi-star text-warning"></i><i class="mdi mdi-star text-warning"></i></h3>
         </div>
-        <div></div>
+        <div v-for="topBuild in topBuilds" class="mt-3 d-flex flex-column align-items-center">
+          <HomeBuilds :shareBuild="topBuild" />
+        </div>
       </div>
       <div class="col-lg-5 col-8 rounded-2 ms-lg-2 mt-3 mt-lg-1 pb-3 info-box-scroll text-center">
         <div class="sticky-top title-bg p-1">
@@ -70,7 +72,7 @@
 </template>
 
 <script>
-import { computed, onMounted } from 'vue';
+import { computed, onMounted, watch } from 'vue';
 import { AppState } from '../AppState';
 import { pcService } from '../services/PcService';
 import HomeBuilds from '../components/HomeBuilds.vue';
@@ -78,12 +80,19 @@ export default {
   setup() {
     onMounted(() => {
       getSharedBuilds()
+      getTopRated()
     })
+    watch(AppState.sharedBuilds, getTopRated)
     async function getSharedBuilds() {
       await pcService.getSharedBuilds()
     }
+
+    async function getTopRated() {
+      await pcService.getTopRated()
+    }
     return {
-      sharedBuilds: computed(() => AppState.sharedBuilds)
+      sharedBuilds: computed(() => AppState.sharedBuilds),
+      topBuilds: computed(() => AppState.topRated)
     }
   }, components: { HomeBuilds }
 }

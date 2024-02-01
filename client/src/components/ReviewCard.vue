@@ -1,6 +1,6 @@
 <template>
     <section class="row">
-        <div class="text-center text-dark justify-content-center my-2">
+        <div class="text-center text-light justify-content-center my-2">
             <p>{{ review.body }}</p>
             <span>{{ review.rating }}</span>
             <div class="mt-2">

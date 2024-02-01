@@ -76,6 +76,13 @@ class PcService{
         // console.log(pcId, 'new rating?')
         AppState.sharedBuilds = AppState.sharedBuilds.map(build => build.id !== pcId ? build : updatedList)
     }
+
+    async getTopRated(){
+        let response = await api.get('api/builds/topRated/shared')
+        let topBuilds = await response.data.map(build => new PcList(build))
+        AppState.topRated = topBuilds
+        console.log(topBuilds)
+    }
 }
 
 
