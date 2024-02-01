@@ -5,5 +5,6 @@ export class Review {
         this.creator = data.creator
         this.creatorId = data.creatorId
         this.rating = data.rating
+        this.pc = data.pc
     }
 }

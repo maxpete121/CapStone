@@ -54,6 +54,29 @@ class PcService{
         AppState.sharedBuilds = builds
         console.log(response)
     }
+
+    async reviewMath(pcId, buildData){
+        let reviewVal = 0
+        let review = AppState.reviews
+        if(!AppState.reviews.length){
+          let found = AppState.sharedBuilds.find(build => build.id == pcId)
+          found.rating = 'None'
+        }else{
+          for(let i = 0; i < AppState.reviews.length; i++){
+            reviewVal += review[i].rating
+          }
+          let average = reviewVal / AppState.reviews.length
+          Math.round(average * 1000) / 1000
+          buildData.rating = average
+          this.updateReview(pcId, buildData)
+        }
+    }
+    
+    async updateReview(pcId, buildData){
+        let response = await api.put(`api/builds/rating/${pcId}`, buildData)
+        let updatedList = new PcList(response.data)
+        AppState.userBuilds = AppState.userBuilds.map(build => build.id !== pcId ? build : updatedList)
+    }
 }
 
 
