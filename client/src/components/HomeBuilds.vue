@@ -13,7 +13,18 @@
         <h6 class="text-warning">${{ shareBuild.price }}</h6>
       </div>
       <div class="power-card-m mt-3">
-        <h6 class="">{{shareBuild.rating}}</h6>
+        <h6 v-if="shareBuild.rating == 5"><i class="mdi mdi-star"></i>
+          <i class="mdi mdi-star"></i>
+          <i class="mdi mdi-star"></i>
+          <i class="mdi mdi-star"></i>
+          <i class="mdi mdi-star"></i>
+        </h6>
+        <h6 v-else-if="shareBuild.rating < 5"><i class="mdi mdi-star"></i>
+          <i class="mdi mdi-star"></i>
+          <i class="mdi mdi-star"></i>
+          <i class="mdi mdi-star"></i>
+          <i class="mdi mdi-star"></i>
+        </h6>
       </div>
     </div>
     <div class="justify-content-center ms-4">
