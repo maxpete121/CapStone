@@ -13,6 +13,7 @@ export class SavedController extends BaseController{
         .use(Auth0Provider.getAuthorizedUserInfo)
         .get('/:accountId', this.getSavedByAccount)
         .post('', this.postSaved)
+        .delete('savedId', this.deleteSaved)
     }
 
     async postSaved(request, response, next){
@@ -32,6 +33,17 @@ export class SavedController extends BaseController{
             let accountId = request.params.accountId
             let savedPcs = await savedService.getSavedByAccount(accountId)
             response.send(savedPcs)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async deleteSaved(request, response, next){
+        try {
+            let savedId = request.params.savedId
+            let userId = request.userInfo.id 
+            let deleted = await savedService.deleteSaved(savedId, userId)
+            response.send(deleted)
         } catch (error) {
             next(error)
         }

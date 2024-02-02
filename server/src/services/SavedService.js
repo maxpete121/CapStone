@@ -15,6 +15,16 @@ class SavedService{
         let savedPosts = await dbContext.Saved.find({accountId: accountId}).populate('creator', 'name picture').populate('pc')
         return savedPosts
     }
+
+    async deleteSaved(savedId, userId){
+        let foundSaved = await dbContext.Saved.findById(savedId)
+        if(foundSaved.accountId == userId){
+            await foundSaved.deleteOne()
+            return 'Deleted'
+        }else{
+            throw Error('You are not authorized to make  this request!')
+        }
+    }
 }
 
 export const savedService = new SavedService()
