@@ -24,7 +24,7 @@
       <section class="col-5">
         <section v-if="account.tour == false" class="p-1 justify-content-center">
           <VueTour />
-          <div class="d-flex flex-column align-items-center">
+          <!-- <div class="d-flex flex-column align-items-center">
             <h4>Part Type</h4>
             <span>
               <button v-if="currentStep == 1" class="btn btn-outline-dark" id="v-step-1"
@@ -51,7 +51,7 @@
               <button v-if="currentStep == 9" class="col btn btn-outline-dark" id="v-step-9"
                 @click="getParts('caseFan')">Case Fan's</button>
             </span>
-          </div>
+          </div> -->
         </section>
         <section v-else class="p-1 justify-content-center list-card mt-3">
           <div class="d-flex flex-column align-items-center mb-2">
@@ -203,4 +203,5 @@ export default {
   color: #0cbc87;
   padding: 15px;
   box-shadow: 5px 8px 5px rgba(0, 0, 0, 0.54);
-}</style>
+}
+</style>
