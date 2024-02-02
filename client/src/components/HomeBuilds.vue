@@ -93,7 +93,7 @@
           </div>
         </div>
         <button @click="viewBuild()" class="btn btn-outline-success mt-2 button-m">Details</button>
-        <button class="btn btn-outline-success mt-2 button-m">Whishlist</button>
+        <button @click="" class="btn btn-outline-success mt-2 button-m">Wishlist</button>
       </div>
     </div>
   </div>
@@ -152,6 +152,8 @@ export default {
       await cartService.addItem(props.shareBuild.id)
       Pop.success('Item added')
     }
+
+    async function saveItem(itemId){}
     return {
       viewBuild,
       reviewData,
@@ -161,6 +163,7 @@ export default {
       createReview,
       getPcReviews,
       addItem,
+      saveItem,
       target: computed(()=>{
         let pc = "#mod"
         pc += `${props.shareBuild.id}`
