@@ -6,6 +6,7 @@ import { StockPartSchema } from '../models/StockPart.js';
 import { BuildPartSchema } from '../models/BuildPart.js';
 import { ReviewSchema } from '../models/Review';
 import { CartSchema } from '../models/Cart.js';
+import { SavedSchema } from '../models/Saved.js';
 
 class DbContext {
   Values = mongoose.model('Value', ValueSchema);
@@ -20,6 +21,8 @@ class DbContext {
   Reviews = mongoose.model('Review', ReviewSchema);
 
   CartItems = mongoose.model('CartItem', CartSchema);
+
+  Saved = mongoose.model('Saved', SavedSchema);
 }
 
 export const dbContext = new DbContext()
