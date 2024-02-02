@@ -6,8 +6,8 @@
             </div>
         </div>
         <div class="row">
-            <div v-for="savedBuild in savedBuilds">
-                
+            <div v-for="savedBuild in savedBuilds" class="col-5 mt-4">
+                <WishlistCard :savedBuild="savedBuild"/>
             </div>
         </div>
     </section>
@@ -19,17 +19,21 @@ import { AppState } from '../AppState';
 import { computed, ref, onMounted, watch } from 'vue';
 import {savedService} from '../services/SavedService.js'
 import Pop from '../utils/Pop';
+import WishlistCard from '../components/WishlistCard.vue';
+import { useRoute } from 'vue-router';
 export default {
     setup(){
         onMounted(()=>{
             if(AppState.account.id){
-                getSaved()
+                getSaved(routeId)
             }
         })
-        watch(AppState.account, getSaved)
+        watch(AppState.account, getSaved())
+        let route = useRoute()
+        let routeId = route.params.accountId
         async function getSaved(){
             try {
-                await savedService.getSaved(AppState.account.id)
+                await savedService.getSaved(routeId)
             } catch (error) {
                 Pop.error('Please log in to see saved builds.')
             }
@@ -37,7 +41,7 @@ export default {
     return { 
         savedBuilds: computed(()=> AppState.savedItems)
      }
-    }, components: {}
+    }, components: {WishlistCard}
 };
 </script>
 
