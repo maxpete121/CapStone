@@ -1,27 +1,43 @@
 <template>
     <div class="v-tip text-light">
-        <v-tour name="myTour" :steps="steps" :options="myOptions" :callbacks="myCallbacks"></v-tour>
+        <v-tour ref="tour" name="myTour" :steps="steps" :options="myOptions" :callbacks="myCallbacks"></v-tour>
     </div>
 </template>
   
 <script>
+import { inject, onMounted, ref } from 'vue';
 import { AppState } from '../AppState';
 import { Account } from '../models/Account';
 import { accountService } from '../services/AccountService';
 import { partsService } from '../services/PartsService';
-
 export default {
-    name: 'my-tour',
-    data() {
+
+    setup() {
+        const tour = ref(null)
+        const tours = inject('tours')
+        onMounted(() =>
+            startTour()
+
+        )
+        async function startTour() {
+            await partsService.getParts('cpu')
+            tours['myTour'].start()
+        }
+
+        const parts = [`gpu`, `motherboard`, `ram`, `storage`, `cpuCooler`, `powerSupply`, `case`, `caseFan`]
+        let step = AppState.currentStep
         return {
+            tour,
             myCallbacks: {
                 onNextStep: async () => {
                     console.log('Going forward a step, also Jerms is the goat');
+                    partsService.getParts(parts[step])
                     AppState.currentStep++
                 },
                 onPreviousStep: () => {
                     console.log('going back a step');
                     AppState.currentStep--
+                    partsService.getParts(parts[step])
                 },
                 onSkip: () => {
                     console.log('skipping tour')
@@ -33,14 +49,15 @@ export default {
                 labels: {
                     buttonSkip: 'Skip Tour?',
                     buttonPrevious: 'Previous Part!',
-                    buttonNext: 'Next Part!'
+                    buttonNext: 'Next Part!',
+                    buttonStop: 'Finish!'
                 }
             },
             steps: [
                 // {
                 //     target: '#v-step-0',
                 //     header: {
-                //         title: 'Get Started building your dream PC ⬇️',
+                //         title: 'Get Started building your dream PC',
                 //     },
                 //     params: {
                 //         placement: 'top'
@@ -65,7 +82,7 @@ export default {
                     content: 'Select a MotherBoard!',
                     params: {
                         placement: 'right'
-                    }
+                    },
                 },
                 {
                     target: '#v-step-4',
@@ -114,9 +131,6 @@ export default {
                 highlight: true
             }
         }
-    },
-    mounted: function () {
-        this.$tours['myTour'].start()
     }
 }
 </script>

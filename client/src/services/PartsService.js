@@ -14,7 +14,7 @@ class PartsService {
         AppState.currentStock = parts
     }
 
-    async addPartToBuild(partID, buildId){
+    async addPartToBuild(partID, buildId) {
         console.log(partID)
         let buildData = {
             "partId": partID,
@@ -25,13 +25,13 @@ class PartsService {
         AppState.activeParts.unshift(newPart)
     }
 
-    async getActiveParts(pcId){
+    async getActiveParts(pcId) {
         let response = await api.get(`api/newPart/${pcId}`)
         let allParts = response.data.map(part => new NewPart(part))
         AppState.activeParts = allParts
     }
 
-    async deletePart(partId){
+    async deletePart(partId) {
         let response = await api.delete(`api/newPart/${partId}`)
         let found = AppState.activeParts.findIndex(part => part.id == partId)
         AppState.activeParts.splice(found, 1)

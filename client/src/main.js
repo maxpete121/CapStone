@@ -13,5 +13,5 @@ registerGlobalComponents(root)
 
 root
   .use(router)
-  .use(Vue3Tour)
+  .use(Vue3Tour).provide('tours', root.config.globalProperties.$tours)
   .mount('#app')
