@@ -5,7 +5,7 @@
                 <h3>Welcome to your saved builds</h3>
             </div>
         </div>
-        <div class="row">
+        <div class="row d-flex flex-column align-items-center">
             <div v-for="savedBuild in savedBuilds" class="col-5 mt-4">
                 <WishlistCard :savedBuild="savedBuild"/>
             </div>
@@ -23,20 +23,20 @@ import WishlistCard from '../components/WishlistCard.vue';
 import { useRoute } from 'vue-router';
 export default {
     setup(){
-        onMounted(()=>{
-            if(AppState.account.id){
-                getSaved(routeId)
-            }
-        })
-        watch(AppState.account, getSaved())
+        // onMounted(()=>{
+        //     if(AppState.account.id){
+        //         getSaved(accountId)
+        //     }
+        // })
+        
         let route = useRoute()
-        let routeId = route.params.accountId
+        let accountID = route.params.accountId
+        let accountWatch = computed(()=> AppState.account)
+        watch(accountWatch, getSaved)
+
         async function getSaved(){
-            try {
-                await savedService.getSaved(routeId)
-            } catch (error) {
-                Pop.error('Please log in to see saved builds.')
-            }
+             await savedService.getSaved(accountID)
+             
         }
     return { 
         savedBuilds: computed(()=> AppState.savedItems)
