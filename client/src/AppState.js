@@ -25,7 +25,7 @@ export const AppState = reactive({
 
   sharedBuilds: [],
 
-  // topReviewed: [],
+ savedItems: [],
 
   cartItems: [],
 

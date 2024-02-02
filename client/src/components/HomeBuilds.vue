@@ -93,7 +93,7 @@
           </div>
         </div>
         <button @click="viewBuild()" class="btn btn-outline-success mt-2 button-m">Details</button>
-        <button @click="" class="btn btn-outline-success mt-2 button-m">Wishlist</button>
+        <button @click="saveItem()" class="btn btn-outline-success mt-2 button-m">Wishlist</button>
       </div>
     </div>
   </div>
@@ -110,7 +110,8 @@ import Pop from '../utils/Pop';
 import { useRoute } from 'vue-router';
 import { reviewsService } from '../services/ReviewsService.js';
 import { cartService } from '../services/CartService'
-import ReviewCard from './ReviewCard.vue'
+import ReviewCard from './ReviewCard.vue';
+import {savedService} from '../services/SavedService.js'
 export default {
   props: { shareBuild: { type: PcList, required: true } },
   setup(props) {
@@ -153,7 +154,9 @@ export default {
       Pop.success('Item added')
     }
 
-    async function saveItem(itemId){}
+    async function saveItem(){
+      await savedService.saveItem(props.shareBuild)
+    }
     return {
       viewBuild,
       reviewData,

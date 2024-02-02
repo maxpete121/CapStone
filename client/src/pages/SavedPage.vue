@@ -5,8 +5,10 @@
                 <h3>Welcome to your saved builds</h3>
             </div>
         </div>
-        <div class="row">
-            <div></div>
+        <div class="row d-flex flex-column align-items-center">
+            <div v-for="savedBuild in savedBuilds" class="col-5 mt-4">
+                <WishlistCard :savedBuild="savedBuild"/>
+            </div>
         </div>
     </section>
 </template>
@@ -14,11 +16,32 @@
 
 <script>
 import { AppState } from '../AppState';
-import { computed, ref, onMounted } from 'vue';
+import { computed, ref, onMounted, watch } from 'vue';
+import {savedService} from '../services/SavedService.js'
+import Pop from '../utils/Pop';
+import WishlistCard from '../components/WishlistCard.vue';
+import { useRoute } from 'vue-router';
 export default {
     setup(){
-    return {  }
-    }
+        // onMounted(()=>{
+        //     if(AppState.account.id){
+        //         getSaved(accountId)
+        //     }
+        // })
+        
+        let route = useRoute()
+        let accountID = route.params.accountId
+        let accountWatch = computed(()=> AppState.account)
+        watch(accountWatch, getSaved)
+
+        async function getSaved(){
+             await savedService.getSaved(accountID)
+             
+        }
+    return { 
+        savedBuilds: computed(()=> AppState.savedItems)
+     }
+    }, components: {WishlistCard}
 };
 </script>
 
