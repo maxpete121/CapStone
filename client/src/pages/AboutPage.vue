@@ -24,34 +24,6 @@
       <section class="col-5">
         <section v-if="account.tour == false" class="p-1 justify-content-center">
           <VueTour />
-          <!-- <div class="d-flex flex-column align-items-center">
-            <h4>Part Type</h4>
-            <span>
-              <button v-if="currentStep == 1" class="btn btn-outline-dark" id="v-step-1"
-                @click="getParts('cpu')">Cpu's</button>
-              <button v-if="currentStep == 2" class="btn btn-outline-dark" id="v-step-2"
-                @click="getParts('gpu')">Gpu's</button>
-              <button v-if="currentStep == 3" class="btn btn-outline-dark" id="v-step-3"
-                @click="getParts('motherboard')">Motherboards</button>
-              <button v-if="currentStep == 4" class="btn btn-outline-dark" id="v-step-4"
-                @click="getParts('ram')">Ram</button>
-              <button v-if="currentStep == 5" class="btn btn-outline-dark" id="v-step-5"
-                @click="getParts('storage')">Storage</button>
-            </span>
-          </div>
-          <div class="d-flex flex-column align-items-center">
-            <span>
-              <button v-if="currentStep == 6" class="col btn btn-outline-dark" id="v-step-6"
-                @click="getParts('cpuCooler')">Cpu Coolers</button>
-              <button v-if="currentStep == 7" class="col btn btn-outline-dark" id="v-step-7"
-                @click="getParts('powerSupply')">Power
-                Supplies</button>
-              <button v-if="currentStep == 8" class="col btn btn-outline-dark" id="v-step-8"
-                @click="getParts('case')">Case's</button>
-              <button v-if="currentStep == 9" class="col btn btn-outline-dark" id="v-step-9"
-                @click="getParts('caseFan')">Case Fan's</button>
-            </span>
-          </div> -->
         </section>
         <section v-else class="p-1 justify-content-center list-card mt-3">
           <div class="d-flex flex-column align-items-center mb-2">
@@ -113,7 +85,7 @@ export default {
       await partsService.getActiveParts(pcID)
     }
     async function clearAppstate() {
-      AppState.currentStep = 1
+      AppState.currentStep = 0
       AppState.currentStock = []
       AppState.activeParts = []
     }

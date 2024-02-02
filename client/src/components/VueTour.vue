@@ -32,12 +32,18 @@ export default {
                 onNextStep: async () => {
                     console.log('Going forward a step, also Jerms is the goat');
                     partsService.getParts(parts[step])
-                    AppState.currentStep++
+                    step++
+                    AppState.currentStep = step
+                    console.log('step', step)
+                    console.log('current step', AppState.currentStep)
                 },
                 onPreviousStep: () => {
                     console.log('going back a step');
-                    AppState.currentStep--
                     partsService.getParts(parts[step])
+                    step--
+                    AppState.currentStep = step
+                    console.log('step', step)
+                    console.log('current step', AppState.currentStep)
                 },
                 onSkip: () => {
                     console.log('skipping tour')
