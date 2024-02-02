@@ -57,7 +57,7 @@
     <div class="justify-content-center ms-4">
       <div class="price-card-m d-flex flex-column p-3">
         <button @click="addItem()" class="btn btn-outline-success button-m">Add to cart</button>
-        <button @click="getPcReviews()" class="btn btn-outline-success button-m mt-4" data-bs-toggle="modal"
+        <button @click="getPcReviews()" class="btn btn-outline-success button-m mt-2" data-bs-toggle="modal"
           :data-bs-target="target">
           Reviews
         </button>
@@ -92,7 +92,8 @@
             </div>
           </div>
         </div>
-        <button @click="viewBuild()" class="btn btn-outline-success mt-4 button-m">Details</button>
+        <button @click="viewBuild()" class="btn btn-outline-success mt-2 button-m">Details</button>
+        <button @click="" class="btn btn-outline-success mt-2 button-m">Wishlist</button>
       </div>
     </div>
   </div>
@@ -151,6 +152,8 @@ export default {
       await cartService.addItem(props.shareBuild.id)
       Pop.success('Item added')
     }
+
+    async function saveItem(itemId){}
     return {
       viewBuild,
       reviewData,
@@ -160,6 +163,7 @@ export default {
       createReview,
       getPcReviews,
       addItem,
+      saveItem,
       target: computed(()=>{
         let pc = "#mod"
         pc += `${props.shareBuild.id}`

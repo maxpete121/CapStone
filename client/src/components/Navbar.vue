@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-sm px-3 nav-edit">
-    <router-link v-if="account.id" class="navbar-brand d-flex" :to="{ name: 'Home' }">
+    <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center text-light">
         <h2 class="text-success">💻PC Build Bois</h2>
       </div>
@@ -12,8 +12,11 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto">
         <li>
-          <router-link :to="{ name: 'Lists' }" class="btn text-success lighten-30 selectable text-uppercase">
+          <router-link v-if="account.id" :to="{ name: 'Lists' }" class="btn text-success lighten-30 selectable text-uppercase">
             My Builds
+          </router-link>
+          <router-link v-if="account.id" :to="{ name: 'Saved', params: {accountId: account.id} }" class="btn text-success lighten-30 selectable text-uppercase">
+            My Wishlist
           </router-link>
         </li>
       </ul>
