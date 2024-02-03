@@ -6,5 +6,6 @@ export class Saved{
         this.pcId = data.pcId
         this.pc = data.pc
         this.creator = data.creator
+        this.id = data._id
     }
 }

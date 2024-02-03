@@ -13,7 +13,7 @@ export class SavedController extends BaseController{
         .use(Auth0Provider.getAuthorizedUserInfo)
         .get('/:accountId', this.getSavedByAccount)
         .post('', this.postSaved)
-        .delete('savedId', this.deleteSaved)
+        .delete('/:savedId', this.deleteSaved)
     }
 
     async postSaved(request, response, next){

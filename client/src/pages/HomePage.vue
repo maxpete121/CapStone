@@ -84,7 +84,9 @@ export default {
       getSharedBuilds()
       getTopRated()
     })
-    watch(AppState.sharedBuilds, getTopRated)
+    let accountWatch = computed(()=> AppState.account)
+    let shareWatch = computed(()=> AppState.sharedBuilds)
+    watch(shareWatch, getTopRated)
     async function getSharedBuilds() {
       await pcService.getSharedBuilds()
     }

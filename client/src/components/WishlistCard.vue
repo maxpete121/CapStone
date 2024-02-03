@@ -15,7 +15,7 @@
         </div>
         <div class="list-child-s d-flex flex-column p-3 justify-content-center me-3">
             <button class="btn btn-outline-success mb-2 button-s">Add To Cart</button>
-            <button class="btn btn-outline-danger mt-2 button-s">Remove</button>
+            <button @click="deleteSaved()" class="btn btn-outline-danger mt-2 button-s">Remove</button>
         </div>
     </div>
 </template>
@@ -25,17 +25,21 @@
 import { AppState } from '../AppState';
 import { computed, ref, onMounted } from 'vue';
 import { Saved } from '../models/Saved';
+import {savedService} from '../services/SavedService.js'
 export default {
     props: {savedBuild: {type: Saved, required: true}},
     setup(props){
 
-        async function deleteSaved(){}
+        async function deleteSaved(){
+            await savedService.deleteSaved(props.savedBuild.id)
+        }
     return { 
         newPrice: computed(()=>{
             let price = props.savedBuild.pc.price
             let rounded = Math.round(price * 100) / 100
             return rounded
-        })
+        }),
+        deleteSaved
      }
     }
 };
