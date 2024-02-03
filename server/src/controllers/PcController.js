@@ -18,7 +18,7 @@ export class PcController extends BaseController {
             .delete('/:PcId', this.deletePc)
             .put('/:pcId', this.shareBuild)
             .put('/rating/:pcId', this.reviewUpdate)
-            
+
     }
 
     async postPc(request, response, next) {
@@ -54,8 +54,9 @@ export class PcController extends BaseController {
 
     async deletePc(request, response, next) {
         try {
+            let userId = request.userInfo.id
             let PcId = request.params.PcId
-            let deleted = await pcService.deletePc(PcId)
+            let deleted = await pcService.deletePc(PcId, userId)
             response.send(deleted)
         } catch (error) {
             next(error)
@@ -92,19 +93,19 @@ export class PcController extends BaseController {
         }
     }
 
-    async reviewUpdate(request, response, next){
+    async reviewUpdate(request, response, next) {
         try {
             let newPC = request.body
             let pcId = request.params.pcId
             let userId = request.userInfo.id
             let updatedBuild = await pcService.reviewUpdate(pcId, newPC, userId)
-            response.send(updatedBuild)      
+            response.send(updatedBuild)
         } catch (error) {
             next(error)
         }
     }
 
-    async getTopRated(request, response, next){
+    async getTopRated(request, response, next) {
         try {
             let topRated = await pcService.getTopRated()
             response.send(topRated)
