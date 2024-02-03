@@ -41,7 +41,7 @@
     <section class="row justify-content-center p-1 mt-2">
       <div class="col-3 info-box mt-3 rounded-2 text-center">
         <h4>About us!</h4>
-        <P>The Creators Max Peterson, and Skyler Kinney, are two of the industry's leading innovators of robust, dynamic,
+        <P>The creators, Max Peterson and Skyler Kinney, are two of the industry's leading innovators of robust, dynamic,
           and impactful hardware to software solutions.</P>
       </div>
       <div class="col-3 info-box-two ms-4 me-4 mt-3 rounded-2 text-center p-1">
@@ -84,8 +84,8 @@ export default {
       getSharedBuilds()
       getTopRated()
     })
-    let accountWatch = computed(()=> AppState.account)
-    let shareWatch = computed(()=> AppState.sharedBuilds)
+    let accountWatch = computed(() => AppState.account)
+    let shareWatch = computed(() => AppState.sharedBuilds)
     watch(shareWatch, getTopRated)
     async function getSharedBuilds() {
       await pcService.getSharedBuilds()
