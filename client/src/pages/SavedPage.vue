@@ -6,7 +6,7 @@
             </div>
         </div>
         <div class="row d-flex flex-column align-items-center">
-            <div v-for="savedBuild in savedBuilds" class="col-5 mt-4">
+            <div v-for="savedBuild in savedBuilds" class="col-4 mt-4">
                 <WishlistCard :savedBuild="savedBuild"/>
             </div>
         </div>
