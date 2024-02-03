@@ -18,6 +18,12 @@ class SavedService{
         let allSaved = await response.data.map(saved => new Saved(saved))
         AppState.savedItems = allSaved
     }
+
+    async deleteSaved(buildId){
+        let response = await api.delete(`api/saved/${buildId}`)
+        let foundIndex = AppState.savedItems.findIndex(build => build.id == buildId)
+        AppState.savedItems.splice(foundIndex, 1)
+    }
 }
 
 export const savedService = new SavedService()

@@ -5,7 +5,7 @@
                 <h3>Welcome to your saved builds</h3>
             </div>
         </div>
-        <div class="row d-flex flex-column align-items-center">
+        <div class="row d-flex flex-column align-items-center mb-4">
             <div v-for="savedBuild in savedBuilds" class="col-4 mt-4">
                 <WishlistCard :savedBuild="savedBuild"/>
             </div>
