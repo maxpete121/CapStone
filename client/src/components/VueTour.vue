@@ -30,23 +30,16 @@ export default {
             tour,
             myCallbacks: {
                 onNextStep: async () => {
-                    console.log('Going forward a step, also Jerms is the goat');
                     partsService.getParts(parts[step])
                     step++
                     AppState.currentStep = step
-                    console.log('step', step)
-                    console.log('current step', AppState.currentStep)
                 },
                 onPreviousStep: () => {
-                    console.log('going back a step');
                     partsService.getParts(parts[step])
                     step--
                     AppState.currentStep = step
-                    console.log('step', step)
-                    console.log('current step', AppState.currentStep)
                 },
                 onSkip: () => {
-                    console.log('skipping tour')
                     accountService.doneTour()
                 }
             },
@@ -60,15 +53,6 @@ export default {
                 }
             },
             steps: [
-                // {
-                //     target: '#v-step-0',
-                //     header: {
-                //         title: 'Get Started building your dream PC',
-                //     },
-                //     params: {
-                //         placement: 'top'
-                //     }
-                // },
                 {
                     target: '#v-step-1',
                     content: 'Begin by selecting a CPU!',
@@ -150,6 +134,7 @@ export default {
     justify-content: end;
     align-items: end;
     align-self: self-end;
+    margin-left: 10px;
 }
 </style>
 
