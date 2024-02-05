@@ -23,6 +23,11 @@ const routes = [
     component: loadPage('ViewBuildPage'),
   },
   {
+    path: '/allBuilds',
+    name: 'allBuilds',
+    component: loadPage('AllBuildsPage'),
+  },
+  {
     path: '/wishlist/:accountId',
     name: 'Saved',
     component: loadPage('SavedPage'),

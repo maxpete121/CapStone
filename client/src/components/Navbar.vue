@@ -12,6 +12,9 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto">
         <li>
+          <router-link :to="{ name: 'allBuilds' }" class="btn text-success lighten-30 selectable text-uppercase">
+            All Builds
+          </router-link>
           <router-link v-if="account.id" :to="{ name: 'Lists' }" class="btn text-success lighten-30 selectable text-uppercase">
             My Builds
           </router-link>

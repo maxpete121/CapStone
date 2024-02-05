@@ -76,17 +76,23 @@ import { computed, onMounted, watch } from 'vue';
 import { AppState } from '../AppState';
 import { pcService } from '../services/PcService';
 import HomeBuilds from '../components/HomeBuilds.vue';
+import { savedService } from '../services/SavedService.js'
 export default {
   setup() {
     onMounted(() => {
       getSharedBuilds()
       getTopRated()
     })
-    let accountWatch = computed(()=> AppState.account)
-    let shareWatch = computed(()=> AppState.sharedBuilds)
+    let accountWatch = computed(() => AppState.account)
+    let shareWatch = computed(() => AppState.sharedBuilds)
     watch(shareWatch, getTopRated)
+    watch(accountWatch, getSaved)
     async function getSharedBuilds() {
       await pcService.getSharedBuilds()
+    }
+    async function getSaved() {
+      await savedService.getSaved(accountWatch.value.id)
+
     }
 
     async function getTopRated() {
@@ -94,7 +100,7 @@ export default {
     }
     return {
       sharedBuilds: computed(() => AppState.sharedBuilds),
-      topBuilds: computed(() => AppState.topRated)
+      topBuilds: computed(() => AppState.topRated),
     }
   }, components: { HomeBuilds }
 }
